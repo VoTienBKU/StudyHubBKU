@@ -11,7 +11,7 @@ export const GradeDistribution = ({ gradeMap }: GradeDistributionProps) => {
         <CardTitle>Thống kê số lượng môn theo điểm chữ</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap gap-2 sm:gap-4 justify-center">
           {Object.entries(gradeMap).map(([grade, count]) => (
             <div
               key={grade}

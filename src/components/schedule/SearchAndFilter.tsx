@@ -25,6 +25,10 @@ interface SearchAndFilterProps {
   selectedLecturer: string;
   onLecturerChange: (lecturer: string) => void;
   onClear: () => void;
+  selectedDate: Date | null;
+  onDateSelect: (date: Date) => void;
+  onClearDate: () => void;
+  filterByDate: boolean;
 }
 
 export const SearchAndFilter = ({

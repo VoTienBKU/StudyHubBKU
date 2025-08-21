@@ -51,6 +51,7 @@ interface MonHoc {
 const GradePrediction = () => {
   const [url, setUrl] = useState("https://mybk.hcmut.edu.vn/app/sinh-vien/ket-qua-hoc-tap/chuong-trinh-dao-tao");
   const [monHocList, setMonHocList] = useState<MonHoc[]>([]);
+  const [khoiKienThucList, setKhoiKienThucList] = useState<KhoiKienThuc[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 

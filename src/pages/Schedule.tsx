@@ -230,8 +230,7 @@ const Schedule = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="">
           <div className="text-center mb-6">
-            <h1 className="text-3xl font-bold text-foreground mb-1">Thời khóa biểu — tìm theo môn</h1>
-            <p className="text-muted-foreground">Nhập mã/tên môn. Kết quả được gom theo thứ. Giảng viên là bộ lọc tùy chọn khi bạn đã chọn 1 môn. Ngày là tuỳ chọn — nếu không chọn ngày, kết quả vẫn nhóm theo "Thứ".</p>
+            <h1 className="text-3xl font-bold text-foreground mb-1">Thời khóa biểu HCMUT</h1>
           </div>
 
           <div className="grid grid-cols-12 gap-6">

@@ -154,18 +154,27 @@ const GradePrediction = () => {
 
           <ManualDataInput onDataInput={handleManualDataInput} />
 
-          {monHocList.length > 0 && (
+          {(monHocList.length > 0 || khoiKienThucList.length > 0) && (
             <>
-              <GPAStats
-                gpa10={gpa.gpa10}
-                gpa4={gpa.gpa4}
-                totalCredits={totalCredits}
-                totalSubjects={monHocList.length}
-              />
+              {khoiKienThucList.length > 0 && (
+                <KhoiKienThucStats khoiKienThucList={khoiKienThucList} />
+              )}
 
-              <GradeDistribution gradeMap={gradeDistribution} />
+              {monHocList.length > 0 && (
+                <>
+                  <GPAStats
+                    gpa10={gpa.gpa10}
+                    gpa4={gpa.gpa4}
+                    totalCredits={totalCredits}
+                    totalSubjects={monHocList.length}
+                    totalRequiredCredits={totalRequiredCredits > 0 ? totalRequiredCredits : undefined}
+                  />
 
-              <SubjectList monHocList={monHocList} />
+                  <GradeDistribution gradeMap={gradeDistribution} />
+
+                  <SubjectList monHocList={monHocList} />
+                </>
+              )}
             </>
           )}
         </div>

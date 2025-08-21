@@ -130,6 +130,7 @@ const GradePrediction = () => {
   const gpa = calculateGPA(monHocList);
   const totalCredits = getTotalCredits(monHocList);
   const gradeDistribution = countGrades(monHocList);
+  const totalRequiredCredits = getTotalRequiredCredits(khoiKienThucList);
 
   return (
     <Layout>

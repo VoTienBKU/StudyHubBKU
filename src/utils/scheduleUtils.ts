@@ -41,7 +41,7 @@ export const isTuanCharActive = (ch?: string) => {
 };
 
 export const makeScheduleKey = (course: any, group: any, schedule: any) =>
-  `${course.id}||${group.group_name}||${schedule.thu || ''}||${schedule.tiet || ''}||${schedule.tuan_hoc || ''}`;
+  `${course.id}||${group.lt_group}||${schedule.thu || ''}||${schedule.tiet || ''}||${schedule.tuan_hoc || ''}`;
 
 export const parseTietToRange = (tietStr?: string) => {
   if (!tietStr) return null;

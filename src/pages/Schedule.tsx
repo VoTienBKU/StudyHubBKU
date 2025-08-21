@@ -16,7 +16,7 @@ import {
 import type { Course } from "@/utils/localStorage";
 
 interface Group {
-  group_name: string;
+  lt_group: string;
   lecturer?: string;
   bt_lecturer?: string;
   schedules?: Schedule[];

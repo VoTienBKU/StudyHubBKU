@@ -10,7 +10,7 @@ interface Schedule {
 }
 
 interface Group {
-  group_name: string;
+  lt_group: string;
   lecturer?: string;
   bt_lecturer?: string;
 }
@@ -77,7 +77,7 @@ const ScheduleCard = ({ item }: { item: ScheduleItem }) => (
       </div>
       <div className="text-right text-xs text-muted-foreground">
         CS: {item.schedule.cs || '-'}<br />
-        Nhóm: {item.group.group_name}
+        Nhóm: {item.group.lt_group}
       </div>
     </div>
     <div className="mt-2 text-sm text-muted-foreground space-y-1">

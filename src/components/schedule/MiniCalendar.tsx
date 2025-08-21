@@ -54,7 +54,7 @@ export const MiniCalendar = ({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="text-xs mb-2 grid grid-cols-7 gap-1 text-center font-medium">
+        <div className="text-xs mb-2 grid grid-cols-7 gap-0.5 sm:gap-1 text-center font-medium">
           {['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'].map(w => (
             <div key={w} className="py-1">{w}</div>
           ))}

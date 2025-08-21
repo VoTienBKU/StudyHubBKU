@@ -6,6 +6,7 @@ interface GPAStatsProps {
   gpa4: string;
   totalCredits: number;
   totalSubjects: number;
+  totalRequiredCredits?: number; // Optional for backward compatibility
 }
 
 export const GPAStats = ({ gpa10, gpa4, totalCredits, totalSubjects }: GPAStatsProps) => {

@@ -249,8 +249,8 @@ const Schedule = () => {
           <h1 className="text-3xl font-bold text-foreground mb-1">Thời khóa biểu HCMUT</h1>
         </div>
 
-        <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="lg:col-span-4">
             <SearchAndFilter
               searchQ={searchQ}
               onSearchChange={setSearchQ}
@@ -279,7 +279,7 @@ const Schedule = () => {
             />
           </div>
 
-          <div className="col-span-8">
+          <div className="lg:col-span-8">
             <ScheduleResults
               items={combinedItems}
               filterByDate={filterByDate}

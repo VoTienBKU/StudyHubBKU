@@ -65,20 +65,33 @@ const GradePrediction = () => {
   const handleManualDataInput = (jsonData: string) => {
     try {
       const data = JSON.parse(jsonData);
-      if (Array.isArray(data)) {
-        const processedData = processMonHocData(data);
-        setMonHocList(processedData);
+      let processedData: MonHoc[] = [];
+
+      // Check if it's the new structure with DANHSACH_KHOIKIENTHUC and DANHSACH_MONHOC_CTDT
+      if (data.DANHSACH_MONHOC_CTDT && Array.isArray(data.DANHSACH_MONHOC_CTDT)) {
+        processedData = processMyBKData(data);
         toast({
           title: "Thành công",
-          description: `Đã import ${processedData.length} môn học`,
+          description: `Đã import ${processedData.length} môn học từ cấu trúc mới`,
         });
-      } else {
-        throw new Error("Dữ liệu không đúng định dạng array");
       }
+      // Backward compatibility: Check if it's an array (old structure)
+      else if (Array.isArray(data)) {
+        processedData = processMonHocData(data);
+        toast({
+          title: "Thành công",
+          description: `Đã import ${processedData.length} môn học từ cấu trúc cũ`,
+        });
+      }
+      else {
+        throw new Error("Dữ liệu không đúng định dạng. Cần có DANHSACH_MONHOC_CTDT hoặc là array");
+      }
+
+      setMonHocList(processedData);
     } catch (error) {
       toast({
         title: "Lỗi",
-        description: "Dữ liệu JSON không hợp lệ",
+        description: "Dữ liệu JSON không hợp lệ. Vui lòng kiểm tra cấu trúc dữ liệu.",
         variant: "destructive"
       });
     }

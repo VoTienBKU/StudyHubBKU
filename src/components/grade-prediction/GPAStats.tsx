@@ -9,7 +9,7 @@ interface GPAStatsProps {
   totalRequiredCredits?: number; // Optional for backward compatibility
 }
 
-export const GPAStats = ({ gpa10, gpa4, totalCredits, totalSubjects }: GPAStatsProps) => {
+export const GPAStats = ({ gpa10, gpa4, totalCredits, totalSubjects, totalRequiredCredits }: GPAStatsProps) => {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8">
       <Card>

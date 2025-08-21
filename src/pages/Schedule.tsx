@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import Layout from "@/components/Layout";
 import { SearchAndFilter } from "@/components/schedule/SearchAndFilter";
-import { MiniCalendar } from "@/components/schedule/MiniCalendar";
 import { ScheduleResults } from "@/components/schedule/ScheduleResults";
 import { useScheduleState } from "@/hooks/useScheduleState";
 import coursesData from "@/data/course_sched.json";
+import { useCourseSearch } from "@/hooks/useCourseSearch";
 import {
   buildScheduleOccurrencesCache,
   isScheduleOnDate,
@@ -37,7 +37,7 @@ interface ScheduleItem {
 }
 
 const Schedule = () => {
-  const COURSES = useMemo(() => coursesData as Course[] || [], []);
+  const COURSES = useMemo(() => (coursesData as Course[]) || [], []);
 
   // Use the custom hook for state management
   const {
@@ -60,33 +60,19 @@ const Schedule = () => {
     clearAllFilters
   } = useScheduleState();
 
+  // Optimized search hook (Fuse.js + debounce / fast-path)
+  const { results: searchedCourses } = useCourseSearch(COURSES, searchQ, { debounceMs: 200, limit: 300 });
+
   // Cache schedule occurrences
   const scheduleOccurrencesCache = useMemo(() => buildScheduleOccurrencesCache(COURSES), [COURSES]);
-
-  // Search results state
-  const [searchResults, setSearchResults] = useState<Course[]>([]);
-
-  // Search effect
-  useEffect(() => {
-    const q = (searchQ || "").trim().toLowerCase();
-    if (!q) {
-      setSearchResults([]);
-      return;
-    }
-    const matches = COURSES.filter(c =>
-      (c.course_code || '').toLowerCase().includes(q) ||
-      (c.course_name || '').toLowerCase().includes(q)
-    );
-    setSearchResults(matches);
-  }, [searchQ, COURSES]);
 
   // Get lecturers for selected course
   const lecturersForSelectedCourse = useMemo(() => {
     if (!selectedCourse) return [];
     const set = new Set<string>();
     for (const g of selectedCourse.list_group || []) {
-      const a = cleanText(g.lecturer || '');
-      const b = cleanText(g.bt_lecturer || '');
+      const a = cleanText(g.lecturer || "");
+      const b = cleanText(g.bt_lecturer || "");
       if (a && !/chưa|đang phân công/i.test(a)) set.add(a);
       if (b && !/chưa|đang phân công/i.test(b)) set.add(b);
     }
@@ -95,9 +81,9 @@ const Schedule = () => {
 
   // Check if lecturer matches
   const lecturerMatches = (group: Group) => {
-    if (!selectedLecturer || selectedLecturer === 'all') return true;
-    const a = cleanText(group.lecturer || '');
-    const b = cleanText(group.bt_lecturer || '');
+    if (!selectedLecturer || selectedLecturer === "all") return true;
+    const a = cleanText(group.lecturer || "");
+    const b = cleanText(group.bt_lecturer || "");
     return (a && a === selectedLecturer) || (b && b === selectedLecturer);
   };
 
@@ -106,7 +92,7 @@ const Schedule = () => {
     const items: ScheduleItem[] = [];
 
     const pushIfMatch = (course: Course, group: Group, schedule: Schedule) => {
-      if (activeCampus !== 'all' && String(schedule.cs) !== String(activeCampus)) return;
+      if (activeCampus !== "all" && String(schedule.cs) !== String(activeCampus)) return;
       items.push({ course, group, schedule });
     };
 
@@ -126,8 +112,9 @@ const Schedule = () => {
       return items;
     }
 
-    if (searchResults.length > 0) {
-      for (const course of searchResults) {
+    // use searchedCourses (from optimized hook) instead of local search state
+    if (searchedCourses.length > 0) {
+      for (const course of searchedCourses) {
         for (const g of course.list_group || []) {
           for (const s of g.schedules || []) {
             if (filterByDate && selectedDate) {
@@ -143,37 +130,38 @@ const Schedule = () => {
     }
 
     return items;
-  }, [selectedCourse, selectedLecturer, selectedDate, filterByDate, searchResults, activeCampus, scheduleOccurrencesCache]);
+  }, [selectedCourse, selectedLecturer, selectedDate, filterByDate, searchedCourses, activeCampus, scheduleOccurrencesCache]);
 
-  // Group items by weekday
+  // Group items by weekday (for selected course)
   const groupedForSelectedCourse = useMemo(() => {
     if (!selectedCourse) return null;
     const map: Record<string, ScheduleItem[]> = {};
-    WEEKDAY_LABELS.forEach(label => map[label] = []);
-    map['Không rõ'] = [];
+    WEEKDAY_LABELS.forEach((label) => (map[label] = []));
+    map["Không rõ"] = [];
 
     for (const g of selectedCourse.list_group || []) {
       if (!lecturerMatches(g)) continue;
       for (const s of g.schedules || []) {
-        if (activeCampus !== 'all' && String(s.cs) !== String(activeCampus)) continue;
+        if (activeCampus !== "all" && String(s.cs) !== String(activeCampus)) continue;
         if (filterByDate && selectedDate && !isScheduleOnDate(selectedCourse, g, s, selectedDate, scheduleOccurrencesCache)) continue;
 
         const idx = parseWeekdayToIndex(s.thu);
-        const label = (idx === null) ? 'Không rõ' : WEEKDAY_LABELS[idx];
+        const label = idx === null ? "Không rõ" : WEEKDAY_LABELS[idx];
         map[label].push({ course: selectedCourse, group: g, schedule: s });
       }
     }
     return map;
   }, [selectedCourse, selectedLecturer, activeCampus, selectedDate, filterByDate, scheduleOccurrencesCache]);
 
+  // Group combined items by weekday (general view)
   const groupedByWeekday = useMemo(() => {
     const map: Record<string, ScheduleItem[]> = {};
-    WEEKDAY_LABELS.forEach(label => map[label] = []);
-    map['Không rõ'] = [];
+    WEEKDAY_LABELS.forEach((label) => (map[label] = []));
+    map["Không rõ"] = [];
 
     for (const item of combinedItems) {
       const idx = parseWeekdayToIndex(item.schedule.thu);
-      const label = (idx === null) ? 'Không rõ' : WEEKDAY_LABELS[idx];
+      const label = idx === null ? "Không rõ" : WEEKDAY_LABELS[idx];
       map[label].push(item);
     }
     return map;
@@ -186,20 +174,27 @@ const Schedule = () => {
 
   const clearSelection = () => {
     clearAllFilters();
-    setSearchResults([]);
   };
 
   // Calendar navigation
   const goPrevMonth = () => {
-    let m = viewMonth - 1, y = viewYear;
-    if (m < 0) { m = 11; y -= 1; }
+    let m = viewMonth - 1,
+      y = viewYear;
+    if (m < 0) {
+      m = 11;
+      y -= 1;
+    }
     setViewMonth(m);
     setViewYear(y);
   };
 
   const goNextMonth = () => {
-    let m = viewMonth + 1, y = viewYear;
-    if (m > 11) { m = 0; y += 1; }
+    let m = viewMonth + 1,
+      y = viewYear;
+    if (m > 11) {
+      m = 0;
+      y += 1;
+    }
     setViewMonth(m);
     setViewYear(y);
   };
@@ -233,7 +228,7 @@ const Schedule = () => {
         if (selectedCourse && course.id !== selectedCourse.id) continue;
         if (selectedCourse && !lecturerMatches(g)) continue;
         for (const s of g.schedules || []) {
-          if (activeCampus !== 'all' && String(s.cs) !== String(activeCampus)) continue;
+          if (activeCampus !== "all" && String(s.cs) !== String(activeCampus)) continue;
           if (isScheduleOnDate(course, g, s, date, scheduleOccurrencesCache)) return true;
         }
       }
@@ -266,7 +261,7 @@ const Schedule = () => {
             <SearchAndFilter
               searchQ={searchQ}
               onSearchChange={setSearchQ}
-              searchResults={searchResults}
+              searchResults={searchedCourses}
               onSelectCourse={handleSelectCourse}
               activeCampus={activeCampus}
               onCampusChange={setActiveCampus}
@@ -280,8 +275,6 @@ const Schedule = () => {
               onClearDate={handleClearDate}
               filterByDate={filterByDate}
             />
-
-            {/* MiniCalendar hidden - date picker is now integrated in SearchAndFilter */}
           </div>
 
           <div className="lg:col-span-8">

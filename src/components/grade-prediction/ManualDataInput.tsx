@@ -13,11 +13,11 @@ export const ManualDataInput = ({ onDataInput }: ManualDataInputProps) => {
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          <Label htmlFor="manual-data">Paste dữ liệu JSON từ DANHSACH_MONHOC_CTDT</Label>
+          <Label htmlFor="manual-data">Paste dữ liệu JSON từ MyBK Console</Label>
           <textarea
             id="manual-data"
-            className="w-full h-32 p-3 border rounded-md resize-none"
-            placeholder='Paste dữ liệu JSON array tại đây...'
+            className="w-full h-32 p-3 border rounded-md resize-none font-mono text-sm"
+            placeholder='Paste kết quả từ lệnh copy({DANHSACH_KHOIKIENTHUC: window.DANHSACH_KHOIKIENTHUC, DANHSACH_MONHOC_CTDT: window.DANHSACH_MONHOC_CTDT}) tại đây...'
             onBlur={(e) => {
               if (e.target.value.trim()) {
                 onDataInput(e.target.value.trim());

@@ -43,13 +43,13 @@ export const SubjectList = ({ monHocList }: SubjectListProps) => {
                   <td className="p-2 font-mono text-sm">{mon.maMonHoc}</td>
                   <td className="p-2">{mon.tenMonHoc}</td>
                   <td className="p-2 text-center">{mon.soTinChi}</td>
-                  <td className="p-2 text-center">
-                    <span className={mon.diemSo >= 5 ? "text-education-secondary" : "text-destructive"}>
+                  <td className="p-1 sm:p-2 text-center">
+                    <span className={`text-xs sm:text-sm ${mon.diemSo >= 5 ? "text-education-secondary" : "text-destructive"}`}>
                       {mon.diemSo > 0 ? mon.diemSo : '--'}
                     </span>
                   </td>
-                  <td className="p-2 text-center">{mon.diemChu}</td>
-                  <td className="p-2 text-center">
+                  <td className="p-1 sm:p-2 text-center text-xs sm:text-sm">{mon.diemChu}</td>
+                  <td className="p-1 sm:p-2 text-center">
                     <span className={`text-xs px-2 py-1 rounded ${
                       mon.hieuLuc === "1" 
                         ? "bg-education-secondary/20 text-education-secondary" 

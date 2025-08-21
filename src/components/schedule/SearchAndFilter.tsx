@@ -135,6 +135,61 @@ export const SearchAndFilter = ({
             </div>
           )}
 
+          {/* Date Picker Section */}
+          <div className="mt-3">
+            <button
+              className="flex items-center justify-between w-full p-2 text-sm font-semibold rounded-md border hover:bg-muted/50"
+              onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
+            >
+              <div className="flex items-center gap-2">
+                <IconCalendar className="h-4 w-4" />
+                <span>Chọn ngày</span>
+                {selectedDate && (
+                  <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">
+                    {selectedDate.toLocaleDateString('vi-VN')}
+                  </span>
+                )}
+              </div>
+              {isDatePickerOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </button>
+
+            {isDatePickerOpen && (
+              <div className="mt-2 p-3 border rounded-md bg-muted/20">
+                <div className="space-y-2">
+                  <div className="flex gap-2">
+                    <input
+                      type="date"
+                      className="flex-1 rounded-md border px-2 py-1 text-sm"
+                      value={selectedDate ? selectedDate.toISOString().split('T')[0] : ''}
+                      onChange={(e) => {
+                        if (e.target.value) {
+                          onDateSelect(new Date(e.target.value));
+                        }
+                      }}
+                    />
+                    <button
+                      className="px-3 py-1 text-xs rounded-md border bg-background hover:bg-muted"
+                      onClick={() => onDateSelect(new Date())}
+                    >
+                      Hôm nay
+                    </button>
+                  </div>
+                  {selectedDate && (
+                    <button
+                      className="w-full px-3 py-1 text-xs rounded-md border text-destructive hover:bg-destructive/10"
+                      onClick={() => {
+                        onClearDate();
+                        setIsDatePickerOpen(false);
+                      }}
+                    >
+                      Bỏ chọn ngày
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
           <div className="flex gap-2">
             <button className="flex-1 rounded-md border px-3 py-2" onClick={onClear}>Clear</button>
           </div>

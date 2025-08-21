@@ -73,8 +73,8 @@ const Schedule = () => {
       setSearchResults([]);
       return;
     }
-    const matches = COURSES.filter(c => 
-      (c.course_code || '').toLowerCase().includes(q) || 
+    const matches = COURSES.filter(c =>
+      (c.course_code || '').toLowerCase().includes(q) ||
       (c.course_name || '').toLowerCase().includes(q)
     );
     setSearchResults(matches);
@@ -104,7 +104,7 @@ const Schedule = () => {
   // Get combined items
   const combinedItems = useMemo(() => {
     const items: ScheduleItem[] = [];
-    
+
     const pushIfMatch = (course: Course, group: Group, schedule: Schedule) => {
       if (activeCampus !== 'all' && String(schedule.cs) !== String(activeCampus)) return;
       items.push({ course, group, schedule });
@@ -157,7 +157,7 @@ const Schedule = () => {
       for (const s of g.schedules || []) {
         if (activeCampus !== 'all' && String(s.cs) !== String(activeCampus)) continue;
         if (filterByDate && selectedDate && !isScheduleOnDate(selectedCourse, g, s, selectedDate, scheduleOccurrencesCache)) continue;
-        
+
         const idx = parseWeekdayToIndex(s.thu);
         const label = (idx === null) ? 'Không rõ' : WEEKDAY_LABELS[idx];
         map[label].push({ course: selectedCourse, group: g, schedule: s });
@@ -246,7 +246,19 @@ const Schedule = () => {
       <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
         <div className="text-center mb-6">
           <h1 className="text-3xl font-bold text-foreground mb-1">Thời khóa biểu HCMUT</h1>
-          <p className="text-sm text-muted-foreground">Các filter sẽ được lưu tự động trong máy</p>
+          <p className="text-sm text-muted-foreground">
+            Chúng tôi cần sự <span className="font-medium text-foreground">feedback </span>
+            và góp ý nhiều hơn để cải thiện tool.
+            Tham gia nhóm:{" "}
+            <a
+              href="https://www.facebook.com/groups/khmt.ktmt.cse.bku"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-education-primary hover:underline"
+            >
+              Thảo luận kiến thức CNTT trường BK về KHMT(CScience), KTMT(CEngineering)
+            </a>
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -269,7 +281,7 @@ const Schedule = () => {
               filterByDate={filterByDate}
             />
 
-{/* MiniCalendar hidden - date picker is now integrated in SearchAndFilter */}
+            {/* MiniCalendar hidden - date picker is now integrated in SearchAndFilter */}
           </div>
 
           <div className="lg:col-span-8">

@@ -143,8 +143,18 @@ const GradePrediction = () => {
             <h1 className="text-3xl font-bold text-foreground mb-2">
               Dự đoán điểm trung bình
             </h1>
-            <p className="text-muted-foreground">
-              Nhập URL MyBK để phân tích và dự báo kết quả học tập
+            <p className="text-sm text-muted-foreground">
+              Chúng tôi cần sự <span className="font-medium text-foreground">feedback </span>
+              và góp ý nhiều hơn để cải thiện tool.
+              Tham gia nhóm:{" "}
+              <a
+                href="https://www.facebook.com/groups/khmt.ktmt.cse.bku"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-education-primary hover:underline"
+              >
+                Thảo luận kiến thức CNTT trường BK về KHMT(CScience), KTMT(CEngineering)
+              </a>
             </p>
           </div>
 

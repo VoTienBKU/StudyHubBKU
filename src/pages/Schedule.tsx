@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import { SearchAndFilter } from "@/components/schedule/SearchAndFilter";
 import { MiniCalendar } from "@/components/schedule/MiniCalendar";
 import { ScheduleResults } from "@/components/schedule/ScheduleResults";
+import { useScheduleState } from "@/hooks/useScheduleState";
 import coursesData from "@/data/course_sched.json";
 import {
   buildScheduleOccurrencesCache,
@@ -10,17 +11,9 @@ import {
   parseWeekdayToIndex,
   cleanText,
   getDaysArrayOfMonth,
-  ddmmyyyy,
-  parseDateFromInput,
   WEEKDAY_LABELS
 } from "@/utils/scheduleUtils";
-
-interface Course {
-  id: string;
-  course_code: string;
-  course_name: string;
-  list_group?: Group[];
-}
+import type { Course } from "@/utils/localStorage";
 
 interface Group {
   group_name: string;
@@ -46,21 +39,32 @@ interface ScheduleItem {
 const Schedule = () => {
   const COURSES = useMemo(() => coursesData as Course[] || [], []);
 
+  // Use the custom hook for state management
+  const {
+    searchQ,
+    activeCampus,
+    selectedLecturer,
+    filterByDate,
+    selectedDate,
+    viewMonth,
+    viewYear,
+    selectedCourse,
+    setSearchQ,
+    setActiveCampus,
+    setSelectedLecturer,
+    setFilterByDate,
+    setSelectedDate,
+    setViewMonth,
+    setViewYear,
+    setSelectedCourse,
+    clearAllFilters
+  } = useScheduleState();
+
   // Cache schedule occurrences
   const scheduleOccurrencesCache = useMemo(() => buildScheduleOccurrencesCache(COURSES), [COURSES]);
 
-  // UI state
-  const [today] = useState(() => new Date());
-  const [viewMonth, setViewMonth] = useState(today.getMonth());
-  const [viewYear, setViewYear] = useState(today.getFullYear());
-
-  const [activeCampus, setActiveCampus] = useState("all");
-  const [searchQ, setSearchQ] = useState("CO2003");
+  // Search results state
   const [searchResults, setSearchResults] = useState<Course[]>([]);
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-  const [selectedLecturer, setSelectedLecturer] = useState('all');
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [filterByDate, setFilterByDate] = useState(false);
 
   // Search effect
   useEffect(() => {
@@ -178,16 +182,11 @@ const Schedule = () => {
   // Event handlers
   const handleSelectCourse = (course: Course) => {
     setSelectedCourse(course);
-    setSelectedLecturer('all');
   };
 
   const clearSelection = () => {
-    setSelectedCourse(null);
-    setSelectedLecturer('all');
-    setSelectedDate(null);
-    setSearchQ('');
+    clearAllFilters();
     setSearchResults([]);
-    setFilterByDate(false);
   };
 
   // Calendar navigation
@@ -247,6 +246,7 @@ const Schedule = () => {
       <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
         <div className="text-center mb-6">
           <h1 className="text-3xl font-bold text-foreground mb-1">Thời khóa biểu HCMUT</h1>
+          <p className="text-sm text-muted-foreground">Các filter sẽ được lưu tự động trong máy</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">

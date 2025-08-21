@@ -64,13 +64,13 @@ const ScheduleCard = ({ item }: { item: ScheduleItem }) => (
           {item.course.course_code} — {item.course.course_name}
         </div>
         <div className="flex flex-wrap gap-2 mt-1">
-          <span className="px-2 py-0.5 text-xs rounded-full bg-slate-700 text-slate-100">
+          <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-700 text-slate-100">
             Phòng: {cleanText(item.schedule.phong) || '-'}
           </span>
-          <span className="px-2 py-0.5 text-xs rounded-full bg-slate-700 text-slate-100">
+          <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-700 text-slate-100">
             Thời gian: {parseTietToRange(item.schedule.tiet) || '-'}
           </span>
-          <span className="px-2 py-0.5 text-xs rounded-full bg-slate-500 text-slate-100">
+          <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-500 text-slate-100">
             Giảng viên: {cleanText(item.group.lecturer) || "Chưa phân công"}
           </span>
         </div>

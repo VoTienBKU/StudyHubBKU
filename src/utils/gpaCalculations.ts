@@ -115,3 +115,16 @@ export const processMonHocData = (data: any[]): MonHoc[] => {
     ).values()
   );
 };
+
+// Knowledge blocks calculations
+export const getTotalRequiredCredits = (khoiKienThucList: KhoiKienThuc[]): number => {
+  return khoiKienThucList.reduce((sum, khoi) => sum + khoi.soTinChiYeuCau, 0);
+};
+
+export const getTotalAchievedCreditsFromKhoi = (khoiKienThucList: KhoiKienThuc[]): number => {
+  return khoiKienThucList.reduce((sum, khoi) => sum + khoi.soTinChiDat, 0);
+};
+
+export const getCompletedKhoiCount = (khoiKienThucList: KhoiKienThuc[]): number => {
+  return khoiKienThucList.filter(khoi => khoi.tinhTrangHoanThanh === "1").length;
+};

@@ -6,6 +6,7 @@ import { HashRouter, Routes, Route } from "react-router-dom"; // <-- HashRouter
 import Index from "./pages/Index";
 import Schedule from "./pages/Schedule";
 import GradePrediction from "./pages/GradePrediction";
+import CourseReview from "./pages/CourseReview";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/grade-prediction" element={<GradePrediction />} />
+          <Route path="/course-review" element={<CourseReview />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>

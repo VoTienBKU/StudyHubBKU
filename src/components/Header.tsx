@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, Calendar, TrendingUp } from "lucide-react";
+import { GraduationCap, Calendar, TrendingUp, MessageSquare } from "lucide-react";
 
 const Header = () => {
   const location = useLocation();
@@ -36,6 +36,18 @@ const Header = () => {
                 <TrendingUp className="h-4 w-4" />
                 <span className="hidden sm:inline">Dự đoán điểm TB</span>
                 <span className="sm:hidden text-xs">GPA</span>
+              </Link>
+            </Button>
+
+            <Button
+              variant={location.pathname === "/course-review" ? "default" : "ghost"}
+              size="sm"
+              asChild
+            >
+              <Link to="/course-review" className="flex items-center space-x-1 sm:space-x-2">
+                <MessageSquare className="h-4 w-4" />
+                <span className="hidden sm:inline">Review môn học</span>
+                <span className="sm:hidden text-xs">Review</span>
               </Link>
             </Button>
           </nav>

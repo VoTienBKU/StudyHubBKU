@@ -94,9 +94,15 @@ const GradePrediction = () => {
       // Check if it's the new structure with DANHSACH_KHOIKIENTHUC and DANHSACH_MONHOC_CTDT
       if (data.DANHSACH_MONHOC_CTDT && Array.isArray(data.DANHSACH_MONHOC_CTDT)) {
         processedData = processMyBKData(data);
+
+        // Process knowledge blocks if available
+        if (data.DANHSACH_KHOIKIENTHUC && Array.isArray(data.DANHSACH_KHOIKIENTHUC)) {
+          setKhoiKienThucList(data.DANHSACH_KHOIKIENTHUC);
+        }
+
         toast({
           title: "Thành công",
-          description: `Đã import ${processedData.length} môn học từ cấu trúc mới`,
+          description: `Đã import ${processedData.length} môn học và ${data.DANHSACH_KHOIKIENTHUC?.length || 0} khối kiến thức`,
         });
       }
       // Backward compatibility: Check if it's an array (old structure)

@@ -12,10 +12,10 @@ const Index = () => {
         <section className="container mx-auto px-4 py-16 text-center">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Chào mừng đến với <span className="text-primary">StudyHub</span>
+              Chào mừng đến với <span className="text-primary">StudyHubBKU</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Ứng dụng hỗ trợ học tập toàn diện cho sinh viên. 
+              Ứng dụng hỗ trợ học tập toàn diện cho sinh viên.
               Quản lý thời khóa biểu và dự đoán điểm số một cách thông minh.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -91,7 +91,7 @@ const Index = () => {
                   Đang phát triển
                 </h3>
                 <p className="text-muted-foreground text-lg">
-                  Các tính năng chính của StudyHub đang được hoàn thiện. 
+                  Các tính năng chính của StudyHubBKU đang được hoàn thiện.
                   Chúng tôi sẽ sớm cung cấp trải nghiệm học tập tuyệt vời cho bạn!
                 </p>
               </CardContent>

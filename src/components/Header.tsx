@@ -11,9 +11,9 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
             <GraduationCap className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold text-foreground">StudyHub</span>
+            <span className="text-xl font-bold text-foreground">StudyHubBKU</span>
           </Link>
-          
+
           <nav className="flex items-center space-x-4">
             <Button
               variant={location.pathname === "/schedule" ? "default" : "ghost"}
@@ -24,7 +24,7 @@ const Header = () => {
                 <span>Thời khóa biểu</span>
               </Link>
             </Button>
-            
+
             <Button
               variant={location.pathname === "/grade-prediction" ? "default" : "ghost"}
               asChild

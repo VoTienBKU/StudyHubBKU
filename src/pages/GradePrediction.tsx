@@ -41,10 +41,10 @@ const GradePrediction = () => {
     }
 
     setIsLoading(true);
-    
+
     // Mở tab mới
     const newTab = window.open(url, '_blank');
-    
+
     if (!newTab) {
       toast({
         title: "Lỗi",
@@ -62,51 +62,6 @@ const GradePrediction = () => {
     });
 
     setIsLoading(false);
-  };
-
-  const handleFetchDataFromWindow = () => {
-    try {
-      // Thử lấy dữ liệu từ localStorage (nếu website lưu ở đó)
-      const storageData = localStorage.getItem('DANHSACH_MONHOC_CTDT');
-      if (storageData) {
-        try {
-          const data = JSON.parse(storageData);
-          setMonHocList(data);
-          toast({
-            title: "Thành công",
-            description: `Đã lấy được ${data.length} môn học từ localStorage`,
-          });
-          return;
-        } catch (e) {
-          console.error("Error parsing localStorage data:", e);
-        }
-      }
-
-      // Thử lấy từ window object
-      const globalWindow = window as any;
-      if (globalWindow.DANHSACH_MONHOC_CTDT) {
-        setMonHocList(globalWindow.DANHSACH_MONHOC_CTDT);
-        toast({
-          title: "Thành công",
-          description: `Đã lấy được ${globalWindow.DANHSACH_MONHOC_CTDT.length} môn học từ window`,
-        });
-        return;
-      }
-
-      // Hướng dẫn người dùng copy dữ liệu thủ công
-      toast({
-        title: "Hướng dẫn lấy dữ liệu",
-        description: "Mở Developer Tools (F12) trong cửa sổ MyBK, gõ 'DANHSACH_MONHOC_CTDT' trong Console và copy kết quả vào ô bên dưới",
-      });
-
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      toast({
-        title: "Lỗi",
-        description: "Không thể lấy dữ liệu tự động. Vui lòng copy dữ liệu thủ công.",
-        variant: "destructive"
-      });
-    }
   };
 
   const handleManualDataInput = (jsonData: string) => {
@@ -132,16 +87,16 @@ const GradePrediction = () => {
 
   const calculateGPA = () => {
     if (monHocList.length === 0) return 0;
-    
-    const validSubjects = monHocList.filter(mon => 
+
+    const validSubjects = monHocList.filter(mon =>
       mon.diemSo > 0 && mon.soTinChi > 0 && mon.hieuLuc === "1"
     );
-    
+
     if (validSubjects.length === 0) return 0;
-    
+
     const totalPoints = validSubjects.reduce((sum, mon) => sum + (mon.diemSo * mon.soTinChi), 0);
     const totalCredits = validSubjects.reduce((sum, mon) => sum + mon.soTinChi, 0);
-    
+
     return totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : 0;
   };
 
@@ -185,7 +140,7 @@ const GradePrediction = () => {
                 />
               </div>
               <div className="flex flex-col sm:flex-row gap-2">
-                <Button 
+                <Button
                   onClick={handleOpenAndFetchData}
                   disabled={isLoading}
                   className="flex items-center space-x-2"
@@ -193,17 +148,23 @@ const GradePrediction = () => {
                   <ExternalLink className="h-4 w-4" />
                   <span>Mở MyBK</span>
                 </Button>
-                <Button 
-                  variant="outline"
-                  onClick={handleFetchDataFromWindow}
-                  className="flex items-center space-x-2"
-                >
-                  <BarChart className="h-4 w-4" />
-                  <span>Lấy dữ liệu từ cửa sổ</span>
-                </Button>
+
+              </div>
+
+              {/* Hướng dẫn hiển thị luôn */}
+              <div className="mt-4 p-4 bg-muted/20 text-muted-foreground rounded-md text-sm space-y-2">
+                <p>Hướng dẫn lấy dữ liệu từ MyBK:</p>
+                <ol className="list-decimal list-inside space-y-1">
+                  <li>Nhấn nút "Mở MyBK" để mở tab MyBK.</li>
+                  <li>Đăng nhập vào MyBK nếu chưa đăng nhập.</li>
+                  <li>Tải dữ liệu điểm và thông tin các môn học trong MyBK.</li>
+                  <li>Quay lại trang này và nhấn "Lấy dữ liệu từ cửa sổ".</li>
+                  <li>Nếu không lấy được tự động, mở Developer Tools (F12) trong tab MyBK, gõ <code>DANHSACH_MONHOC_CTDT</code> trong Console và copy dữ liệu JSON vào ô "Import dữ liệu thủ công".</li>
+                </ol>
               </div>
             </CardContent>
           </Card>
+
 
           {/* Manual Data Input */}
           <Card className="mb-8">
@@ -240,7 +201,7 @@ const GradePrediction = () => {
                     <p className="text-muted-foreground">Điểm TB hiện tại</p>
                   </CardContent>
                 </Card>
-                
+
                 <Card>
                   <CardContent className="p-6 text-center">
                     <BookOpen className="h-12 w-12 text-accent mx-auto mb-2" />
@@ -248,7 +209,7 @@ const GradePrediction = () => {
                     <p className="text-muted-foreground">Tổng số tín chỉ</p>
                   </CardContent>
                 </Card>
-                
+
                 <Card>
                   <CardContent className="p-6 text-center">
                     <TrendingUp className="h-12 w-12 text-education-secondary mx-auto mb-2" />
@@ -292,9 +253,8 @@ const GradePrediction = () => {
                             </td>
                             <td className="p-2 text-center">{mon.diemChu}</td>
                             <td className="p-2 text-center">
-                              <span className={`text-xs px-2 py-1 rounded ${
-                                mon.hieuLuc === "1" ? "bg-education-secondary/20 text-education-secondary" : "bg-muted text-muted-foreground"
-                              }`}>
+                              <span className={`text-xs px-2 py-1 rounded ${mon.hieuLuc === "1" ? "bg-education-secondary/20 text-education-secondary" : "bg-muted text-muted-foreground"
+                                }`}>
                                 {mon.hieuLuc === "1" ? "Hiệu lực" : "Không hiệu lực"}
                               </span>
                             </td>

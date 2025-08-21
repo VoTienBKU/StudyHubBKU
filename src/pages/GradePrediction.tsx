@@ -30,6 +30,18 @@ const GradePrediction = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
+  const diemChuToHe4: Record<string, number> = {
+    "A+": 4,
+    "A": 4,
+    "B+": 3.5,
+    "B": 3,
+    "C+": 2.5,
+    "C": 2,
+    "D+": 1.5,
+    "D": 1,
+    "F": 0
+  };
+
   const handleOpenAndFetchData = () => {
     if (!url.trim()) {
       toast({
@@ -42,7 +54,6 @@ const GradePrediction = () => {
 
     setIsLoading(true);
 
-    // Mở tab mới
     const newTab = window.open(url, '_blank');
 
     if (!newTab) {
@@ -55,7 +66,6 @@ const GradePrediction = () => {
       return;
     }
 
-    // Thông báo hướng dẫn cho người dùng
     toast({
       title: "Hướng dẫn",
       description: "Đã mở tab MyBK. Sau khi đăng nhập và tải dữ liệu xong, hãy nhấn 'Lấy dữ liệu từ tab'",
@@ -95,18 +105,26 @@ const GradePrediction = () => {
   };
 
   const calculateGPA = () => {
-    if (monHocList.length === 0) return 0;
+    if (monHocList.length === 0) return { gpa10: 0, gpa4: 0 };
 
     const validSubjects = monHocList.filter(mon =>
       mon.diemSo > 0 && mon.diemSo <= 10 && mon.soTinChi > 0 && mon.hieuLuc === "1"
     );
 
-    if (validSubjects.length === 0) return 0;
+    if (validSubjects.length === 0) return { gpa10: 0, gpa4: 0 };
 
-    const totalPoints = validSubjects.reduce((sum, mon) => sum + (mon.diemSo * mon.soTinChi), 0);
     const totalCredits = validSubjects.reduce((sum, mon) => sum + mon.soTinChi, 0);
 
-    return totalCredits > 0 ? (totalPoints / totalCredits).toFixed(3) : 0;
+    const totalPoints10 = validSubjects.reduce((sum, mon) => sum + mon.diemSo * mon.soTinChi, 0);
+    const gpa10 = totalCredits > 0 ? totalPoints10 / totalCredits : 0;
+
+    const totalPoints4 = validSubjects.reduce((sum, mon) => {
+      const diem4 = diemChuToHe4[mon.diemChu] ?? 0;
+      return sum + diem4 * mon.soTinChi;
+    }, 0);
+    const gpa4 = totalCredits > 0 ? totalPoints4 / totalCredits : 0;
+
+    return { gpa10: gpa10.toFixed(2), gpa4: gpa4.toFixed(2) };
   };
 
   const getTotalCredits = () => {
@@ -131,6 +149,7 @@ const GradePrediction = () => {
     return gradeMap;
   };
 
+  const gpa = calculateGPA();
 
   return (
     <Layout>
@@ -165,19 +184,16 @@ const GradePrediction = () => {
                   className="mt-1"
                 />
               </div>
-              <div className="flex flex-col sm:flex-row gap-2">
-                <Button
-                  onClick={handleOpenAndFetchData}
-                  disabled={isLoading}
-                  className="flex items-center space-x-2"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  <span>Mở MyBK</span>
-                </Button>
+              <Button
+                onClick={handleOpenAndFetchData}
+                disabled={isLoading}
+                className="flex items-center space-x-2"
+              >
+                <ExternalLink className="h-4 w-4" />
+                <span>Mở MyBK</span>
+              </Button>
 
-              </div>
-
-              {/* Hướng dẫn hiển thị luôn */}
+              {/* Hướng dẫn */}
               <div className="mt-4 p-4 bg-muted/20 text-muted-foreground rounded-md text-sm space-y-2">
                 <p>Hướng dẫn lấy dữ liệu từ MyBK:</p>
                 <ol className="list-decimal list-inside space-y-1">
@@ -190,7 +206,6 @@ const GradePrediction = () => {
               </div>
             </CardContent>
           </Card>
-
 
           {/* Manual Data Input */}
           <Card className="mb-8">
@@ -218,13 +233,20 @@ const GradePrediction = () => {
           {/* Results Section */}
           {monHocList.length > 0 && (
             <>
-              {/* Statistics Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-8">
                 <Card>
                   <CardContent className="p-6 text-center">
                     <Calculator className="h-12 w-12 text-primary mx-auto mb-2" />
-                    <h3 className="text-2xl font-bold text-foreground">{calculateGPA()}</h3>
-                    <p className="text-muted-foreground">Điểm TB hiện tại</p>
+                    <h3 className="text-2xl font-bold text-foreground">{gpa.gpa10} / 10</h3>
+                    <p className="text-muted-foreground">Hệ 10</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <Calculator className="h-12 w-12 text-accent mx-auto mb-2" />
+                    <h3 className="text-2xl font-bold text-foreground">{gpa.gpa4} / 4</h3>
+                    <p className="text-muted-foreground">Hệ 4</p>
                   </CardContent>
                 </Card>
 
@@ -271,6 +293,7 @@ const GradePrediction = () => {
                   </div>
                 </CardContent>
               </Card>
+
               {/* Subject List */}
               <Card>
                 <CardHeader>

@@ -10,7 +10,7 @@ interface GPAStatsProps {
 
 export const GPAStats = ({ gpa10, gpa4, totalCredits, totalSubjects }: GPAStatsProps) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-8">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8">
       <Card>
         <CardContent className="p-6 text-center">
           <Calculator className="h-12 w-12 text-primary mx-auto mb-2" />

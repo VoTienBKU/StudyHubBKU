@@ -42,8 +42,13 @@ export const SearchAndFilter = ({
   lecturers,
   selectedLecturer,
   onLecturerChange,
-  onClear
+  onClear,
+  selectedDate,
+  onDateSelect,
+  onClearDate,
+  filterByDate
 }: SearchAndFilterProps) => {
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   return (
     <Card className="mb-4">
       <CardHeader>

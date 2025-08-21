@@ -6,9 +6,10 @@ interface GPAStatsProps {
   gpa4: string;
   totalCredits: number;
   totalSubjects: number;
+  totalRequiredCredits?: number; // Optional for backward compatibility
 }
 
-export const GPAStats = ({ gpa10, gpa4, totalCredits, totalSubjects }: GPAStatsProps) => {
+export const GPAStats = ({ gpa10, gpa4, totalCredits, totalSubjects, totalRequiredCredits }: GPAStatsProps) => {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8">
       <Card>
@@ -30,8 +31,12 @@ export const GPAStats = ({ gpa10, gpa4, totalCredits, totalSubjects }: GPAStatsP
       <Card>
         <CardContent className="p-3 sm:p-6 text-center">
           <BookOpen className="h-8 sm:h-12 w-8 sm:w-12 text-accent mx-auto mb-2" />
-          <h3 className="text-lg sm:text-2xl font-bold text-foreground">{totalCredits}</h3>
-          <p className="text-xs sm:text-sm text-muted-foreground">Tổng số tín chỉ</p>
+          <h3 className="text-lg sm:text-2xl font-bold text-foreground">
+            {totalRequiredCredits ? `${totalCredits}/${totalRequiredCredits}` : totalCredits}
+          </h3>
+          <p className="text-xs sm:text-sm text-muted-foreground">
+            {totalRequiredCredits ? "Tín chỉ đạt/yêu cầu" : "Tổng số tín chỉ"}
+          </p>
         </CardContent>
       </Card>
 

@@ -47,9 +47,18 @@ export const MyBKConnection = ({ url, isLoading, onUrlChange, onOpenAndFetch }: 
             <li>Nhấn nút "Mở MyBK" để mở tab MyBK.</li>
             <li>Đăng nhập vào MyBK nếu chưa đăng nhập.</li>
             <li>Tải dữ liệu điểm và thông tin các môn học trong MyBK.</li>
-            <li>Quay lại trang này và nhấn "Lấy dữ liệu từ cửa sổ".</li>
-            <li>Nếu không lấy được tự động, mở Developer Tools (F12) trong tab MyBK, gõ <code>DANHSACH_MONHOC_CTDT</code> trong Console và copy dữ liệu JSON vào ô "Import dữ liệu thủ công".</li>
+            <li>Mở Developer Tools (F12) trong tab MyBK.</li>
+            <li>Trong Console, gõ lệnh sau và paste kết quả vào ô "Import dữ liệu thủ công":</li>
           </ol>
+          <div className="mt-2 p-2 bg-slate-800 text-green-400 rounded font-mono text-xs">
+            copy({'{'}
+            <br />
+            &nbsp;&nbsp;DANHSACH_KHOIKIENTHUC: window.DANHSACH_KHOIKIENTHUC,
+            <br />
+            &nbsp;&nbsp;DANHSACH_MONHOC_CTDT: window.DANHSACH_MONHOC_CTDT
+            <br />
+            {'}'})
+          </div>
         </div>
       </CardContent>
     </Card>

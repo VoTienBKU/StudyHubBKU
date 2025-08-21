@@ -1,8 +1,38 @@
+interface KhoiKienThuc {
+  uniqueid: number;
+  id: number;
+  soThuTu: number;
+  tenKhoiKienThuc: string;
+  tinhTrangHoanThanh: string;
+  loaiKhoiKienThuc: string;
+  nhomKhoiKienThuc: string;
+  soTinChiYeuCau: number;
+  soTinChiDat: number;
+  soMonHocYeuCau: number;
+  soMonHocDat: number;
+  batBuoc: string;
+}
+
 interface MonHoc {
-  diemChu: string;
-  diemSo: number;
-  hieuLuc: string;
+  uniqueid: string;
+  id: number;
+  khoiKienThucid: number;
+  maMonHoc: string;
+  tenMonHoc: string;
   soTinChi: number;
+  diemSo: number;
+  diemChu: string;
+  diemDat: string;
+  xetTuChonTuDo: string | null;
+  ghiChu: string;
+  hieuLuc: string;
+  monHocTuongDuongId: string | null;
+  doUuTien: number;
+}
+
+interface MyBKData {
+  DANHSACH_KHOIKIENTHUC: KhoiKienThuc[];
+  DANHSACH_MONHOC_CTDT: MonHoc[];
 }
 
 const diemChuToHe4: Record<string, number> = {

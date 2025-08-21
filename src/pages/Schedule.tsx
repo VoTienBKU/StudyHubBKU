@@ -269,18 +269,7 @@ const Schedule = () => {
               filterByDate={filterByDate}
             />
 
-            <MiniCalendar
-              viewMonth={viewMonth}
-              viewYear={viewYear}
-              selectedDate={selectedDate}
-              onDateSelect={handleDateSelect}
-              onPrevMonth={goPrevMonth}
-              onNextMonth={goNextMonth}
-              onToday={goToday}
-              onClearDate={handleClearDate}
-              hasEventsOnDate={hasEventsOnDate}
-              daysInView={daysInView}
-            />
+{/* MiniCalendar hidden - date picker is now integrated in SearchAndFilter */}
           </div>
 
           <div className="lg:col-span-8">

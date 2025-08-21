@@ -59,7 +59,7 @@ export const MiniCalendar = ({
             <div key={w} className="py-1">{w}</div>
           ))}
         </div>
-        <div className="grid grid-cols-7 gap-1 text-center">
+        <div className="grid grid-cols-7 gap-0.5 sm:gap-1 text-center">
           {daysInView.map((d, idx) => {
             if (!d) return <div key={`b-${idx}`} className="h-8 rounded text-xs" />;
             

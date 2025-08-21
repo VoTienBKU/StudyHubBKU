@@ -92,11 +92,24 @@ export const countGrades = (monHocList: MonHoc[]) => {
   return gradeMap;
 };
 
+export const processMyBKData = (data: MyBKData): MonHoc[] => {
+  const monHocList = data.DANHSACH_MONHOC_CTDT || [];
+  return Array.from(
+    new Map(
+      monHocList
+        .filter((mon: MonHoc) => mon.diemSo <= 50 && mon.soTinChi >= 0) // Allow 0 tin chi for subjects like CCGDTC
+        .sort((a: MonHoc, b: MonHoc) => b.diemSo - a.diemSo)
+        .map((mon: MonHoc) => [mon.maMonHoc, mon])
+    ).values()
+  );
+};
+
+// For backward compatibility
 export const processMonHocData = (data: any[]): MonHoc[] => {
   return Array.from(
     new Map(
       data
-        .filter((mon: MonHoc) => mon.diemSo <= 50 && mon.soTinChi > 0)
+        .filter((mon: MonHoc) => mon.diemSo <= 50 && mon.soTinChi >= 0)
         .sort((a: MonHoc, b: MonHoc) => b.diemSo - a.diemSo)
         .map((mon: MonHoc) => [mon.maMonHoc, mon])
     ).values()

@@ -110,7 +110,7 @@ const CourseReview = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-foreground mb-2">
-              Review Môn Học KHMT (Đang update tính năng)
+              Review Môn Học (Đang update tính năng)
             </h1>
             <p className="text-sm text-muted-foreground">
               Chia sẻ trải nghiệm và đánh giá về các môn học trong chương trình Khoa học máy tính

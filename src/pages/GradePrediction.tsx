@@ -68,7 +68,16 @@ const GradePrediction = () => {
     try {
       const data = JSON.parse(jsonData);
       if (Array.isArray(data)) {
-        setMonHocList(data);
+        setMonHocList(
+          Array.from(
+            new Map(
+              data
+                .filter((mon: MonHoc) => mon.diemSo <= 50 && mon.soTinChi > 0)
+                .sort((a: MonHoc, b: MonHoc) => b.diemSo - a.diemSo)
+                .map((mon: MonHoc) => [mon.maMonHoc, mon])
+            ).values()
+          )
+        );
         toast({
           title: "Thành công",
           description: `Đã import ${data.length} môn học`,
@@ -89,7 +98,7 @@ const GradePrediction = () => {
     if (monHocList.length === 0) return 0;
 
     const validSubjects = monHocList.filter(mon =>
-      mon.diemSo > 0 && mon.soTinChi > 0 && mon.hieuLuc === "1"
+      mon.diemSo > 0 && mon.diemSo <= 10 && mon.soTinChi > 0 && mon.hieuLuc === "1"
     );
 
     if (validSubjects.length === 0) return 0;
@@ -97,7 +106,7 @@ const GradePrediction = () => {
     const totalPoints = validSubjects.reduce((sum, mon) => sum + (mon.diemSo * mon.soTinChi), 0);
     const totalCredits = validSubjects.reduce((sum, mon) => sum + mon.soTinChi, 0);
 
-    return totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : 0;
+    return totalCredits > 0 ? (totalPoints / totalCredits).toFixed(3) : 0;
   };
 
   const getTotalCredits = () => {
@@ -105,6 +114,23 @@ const GradePrediction = () => {
       .filter(mon => mon.hieuLuc === "1" && mon.soTinChi > 0)
       .reduce((sum, mon) => sum + mon.soTinChi, 0);
   };
+
+  const countGrades = () => {
+    const grades = ["A+", "A", "B+", "B", "C+", "C", "D+", "D"];
+    const gradeMap: Record<string, number> = {};
+    grades.forEach(g => (gradeMap[g] = 0));
+
+    monHocList.forEach(mon => {
+      if (mon.diemSo > 0 && mon.diemSo <= 10 && mon.hieuLuc === "1") {
+        if (gradeMap[mon.diemChu] !== undefined) {
+          gradeMap[mon.diemChu]++;
+        }
+      }
+    });
+
+    return gradeMap;
+  };
+
 
   return (
     <Layout>
@@ -219,6 +245,32 @@ const GradePrediction = () => {
                 </Card>
               </div>
 
+              <Card className="mb-8">
+                <CardHeader>
+                  <CardTitle>Thống kê số lượng môn theo điểm chữ</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-4 justify-center">
+                    {Object.entries(countGrades()).map(([grade, count]) => (
+                      <div
+                        key={grade}
+                        className="flex flex-col items-center justify-center w-20 p-4 bg-muted rounded-lg shadow-sm"
+                      >
+                        <div className="text-2xl font-bold text-foreground">{count}</div>
+                        <div
+                          className={`text-sm font-medium mt-1 ${grade.startsWith("A") ? "text-education-primary" :
+                            grade.startsWith("B") ? "text-education-secondary" :
+                              grade.startsWith("C") ? "text-education-accent" :
+                                "text-destructive"
+                            }`}
+                        >
+                          {grade}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
               {/* Subject List */}
               <Card>
                 <CardHeader>

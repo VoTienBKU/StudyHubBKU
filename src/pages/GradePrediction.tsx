@@ -16,6 +16,21 @@ import {
   getTotalRequiredCredits
 } from "@/utils/gpaCalculations";
 
+interface KhoiKienThuc {
+  uniqueid: number;
+  id: number;
+  soThuTu: number;
+  tenKhoiKienThuc: string;
+  tinhTrangHoanThanh: string;
+  loaiKhoiKienThuc: string;
+  nhomKhoiKienThuc: string;
+  soTinChiYeuCau: number;
+  soTinChiDat: number;
+  soMonHocYeuCau: number;
+  soMonHocDat: number;
+  batBuoc: string;
+}
+
 interface MonHoc {
   diemChu: string;
   diemDat: string;

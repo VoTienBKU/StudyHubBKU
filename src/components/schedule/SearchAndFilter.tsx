@@ -53,7 +53,7 @@ export const SearchAndFilter = ({
             <input
               type="text"
               placeholder="Tìm theo mã/tên môn (vd: AS2013)"
-              className="w-full rounded-md border px-3 py-2"
+              className="w-full rounded-md border px-3 py-2 text-sm"
               value={searchQ}
               onChange={(e) => onSearchChange(e.target.value)}
             />
@@ -81,21 +81,21 @@ export const SearchAndFilter = ({
             )}
           </div>
 
-          <div className="flex gap-2">
-            <button 
-              className={`px-3 py-1 rounded-full ${activeCampus === 'all' ? 'bg-primary text-white' : 'bg-slate-100'}`} 
+          <div className="flex flex-wrap gap-1 sm:gap-2">
+            <button
+              className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full ${activeCampus === 'all' ? 'bg-primary text-white' : 'bg-slate-100'}`} 
               onClick={() => onCampusChange('all')}
             >
               Tất cả cơ sở
             </button>
-            <button 
-              className={`px-3 py-1 rounded-full ${activeCampus === '1' ? 'bg-primary text-white' : 'bg-slate-100'}`} 
+            <button
+              className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full ${activeCampus === '1' ? 'bg-primary text-white' : 'bg-slate-100'}`} 
               onClick={() => onCampusChange('1')}
             >
               CS1
             </button>
-            <button 
-              className={`px-3 py-1 rounded-full ${activeCampus === '2' ? 'bg-primary text-white' : 'bg-slate-100'}`} 
+            <button
+              className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full ${activeCampus === '2' ? 'bg-primary text-white' : 'bg-slate-100'}`} 
               onClick={() => onCampusChange('2')}
             >
               CS2
@@ -105,9 +105,9 @@ export const SearchAndFilter = ({
           {selectedCourse && lecturers.length > 0 && (
             <div className="mt-3">
               <div className="text-sm font-semibold mb-1">Giảng viên</div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1 sm:gap-2">
                 <button
-                  className={`px-3 py-1 rounded-full ${selectedLecturer === 'all' ? 'bg-primary text-white' : 'bg-slate-100'}`}
+                  className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full ${selectedLecturer === 'all' ? 'bg-primary text-white' : 'bg-slate-100'}`}
                   onClick={() => onLecturerChange('all')}
                 >
                   Tất cả
@@ -115,7 +115,7 @@ export const SearchAndFilter = ({
                 {lecturers.map((lecturer, idx) => (
                   <button
                     key={idx}
-                    className={`px-3 py-1 rounded-full ${selectedLecturer === lecturer ? 'bg-primary text-white' : 'bg-slate-100'}`}
+                    className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full ${selectedLecturer === lecturer ? 'bg-primary text-white' : 'bg-slate-100'}`}
                     onClick={() => onLecturerChange(lecturer)}
                   >
                     {lecturer}

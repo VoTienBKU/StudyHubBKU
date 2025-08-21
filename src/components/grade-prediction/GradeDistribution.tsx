@@ -15,7 +15,7 @@ export const GradeDistribution = ({ gradeMap }: GradeDistributionProps) => {
           {Object.entries(gradeMap).map(([grade, count]) => (
             <div
               key={grade}
-              className="flex flex-col items-center justify-center w-20 p-4 bg-muted rounded-lg shadow-sm"
+              className="flex flex-col items-center justify-center w-16 sm:w-20 p-2 sm:p-4 bg-muted rounded-lg shadow-sm"
             >
               <div className="text-2xl font-bold text-foreground">{count}</div>
               <div

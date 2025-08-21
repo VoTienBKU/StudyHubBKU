@@ -57,7 +57,7 @@ const parseTietToRange = (tietStr?: string) => {
 };
 
 const ScheduleCard = ({ item }: { item: ScheduleItem }) => (
-  <div className="p-3 rounded-md border bg-slate-800/20">
+  <div className="p-2 sm:p-3 rounded-md border bg-slate-800/20">
     <div className="flex items-start justify-between">
       <div>
         <div className="text-sm font-semibold">

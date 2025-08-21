@@ -42,13 +42,13 @@ const GradePrediction = () => {
 
     setIsLoading(true);
     
-    // Mở cửa sổ popup
-    const popup = window.open(url, '_blank', 'width=1200,height=800,scrollbars=yes,resizable=yes');
+    // Mở tab mới
+    const newTab = window.open(url, '_blank');
     
-    if (!popup) {
+    if (!newTab) {
       toast({
         title: "Lỗi",
-        description: "Không thể mở cửa sổ popup. Vui lòng kiểm tra popup blocker.",
+        description: "Không thể mở tab mới. Vui lòng kiểm tra popup blocker.",
         variant: "destructive"
       });
       setIsLoading(false);
@@ -58,7 +58,7 @@ const GradePrediction = () => {
     // Thông báo hướng dẫn cho người dùng
     toast({
       title: "Hướng dẫn",
-      description: "Đã mở cửa sổ MyBK. Sau khi đăng nhập và tải dữ liệu xong, hãy nhấn 'Lấy dữ liệu từ cửa sổ'",
+      description: "Đã mở tab MyBK. Sau khi đăng nhập và tải dữ liệu xong, hãy nhấn 'Lấy dữ liệu từ tab'",
     });
 
     setIsLoading(false);

@@ -263,6 +263,10 @@ const Schedule = () => {
               selectedLecturer={selectedLecturer}
               onLecturerChange={setSelectedLecturer}
               onClear={clearSelection}
+              selectedDate={selectedDate}
+              onDateSelect={handleDateSelect}
+              onClearDate={handleClearDate}
+              filterByDate={filterByDate}
             />
 
             <MiniCalendar

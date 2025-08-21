@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar as IconCalendar } from "lucide-react";
+import { Calendar as IconCalendar, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 
 interface Course {
   id: string;

@@ -55,8 +55,8 @@ const CourseReview = () => {
       },
       {
         id: "2",
-        courseCode: "CO2012",
-        courseName: "Lập trình hướng đối tượng",
+        courseCode: "CO2011",
+        courseName: "Mô hình hóa toán học",
         lecturer: "Trần Thị B",
         semester: "HK2 2023-2024",
         rating: 5,

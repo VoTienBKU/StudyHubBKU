@@ -40,7 +40,7 @@ const CourseReview = () => {
         id: "1",
         courseCode: "CO2003",
         courseName: "Cấu trúc dữ liệu và giải thuật",
-        lecturer: "TS. Nguyễn Văn A",
+        lecturer: "Nguyễn Văn A",
         semester: "HK1 2024-2025",
         rating: 4,
         difficulty: 4,
@@ -57,7 +57,7 @@ const CourseReview = () => {
         id: "2",
         courseCode: "CO2012",
         courseName: "Lập trình hướng đối tượng",
-        lecturer: "TS. Trần Thị B",
+        lecturer: "Trần Thị B",
         semester: "HK2 2023-2024",
         rating: 5,
         difficulty: 3,
@@ -110,7 +110,7 @@ const CourseReview = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-foreground mb-2">
-              Review Môn Học KHMT
+              Review Môn Học KHMT (Đang update tính năng)
             </h1>
             <p className="text-sm text-muted-foreground">
               Chia sẻ trải nghiệm và đánh giá về các môn học trong chương trình Khoa học máy tính

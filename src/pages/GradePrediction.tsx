@@ -6,7 +6,7 @@ import { GradeDistribution } from "@/components/grade-prediction/GradeDistributi
 import { SubjectList } from "@/components/grade-prediction/SubjectList";
 import { MyBKConnection } from "@/components/grade-prediction/MyBKConnection";
 import { ManualDataInput } from "@/components/grade-prediction/ManualDataInput";
-import { calculateGPA, getTotalCredits, countGrades, processMonHocData } from "@/utils/gpaCalculations";
+import { calculateGPA, getTotalCredits, countGrades, processMonHocData, processMyBKData } from "@/utils/gpaCalculations";
 
 interface MonHoc {
   diemChu: string;

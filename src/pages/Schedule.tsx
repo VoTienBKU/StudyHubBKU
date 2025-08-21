@@ -4,33 +4,62 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar as IconCalendar, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import coursesData from "@/data/course_sched.json"; // <-- đảm bảo file JSON ở src/data/course_sched.json
 
-// ---------- CẤU HÌNH / HÀM HỖ TRỢ CHUNG ----------
+// ---------- HELPERS ----------
 const WEEK1_START_STATIC = new Date(2025, 7, 25); // 25/08/2025 là ngày bắt đầu Tuần 1 (Thứ 2)
 function pad2(n){ return String(n).padStart(2,'0'); }
 function ddmmyyyy(date){ const d = pad2(date.getDate()); const m = pad2(date.getMonth()+1); const y = date.getFullYear(); return `${d}/${m}/${y}`; }
 function yyyymmdd(date){ return `${date.getFullYear()}-${pad2(date.getMonth()+1)}-${pad2(date.getDate())}`; }
 function addDays(d, n){ const x = new Date(d); x.setDate(x.getDate()+n); return x; }
-function cleanText(t){ return (t||"").replace(/\t|\n|\r/g,' ').replace(/\s+/g,' ').trim(); }
+
+function collapseWhitespace(s){ if (!s) return ''; return String(s).replace(/\s+/g,' ').trim(); }
+function cleanText(t){ return collapseWhitespace(t || ''); }
 
 function parseWeekdayToIndex(s) {
   if (!s) return null;
-  const t = String(s).toLowerCase().normalize("NFC").replace(/\s+/g, " ").trim();
-  if (t.includes("chưa") || t.includes("chua")) return null;
-  if (t.includes("cn") || t.includes("chủ") || t.includes("chu")) return 0; // Chủ nhật -> 0
+  const t = collapseWhitespace(String(s).toLowerCase());
+  if (t.includes('chưa') || t.includes('chua')) return null;
+  if (t.includes('cn') || t.includes('chủ') || t.includes('chu')) return 0; // Chủ nhật -> 0
   const m = t.match(/([2-7])/);
   if (m) return Number(m[1]) - 1;
-  const spelled = t.match(/thu\s*([0-9])/);
-  if (spelled) return Number(spelled[1]) - 1;
   return null;
 }
 
-function isTuanCharActive(ch){ if (!ch) return false; if (ch === '-' || ch === '0' || ch === ' ') return false; return true; }
-function makeScheduleKey(course, group, schedule){ return `${course.id}||${group.group_name}||${schedule.thu}||${schedule.tiet}||${schedule.tuan_hoc}`; }
+function isTuanCharActive(ch){ if (!ch) return false; return !(ch === '-' || ch === '0' || ch === ' '); }
+function makeScheduleKey(course, group, schedule){ return `${course.id}||${group.group_name}||${schedule.thu||''}||${schedule.tiet||''}||${schedule.tuan_hoc||''}`; }
+
+// Convert tiết string to a time range
+// Rule: tiết 1 starts at 06:00, each tiết = 60 minutes
+function parseTietToRange(tietStr){
+  if (!tietStr) return null;
+  const nums = (tietStr.match(/\d+/g)||[]).map(x=>Number(x));
+  if (nums.length===0) return null;
+  const minP = Math.min(...nums);
+  const maxP = Math.max(...nums);
+  const start = 6*60 + (minP-1)*60;
+  const end = 6*60 + maxP*60;
+  const h1 = Math.floor(start/60), m1 = pad2(start%60);
+  const h2 = Math.floor(end/60), m2 = pad2(end%60);
+  return `${pad2(h1)}:${m1} - ${pad2(h2)}:${m2}`;
+}
+
+const WEEKDAY_LABELS = ['Chủ nhật','Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7'];
+
+// ---------- Small calendar helper ----------
+function getDaysArrayOfMonth(month, year){
+  const first = new Date(year, month, 1);
+  const startDay = first.getDay(); // 0..6
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  const arr = [];
+  for (let i=0;i<startDay;i++) arr.push(null);
+  for (let d=1; d<=daysInMonth; d++) arr.push(new Date(year, month, d));
+  return arr;
+}
 
 // ---------- COMPONENT ----------
 const Schedule = () => {
   const COURSES = useMemo(() => coursesData || [], []);
 
+  // precompute occurrences (kept for date filtering)
   const scheduleOccurrencesCache = useMemo(() => {
     const cache = new Map();
     for (const course of COURSES) {
@@ -45,7 +74,7 @@ const Schedule = () => {
           for (let i = 0; i < weeksStr.length; i++) {
             const ch = weeksStr[i];
             if (!isTuanCharActive(ch)) continue;
-            const date = addDays(WEEK1_START_STATIC, i*7 + offsetFromMonday);
+            const date = addDays(WEEK1_START_STATIC, i * 7 + offsetFromMonday);
             occurrences.push(yyyymmdd(date));
           }
           cache.set(key, occurrences);
@@ -55,109 +84,158 @@ const Schedule = () => {
     return cache;
   }, [COURSES]);
 
-  function isScheduleOnDate(course, group, schedule, date){ const key = makeScheduleKey(course, group, schedule); const arr = scheduleOccurrencesCache.get(key) || []; const target = yyyymmdd(date); return arr.includes(target); }
+  function isScheduleOnDate(course, group, schedule, date){ const key = makeScheduleKey(course, group, schedule); const arr = scheduleOccurrencesCache.get(key) || []; const target = yyyymmdd(date); return arr.indexOf(target) !== -1; }
 
   // UI state
-  const [today, setToday] = useState(() => new Date());
+  const [today] = useState(() => new Date());
   const [viewMonth, setViewMonth] = useState(today.getMonth());
   const [viewYear, setViewYear] = useState(today.getFullYear());
+
   const [activeCampus, setActiveCampus] = useState("all");
   const [searchQ, setSearchQ] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
+  const [selectedLecturer, setSelectedLecturer] = useState('all');
   const [selectedDate, setSelectedDate] = useState(null);
   const [dateInput, setDateInput] = useState("");
 
-  useEffect(() => { setToday(new Date()); }, []);
-
-  const renderWeekdayNames = ["CN","T2","T3","T4","T5","T6","T7"];
-  function getDaysArrayOfMonth(month, year){ const first = new Date(year, month, 1); const startDay = first.getDay(); const daysInMonth = new Date(year, month+1, 0).getDate(); const arr = []; for (let i=0;i<startDay;i++) arr.push(null); for (let d=1; d<=daysInMonth; d++) arr.push(new Date(year, month, d)); return arr; }
+  // Options
+  const [filterByDate, setFilterByDate] = useState(false);
+  const [showAllDatesForCourse, setShowAllDatesForCourse] = useState(false);
 
   useEffect(() => {
     const q = (searchQ || "").trim().toLowerCase();
     if (!q) { setSearchResults([]); return; }
-    const matches = COURSES.filter(c => (c.course_code||"").toLowerCase().includes(q) || (c.course_name||"").toLowerCase().includes(q));
+    const matches = COURSES.filter(function(c){ return (c.course_code || '').toLowerCase().indexOf(q) !== -1 || (c.course_name || '').toLowerCase().indexOf(q) !== -1; });
     setSearchResults(matches);
   }, [searchQ, COURSES]);
 
+  // Gather lecturers for selected course
+  const lecturersForSelectedCourse = useMemo(()=>{
+    if (!selectedCourse) return [];
+    const set = new Set();
+    for (const g of selectedCourse.list_group||[]){
+      const a = cleanText(g.lecturer || '');
+      const b = cleanText(g.bt_lecturer || '');
+      if (a && !/chưa|đang phân công/i.test(a)) set.add(a);
+      if (b && !/chưa|đang phân công/i.test(b)) set.add(b);
+    }
+    return Array.from(set).sort();
+  },[selectedCourse]);
+
+  // helper to test lecturer match (applies only when selectedCourse exists)
+  function lecturerMatches(group){
+    if (!selectedLecturer || selectedLecturer === 'all') return true;
+    const a = cleanText(group.lecturer || '');
+    const b = cleanText(group.bt_lecturer || '');
+    return (a && a === selectedLecturer) || (b && b === selectedLecturer);
+  }
+
+  // Combined items (flat list) - obeys: campus, selectedCourse, selectedLecturer, selectedDate (optional)
   const combinedItems = useMemo(() => {
     const items = [];
-    if (selectedCourse && selectedDate) {
-      for (const g of selectedCourse.list_group || []) {
-        for (const s of g.schedules || []) {
-          if (activeCampus !== "all" && String(s.cs) !== String(activeCampus)) continue;
-          if (isScheduleOnDate(selectedCourse, g, s, selectedDate)) items.push({ course: selectedCourse, group: g, schedule: s });
+    function pushIfMatch(course, group, schedule){
+      if (activeCampus !== 'all' && String(schedule.cs) !== String(activeCampus)) return;
+      items.push({ course, group, schedule });
+    }
+
+    // if a course is selected -> iterate its groups
+    if (selectedCourse) {
+      for (const g of selectedCourse.list_group || []){
+        if (!lecturerMatches(g)) continue; // apply lecturer filter when a course is selected
+        for (const s of g.schedules || []){
+          if (showAllDatesForCourse) { pushIfMatch(selectedCourse, g, s); }
+          else if (filterByDate && selectedDate) { if (isScheduleOnDate(selectedCourse, g, s, selectedDate)) pushIfMatch(selectedCourse, g, s); }
+          else { pushIfMatch(selectedCourse, g, s); }
         }
       }
       return items;
     }
-    if (selectedCourse && !selectedDate) {
-      for (const g of selectedCourse.list_group || []) {
-        for (const s of g.schedules || []) {
-          if (activeCampus !== "all" && String(s.cs) !== String(activeCampus)) continue;
-          items.push({ course: selectedCourse, group: g, schedule: s });
-        }
-      }
-      return items;
-    }
-    if (!selectedCourse && selectedDate) {
-      for (const course of COURSES) {
-        for (const g of course.list_group || []) {
-          for (const s of g.schedules || []) {
-            if (activeCampus !== "all" && String(s.cs) !== String(activeCampus)) continue;
-            if (isScheduleOnDate(course, g, s, selectedDate)) items.push({ course, group: g, schedule: s });
+
+    // no selectedCourse: searchResults (multiple courses)
+    if (searchResults.length > 0){
+      for (const course of searchResults){
+        for (const g of course.list_group || []){
+          for (const s of g.schedules || []){
+            if (filterByDate && selectedDate){ if (isScheduleOnDate(course, g, s, selectedDate)) pushIfMatch(course, g, s); }
+            else pushIfMatch(course, g, s);
           }
         }
       }
       return items;
     }
-    const d = today;
-    for (const course of COURSES) {
-      for (const g of course.list_group || []) {
-        for (const s of g.schedules || []) {
-          if (activeCampus !== "all" && String(s.cs) !== String(activeCampus)) continue;
-          if (isScheduleOnDate(course, g, s, d)) items.push({ course, group: g, schedule: s });
-        }
-      }
-    }
+
     return items;
-  }, [selectedCourse, selectedDate, activeCampus, COURSES, scheduleOccurrencesCache, today]);
+  }, [selectedCourse, selectedLecturer, selectedDate, filterByDate, showAllDatesForCourse, searchResults, activeCampus, COURSES, scheduleOccurrencesCache]);
 
-  function badgesForDate(date){
-    const list = [];
-    for (const course of COURSES) {
-      for (const g of course.list_group || []) {
-        for (const s of g.schedules || []) {
-          if (activeCampus !== "all" && String(s.cs) !== String(activeCampus)) continue;
-          if (isScheduleOnDate(course, g, s, date)) { list.push({ course, group: g, schedule: s }); if (list.length >= 6) break; }
-        }
-        if (list.length >= 6) break;
+  // Grouping helpers
+  const groupedForSelectedCourse = useMemo(()=>{
+    if (!selectedCourse) return null;
+    const map = { 'Thứ 2':[], 'Thứ 3':[], 'Thứ 4':[], 'Thứ 5':[], 'Thứ 6':[], 'Thứ 7':[], 'Chủ nhật':[], 'Không rõ':[] };
+    for (const g of selectedCourse.list_group || []){
+      if (!lecturerMatches(g)) continue;
+      for (const s of g.schedules || []){
+        if (activeCampus !== 'all' && String(s.cs) !== String(activeCampus)) continue;
+        if (filterByDate && selectedDate && !isScheduleOnDate(selectedCourse, g, s, selectedDate)) continue;
+        const idx = parseWeekdayToIndex(s.thu);
+        const label = (idx === null) ? 'Không rõ' : WEEKDAY_LABELS[idx];
+        map[label] = map[label] || [];
+        map[label].push({ course: selectedCourse, group: g, schedule: s });
       }
-      if (list.length >= 6) break;
     }
-    return list;
-  }
+    return map;
+  },[selectedCourse, selectedLecturer, activeCampus, selectedDate, filterByDate]);
 
-  function handleSelectDate(date){ setSelectedDate(date); setDateInput(ddmmyyyy(date)); }
-  function handleSelectCourse(course){ setSelectedCourse(course); }
-  function clearSelection(){ setSelectedCourse(null); setSelectedDate(null); setSearchQ(""); setSearchResults([]); setDateInput(""); }
-  function parseDateFromInput(str){ const m = String(str).trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); if (!m) return null; const d = Number(m[1]), mo = Number(m[2]) - 1, y = Number(m[3]); const dt = new Date(y, mo, d); if (isNaN(dt.getTime())) return null; return dt; }
+  const groupedByWeekday = useMemo(()=>{
+    const map = { 'Thứ 2':[], 'Thứ 3':[], 'Thứ 4':[], 'Thứ 5':[], 'Thứ 6':[], 'Thứ 7':[], 'Chủ nhật':[], 'Không rõ':[] };
+    for (const it of combinedItems){
+      const idx = parseWeekdayToIndex(it.schedule.thu);
+      const label = (idx === null) ? 'Không rõ' : WEEKDAY_LABELS[idx];
+      map[label] = map[label] || [];
+      map[label].push(it);
+    }
+    return map;
+  },[combinedItems]);
+
+  // handlers
+  function handleSelectCourse(course){ setSelectedCourse(course); setSelectedLecturer('all'); }
+  function clearSelection(){ setSelectedCourse(null); setSelectedLecturer('all'); setSelectedDate(null); setSearchQ(''); setSearchResults([]); setDateInput(''); setFilterByDate(false); setShowAllDatesForCourse(false); }
+  function parseDateFromInput(str){ const m = String(str||'').trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/); if (!m) return null; const d = Number(m[1]), mo = Number(m[2]) - 1, y = Number(m[3]); const dt = new Date(y, mo, d); if (isNaN(dt.getTime())) return null; return dt; }
+  function applyDateInput(){ const dt = parseDateFromInput(dateInput); if (dt){ setSelectedDate(dt); setFilterByDate(true); setViewMonth(dt.getMonth()); setViewYear(dt.getFullYear()); setDateInput(ddmmyyyy(dt)); } else alert('Nhập dd/mm/yyyy hợp lệ'); }
+
+  // mini-calendar nav
   function goPrevMonth(){ let m = viewMonth - 1, y = viewYear; if (m < 0) { m = 11; y -= 1; } setViewMonth(m); setViewYear(y); }
   function goNextMonth(){ let m = viewMonth + 1, y = viewYear; if (m > 11) { m = 0; y += 1; } setViewMonth(m); setViewYear(y); }
-  function goToday(){ const t = new Date(); setToday(t); setViewMonth(t.getMonth()); setViewYear(t.getFullYear()); setSelectedDate(t); setDateInput(ddmmyyyy(t)); }
+  function goToday(){ const t = new Date(); setViewMonth(t.getMonth()); setViewYear(t.getFullYear()); setSelectedDate(t); setFilterByDate(true); setDateInput(ddmmyyyy(t)); }
 
-  const daysInView = useMemo(() => getDaysArrayOfMonth(viewMonth, viewYear), [viewMonth, viewYear]);
+  const daysInView = useMemo(()=> getDaysArrayOfMonth(viewMonth, viewYear), [viewMonth, viewYear]);
+
+  // helper: check if any schedule exists on given date (respecting activeCampus and optional selectedCourse/lecturer)
+  function hasEventsOnDate(date){
+    for (const course of COURSES){
+      for (const g of course.list_group || []){
+        if (selectedCourse && course.id !== selectedCourse.id) continue; // if course selected, only check that course
+        if (selectedCourse && !lecturerMatches(g)) continue; // respect lecturer filter
+        for (const s of g.schedules || []){
+          if (activeCampus !== 'all' && String(s.cs) !== String(activeCampus)) continue;
+          if (isScheduleOnDate(course, g, s, date)) return true;
+        }
+      }
+    }
+    return false;
+  }
 
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-6">
-            <h1 className="text-3xl font-bold text-foreground mb-1">Thời khóa biểu</h1>
-            <p className="text-muted-foreground">Lịch học BKU</p>
+            <h1 className="text-3xl font-bold text-foreground mb-1">Thời khóa biểu — tìm theo môn</h1>
+            <p className="text-muted-foreground">Nhập mã/tên môn. Kết quả được gom theo thứ. Giảng viên là bộ lọc tùy chọn khi bạn đã chọn 1 môn. Ngày là tuỳ chọn — nếu không chọn ngày, kết quả vẫn nhóm theo "Thứ".</p>
           </div>
 
           <div className="grid grid-cols-12 gap-6">
+            {/* SIDEBAR */}
             <div className="col-span-4">
               <Card className="mb-4">
                 <CardHeader>
@@ -169,10 +247,21 @@ const Schedule = () => {
                 <CardContent>
                   <div className="space-y-3">
                     <input type="text" placeholder="Tìm theo mã/tên môn (vd: AS2013)" className="w-full rounded-md border px-3 py-2" value={searchQ} onChange={(e) => setSearchQ(e.target.value)} />
+
                     <div className="flex gap-2">
-                      <input type="text" placeholder="dd/mm/yyyy" className="flex-1 rounded-md border px-3 py-2" value={dateInput} onChange={(e)=> setDateInput(e.target.value)} onKeyDown={(e)=> { if(e.key === "Enter") { const dt = parseDateFromInput(dateInput); if (dt) handleSelectDate(dt); else alert("Nhập dd/mm/yyyy hợp lệ"); } }} />
-                      <button className="rounded-md px-3 py-2 bg-primary text-white" onClick={()=>{ const dt = parseDateFromInput(dateInput); if (dt) handleSelectDate(dt); else alert("Nhập dd/mm/yyyy hợp lệ"); }}>Chọn ngày</button>
+                      <input type="text" placeholder="dd/mm/yyyy (tùy chọn)" className="flex-1 rounded-md border px-3 py-2" value={dateInput} onChange={(e)=> setDateInput(e.target.value)} onKeyDown={(e)=> { if(e.key === 'Enter') applyDateInput(); }} />
+                      <button className="rounded-md px-3 py-2 bg-primary text-white" onClick={applyDateInput}>Áp dụng</button>
                     </div>
+
+                    {/* <div className="flex items-center gap-2">
+                      <input id="filterByDate" type="checkbox" checked={filterByDate} onChange={(e)=> setFilterByDate(e.target.checked)} />
+                      <label htmlFor="filterByDate" className="text-sm">Bật lọc theo ngày</label>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <input id="showAllDatesForCourse" type="checkbox" checked={showAllDatesForCourse} onChange={(e)=> setShowAllDatesForCourse(e.target.checked)} />
+                      <label htmlFor="showAllDatesForCourse" className="text-sm">Khi đã chọn môn: Hiển thị tất cả lịch môn (bỏ lọc ngày)</label>
+                    </div> */}
 
                     <div className="flex gap-2">
                       <button className={`px-3 py-1 rounded-full ${activeCampus === 'all' ? 'bg-primary text-white' : 'bg-slate-100'}`} onClick={()=> setActiveCampus('all')}>Tất cả cơ sở</button>
@@ -182,7 +271,7 @@ const Schedule = () => {
 
                     <div>
                       <div className="text-sm text-muted-foreground mb-2">Kết quả tìm</div>
-                      <div className="max-h-64 overflow-auto space-y-2">
+                      <div className="max-h-48 overflow-auto space-y-2">
                         {searchResults.length === 0 ? (
                           <div className="text-sm text-muted-foreground">Nhập mã/tên rồi nhấn Enter hoặc click để chọn</div>
                         ) : (
@@ -211,105 +300,168 @@ const Schedule = () => {
                   <CardTitle>Thông tin</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">Chọn một ngày trên lịch (ô nhỏ, chỉ số ngày) hoặc tìm mã môn để xem chi tiết.</p>
+                  <p className="text-sm text-muted-foreground">Dùng ô tìm để chọn môn. Giảng viên xuất hiện như một dropdown khi bạn đã chọn môn (tùy chọn). Ngày là tùy chọn để thu hẹp kết quả.</p>
                   <div className="mt-3 text-sm">
                     <div><strong>Môn đã chọn:</strong> {selectedCourse ? `${selectedCourse.course_code} — ${selectedCourse.course_name}` : <em>Chưa</em>}</div>
                     <div className="mt-1"><strong>Ngày đã chọn:</strong> {selectedDate ? ddmmyyyy(selectedDate) : <em>Chưa</em>}</div>
                     <div className="mt-1"><strong>Cơ sở:</strong> {activeCampus === 'all' ? 'Tất cả' : `CS${activeCampus}`}</div>
+
+                    {selectedCourse && (
+                      <div className="mt-3">
+                        <label className="text-sm block mb-1">Lọc theo giảng viên (tùy chọn)</label>
+                        <select className="w-full rounded-md border px-2 py-1" value={selectedLecturer} onChange={(e)=> setSelectedLecturer(e.target.value)}>
+                          <option value="all">Tất cả giảng viên</option>
+                          {lecturersForSelectedCourse.map((l)=>(<option key={l} value={l}>{l}</option>))}
+                        </select>
+                      </div>
+                    )}
                   </div>
                 </CardContent>
               </Card>
-            </div>
 
-            {/* MAIN: compact calendar + details */}
-            <div className="col-span-8">
-              <Card className="mb-4">
+              {/* MINI CALENDAR */}
+              <Card className="mt-4">
                 <CardHeader>
                   <CardTitle className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <IconCalendar className="h-5 w-5 text-primary" />
-                      <span className="text-sm">Lịch tháng {viewMonth + 1} / {viewYear}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <button className="p-2 rounded-md border" onClick={goPrevMonth}><ChevronLeft className="h-4 w-4" /></button>
-                      <button className="p-2 rounded-md border text-sm" onClick={goToday}>Hôm nay</button>
-                      <button className="p-2 rounded-md border" onClick={goNextMonth}><ChevronRight className="h-4 w-4" /></button>
+                    <div className="flex items-center gap-2"><IconCalendar className="h-4 w-4" /> Chọn ngày</div>
+                    <div className="flex items-center gap-1">
+                      <button className="p-1 rounded border" onClick={goPrevMonth}><ChevronLeft className="h-4 w-4" /></button>
+                      <div className="text-xs px-2">{viewMonth+1}/{viewYear}</div>
+                      <button className="p-1 rounded border" onClick={goNextMonth}><ChevronRight className="h-4 w-4" /></button>
                     </div>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div>
-                    <div className="grid grid-cols-7 gap-1 text-center font-medium text-xs mb-2">
-                      {renderWeekdayNames.map(w => <div key={w} className="py-1">{w}</div>)}
-                    </div>
-
-                    <div className="grid grid-cols-7 gap-1">
-                      {daysInView.map((d, idx) => {
-                        if (!d) {
-                          return <div key={`blank-${idx}`} className="h-12 rounded-md bg-transparent border border-dashed border-slate-200/5"></div>;
-                        }
-                        const todayStr = (new Date()).toDateString();
-                        const isToday = todayStr === d.toDateString();
-                        const isSelected = selectedDate ? (selectedDate.toDateString() === d.toDateString()) : false;
-                        const hasEvents = badgesForDate(d).length > 0;
-                        return (
-                          <button
-                            key={d.toISOString()}
-                            onClick={() => handleSelectDate(d)}
-                            className={`h-12 flex items-center justify-center rounded-md text-sm cursor-pointer border ${isSelected ? 'ring-2 ring-blue-400/40 bg-blue-600/5' : ''} ${isToday && !isSelected ? 'bg-yellow-400/5' : ''} hover:bg-slate-800/5`}
-                            aria-pressed={isSelected}
-                            title={ddmmyyyy(d)}
-                          >
-                            <div className="flex flex-col items-center gap-1">
-                              <div className={`text-sm font-medium ${isSelected ? 'text-white' : ''}`}>{d.getDate()}</div>
-                              {/* subtle dot indicator if event exists */}
-                              <div className={`h-1 w-1 rounded-full ${hasEvents ? 'bg-primary' : 'bg-transparent'}`} />
-                            </div>
-                          </button>
-                        );
-                      })}
-                    </div>
+                  <div className="text-xs mb-2 grid grid-cols-7 gap-1 text-center font-medium">
+                    {['CN','T2','T3','T4','T5','T6','T7'].map(w=> <div key={w} className="py-1">{w}</div>)}
+                  </div>
+                  <div className="grid grid-cols-7 gap-1 text-center">
+                    {daysInView.map((d, idx)=>{
+                      if (!d) return <div key={`b-${idx}`} className="h-8 rounded text-xs" />;
+                      const isToday = (new Date()).toDateString() === d.toDateString();
+                      const isSelected = selectedDate ? selectedDate.toDateString() === d.toDateString() : false;
+                      const hasEvent = hasEventsOnDate(d);
+                      return (
+                        <button key={d.toISOString()} onClick={()=>{ setSelectedDate(d); setFilterByDate(true); setDateInput(ddmmyyyy(d)); setViewMonth(d.getMonth()); setViewYear(d.getFullYear()); }} className={`h-8 rounded text-xs flex flex-col items-center justify-center ${isSelected ? 'ring-2 ring-blue-400/40 bg-blue-600/5' : ''} ${isToday && !isSelected ? 'bg-yellow-400/5' : ''}`}>
+                          <div className={`text-sm ${isSelected ? 'font-semibold' : ''}`}>{d.getDate()}</div>
+                          <div className={`h-1 w-1 rounded-full ${hasEvent ? 'bg-primary' : 'bg-transparent'}`} />
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <div className="mt-2 flex gap-2">
+                    <button className="flex-1 rounded-md border px-2 py-1 text-sm" onClick={()=>{ setSelectedDate(null); setFilterByDate(false); setDateInput(''); }}>Bỏ chọn</button>
+                    <button className="rounded-md border px-2 py-1 text-sm" onClick={goToday}>Hôm nay</button>
                   </div>
                 </CardContent>
               </Card>
 
+            </div>
+
+            {/* MAIN: results only */}
+            <div className="col-span-8">
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Clock className="h-4 w-4" />
-                    <span className="text-sm">{selectedCourse ? `Lịch môn ${selectedCourse.course_code}` : (selectedDate ? `Lịch ngày ${ddmmyyyy(selectedDate)}` : `Lịch ngày ${ddmmyyyy(today)}`)}</span>
+                    <span className="text-sm">Kết quả</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div>
-                    <div className="mb-3">
-                      <span className="text-sm text-muted-foreground">Kết quả: </span>
-                      <span className="font-semibold">{combinedItems.length}</span>
-                      <span className="text-sm text-muted-foreground ml-2"> (lọc theo cơ sở: {activeCampus === 'all' ? 'Tất cả' : `CS${activeCampus}`})</span>
-                    </div>
+                  <div className="mb-3">
+                    <span className="text-sm text-muted-foreground">Số kết quả: </span>
+                    <span className="font-semibold">{combinedItems.length}</span>
+                    <span className="text-sm text-muted-foreground ml-2"> (lọc: {filterByDate ? 'có' : 'không'} theo ngày; {activeCampus === 'all' ? 'Tất cả cơ sở' : `CS${activeCampus}`})</span>
+                  </div>
 
-                    {combinedItems.length === 0 && (
-                      <div className="text-muted-foreground">Không có lớp theo lựa chọn hiện tại.</div>
-                    )}
-
+                  {combinedItems.length === 0 ? (
+                    <div className="text-muted-foreground">Không có kết quả theo lựa chọn hiện tại.</div>
+                  ) : (
                     <div className="space-y-3">
-                      {combinedItems.map((it, i) => (
-                        <div key={i} className="p-3 rounded-md border bg-slate-800/20">
-                          <div className="flex items-start justify-between">
-                            <div>
-                              <div className="text-sm font-semibold">{it.course.course_code} — {it.course.course_name}</div>
-                              <div className="text-xs text-muted-foreground mt-1">Nhóm: {it.group.group_name} • Giảng viên: {cleanText(it.group.lecturer) || "Chưa phân công"}</div>
-                            </div>
-                            <div className="text-right text-xs text-muted-foreground">
-                              CS: {it.schedule.cs || '-'}<br />
-                              Phòng: {cleanText(it.schedule.phong) || '-'}
-                            </div>
-                          </div>
-                          <div className="mt-2 text-sm text-muted-foreground">Tiết: {cleanText(it.schedule.tiet) || '-'} • Tuần: {cleanText(it.schedule.tuan_hoc) || '-'}</div>
+                      {/* Rendering priority:
+                          1) If a course is selected AND no date chosen => group by weekday for that course (applies lecturer filter)
+                          2) Else if NOT filtering by date -> group combinedItems by weekday
+                          3) Else (filterByDate) -> flat list
+                      */}
+                      {selectedCourse && !filterByDate ? (
+                        <div className="space-y-4">
+                          {['Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7','Chủ nhật','Không rõ'].map((label) => {
+                            const list = (groupedForSelectedCourse && groupedForSelectedCourse[label]) || [];
+                            if (list.length === 0) return null;
+                            return (
+                              <div key={label}>
+                                <div className="text-sm font-semibold mb-2">{label} ({list.length})</div>
+                                <div className="space-y-2">
+                                  {list.map((it, i) => (
+                                    <div key={i} className="p-3 rounded-md border bg-slate-800/20">
+                                      <div className="flex items-start justify-between">
+                                        <div>
+                                          <div className="text-sm font-semibold">{it.course.course_code} — {it.course.course_name}</div>
+                                          <div className="text-xs text-muted-foreground mt-1">Nhóm: {it.group.group_name} • Giảng viên: {cleanText(it.group.lecturer) || "Chưa phân công"}</div>
+                                        </div>
+                                        <div className="text-right text-xs text-muted-foreground">
+                                          CS: {it.schedule.cs || '-'}<br />
+                                          Phòng: {cleanText(it.schedule.phong) || '-'}
+                                        </div>
+                                      </div>
+                                      <div className="mt-2 text-sm text-muted-foreground">Tiết: {cleanText(it.schedule.tiet) || '-'} • Thời gian: {parseTietToRange(it.schedule.tiet) || '-'} • Tuần: {cleanText(it.schedule.tuan_hoc) || '-'}</div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
+
+                      ) : (!filterByDate ? (
+                        <div className="space-y-4">
+                          {['Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7','Chủ nhật','Không rõ'].map((label) => {
+                            const list = groupedByWeekday[label] || [];
+                            if (list.length === 0) return null;
+                            return (
+                              <div key={label}>
+                                <div className="text-sm font-semibold mb-2">{label} ({list.length})</div>
+                                <div className="space-y-2">
+                                  {list.map((it, i) => (
+                                    <div key={i} className="p-3 rounded-md border bg-slate-800/20">
+                                      <div className="flex items-start justify-between">
+                                        <div>
+                                          <div className="text-sm font-semibold">{it.course.course_code} — {it.course.course_name}</div>
+                                          <div className="text-xs text-muted-foreground mt-1">Nhóm: {it.group.group_name} • Giảng viên: {cleanText(it.group.lecturer) || "Chưa phân công"}</div>
+                                        </div>
+                                        <div className="text-right text-xs text-muted-foreground">
+                                          CS: {it.schedule.cs || '-'}<br />
+                                          Phòng: {cleanText(it.schedule.phong) || '-'}
+                                        </div>
+                                      </div>
+                                      <div className="mt-2 text-sm text-muted-foreground">Tiết: {cleanText(it.schedule.tiet) || '-'} • Thời gian: {parseTietToRange(it.schedule.tiet) || '-'} • Tuần: {cleanText(it.schedule.tuan_hoc) || '-'}</div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ) : (
+                        // filterByDate === true -> flat list
+                        combinedItems.map((it, i) => (
+                          <div key={i} className="p-3 rounded-md border bg-slate-800/20">
+                            <div className="flex items-start justify-between">
+                              <div>
+                                <div className="text-sm font-semibold">{it.course.course_code} — {it.course.course_name}</div>
+                                <div className="text-xs text-muted-foreground mt-1">Nhóm: {it.group.group_name} • Giảng viên: {cleanText(it.group.lecturer) || "Chưa phân công"}</div>
+                              </div>
+                              <div className="text-right text-xs text-muted-foreground">
+                                CS: {it.schedule.cs || '-'}<br />
+                                Phòng: {cleanText(it.schedule.phong) || '-'}
+                              </div>
+                            </div>
+                            <div className="mt-2 text-sm text-muted-foreground">Tiết: {cleanText(it.schedule.tiet) || '-'} • Thời gian: {parseTietToRange(it.schedule.tiet) || '-'} • Tuần: {cleanText(it.schedule.tuan_hoc) || '-'}</div>
+                          </div>
+                        ))
                       ))}
                     </div>
-                  </div>
+                  )}
                 </CardContent>
               </Card>
 

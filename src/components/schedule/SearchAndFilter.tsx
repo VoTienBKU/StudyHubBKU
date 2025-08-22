@@ -112,7 +112,7 @@ export const SearchAndFilter = ({
             />
 
             {isDropdownOpen && searchQ && searchResults.length > 0 && (
-              <div className="absolute z-10 w-full mt-1 max-h-48 overflow-auto bg-white border rounded-md shadow-lg">
+              <div className="absolute z-10 w-full mt-1 max-h-96 overflow-auto bg-white border rounded-md shadow-lg">
                 {searchResults.map(c => (
                   <div
                     key={c.id}

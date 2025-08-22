@@ -254,6 +254,7 @@ const Schedule = () => {
               Thảo luận kiến thức CNTT trường BK về KHMT(CScience), KTMT(CEngineering)
             </a>
           </p>
+
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -289,7 +290,7 @@ const Schedule = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </Layout >
   );
 };
 

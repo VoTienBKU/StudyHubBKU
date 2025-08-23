@@ -304,20 +304,20 @@ const CourseReview = () => {
                     </div>
 
                     {/* Metrics Grid */}
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap gap-2">
                       {/* Rating */}
-                      <div className="flex items-center gap-1 px-2 py-1 bg-yellow-50 rounded-lg">
-                        <div className="flex items-center gap-1">
-                          {renderStars(review.rating)}
-                        </div>
-                        <span className="text-sm font-medium">{review.rating}/5</span>
+                      <div className="flex items-center gap-1">
+                        <Star className="h-3 w-3 text-yellow-500" />
+                        <Badge variant="secondary" className={`text-xs font-medium ${getRatingColor(review.rating)}`}>
+                          {review.rating}/5
+                        </Badge>
                       </div>
 
                       {/* Difficulty */}
                       <div className="flex items-center gap-1">
                         <Brain className="h-3 w-3 text-muted-foreground" />
                         <Badge variant="secondary" className={`text-xs ${getDifficultyColor(review.difficulty)}`}>
-                          {getDifficultyLabel(review.difficulty)}
+                          {review.difficulty}/5
                         </Badge>
                       </div>
 
@@ -325,7 +325,7 @@ const CourseReview = () => {
                       <div className="flex items-center gap-1">
                         <Clock className="h-3 w-3 text-muted-foreground" />
                         <Badge variant="secondary" className={`text-xs ${getWorkloadColor(review.workload)}`}>
-                          {getWorkloadLabel(review.workload)}
+                          {review.workload}/5
                         </Badge>
                       </div>
 

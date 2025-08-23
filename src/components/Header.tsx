@@ -43,7 +43,7 @@ const Header = () => {
                   asChild
                 >
                   <Link to={path} className="flex items-center space-x-2">
-                    <Icon className={`h-4 w-4 ${active ? "text-primary" : ""}`} />
+                    <Icon className={`h-4 w-4 ${active ? "text-primary-foreground" : "text-muted-foreground"}`} />
                     <span>{label}</span>
                   </Link>
                 </Button>

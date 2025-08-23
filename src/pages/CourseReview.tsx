@@ -107,13 +107,9 @@ const CourseReview = () => {
     });
   }, [reviews, searchQuery, selectedMajor, selectedSemester]);
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        className={`h-3 w-3 ${i < rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
-      />
-    ));
+  const getRatingColor = (rating: number) => {
+    const colors = ["bg-red-100 text-red-700", "bg-orange-100 text-orange-700", "bg-yellow-100 text-yellow-700", "bg-blue-100 text-blue-700", "bg-green-100 text-green-700"];
+    return colors[rating - 1] || "bg-gray-100 text-gray-700";
   };
 
   const getDifficultyColor = (difficulty: number) => {

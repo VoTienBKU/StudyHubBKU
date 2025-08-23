@@ -129,7 +129,7 @@ const CourseReview = () => {
   };
 
   const getDifficultyLabel = (difficulty: number) => {
-    const labels = ["Rất dễ", "Dễ", "Trung b��nh", "Khó", "Rất khó"];
+    const labels = ["Rất dễ", "Dễ", "Trung bình", "Khó", "Rất khó"];
     return labels[difficulty - 1] || "N/A";
   };
 
@@ -146,24 +146,6 @@ const CourseReview = () => {
     setSelectedMajor("all");
     setSelectedSemester("all");
     setSearchQuery("");
-  };
-
-  const goToSchedulePage = (courseCode: string) => {
-    // Save search query to localStorage for Schedule page to pick up
-    const currentFilters = {
-      searchQ: courseCode,
-      activeCampus: "all",
-      selectedLecturer: "all",
-      filterByDate: false,
-      selectedDate: null,
-      viewMonth: new Date().getMonth(),
-      viewYear: new Date().getFullYear()
-    };
-
-    saveToLocalStorage(STORAGE_KEYS.SCHEDULE_FILTERS, currentFilters);
-
-    // Navigate to schedule page
-    navigate('/schedule');
   };
 
   return (

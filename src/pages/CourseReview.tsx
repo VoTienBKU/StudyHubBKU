@@ -146,6 +146,24 @@ const CourseReview = () => {
     setSearchQuery("");
   };
 
+  const goToSchedulePage = (courseCode: string) => {
+    // Save search query to localStorage for Schedule page to pick up
+    const currentFilters = {
+      searchQ: courseCode,
+      activeCampus: "all",
+      selectedLecturer: "all",
+      filterByDate: false,
+      selectedDate: null,
+      viewMonth: new Date().getMonth(),
+      viewYear: new Date().getFullYear()
+    };
+
+    saveToLocalStorage(STORAGE_KEYS.SCHEDULE_FILTERS, currentFilters);
+
+    // Navigate to schedule page
+    navigate('/schedule');
+  };
+
   return (
     <Layout>
       <div className="container mx-auto px-4 py-6 max-w-5xl">
@@ -155,7 +173,7 @@ const CourseReview = () => {
             Review Môn Học
           </h1>
           <p className="text-muted-foreground">
-            Chia sẻ trải nghiệm và đánh giá về các môn học
+            Chia s�� trải nghiệm và đánh giá về các môn học
           </p>
         </div>
 

@@ -173,7 +173,7 @@ const CourseReview = () => {
             Review Môn Học
           </h1>
           <p className="text-muted-foreground">
-            Chia s�� trải nghiệm và đánh giá về các môn học
+            Chia sẻ trải nghiệm và đánh giá về các môn học
           </p>
         </div>
 
@@ -429,17 +429,28 @@ const CourseReview = () => {
                     <span className="text-xs text-muted-foreground">
                       Review bởi <span className="font-medium">{review.author}</span>
                     </span>
-                    {review.FB && (
-                      <a 
-                        href={review.FB} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 transition-colors"
+                    <div className="flex items-center gap-3">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => goToSchedulePage(review.courseCode)}
+                        className="h-7 px-2 text-xs flex items-center gap-1"
                       >
-                        <ExternalLink className="h-3 w-3" />
-                        Facebook
-                      </a>
-                    )}
+                        <Calendar className="h-3 w-3" />
+                        Thời Khóa Biểu
+                      </Button>
+                      {review.FB && (
+                        <a
+                          href={review.FB}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 transition-colors"
+                        >
+                          <ExternalLink className="h-3 w-3" />
+                          Facebook
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </CardContent>
               </Card>

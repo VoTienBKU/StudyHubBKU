@@ -4,11 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Star, Search, Plus, BookOpen } from "lucide-react";
+import { Star, Search, Plus, BookOpen, Clock, Brain, ThumbsUp, ExternalLink, Lightbulb } from "lucide-react";
 import coursesReview from "@/data/course_review.json";
 
 interface CourseReview {
-  id: string; // = courseCode
+  id: string;
   courseCode: string;
   courseName: string;
   semester: {
@@ -49,19 +49,29 @@ const CourseReview = () => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${i < rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
+        className={`h-3 w-3 ${i < rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`}
       />
     ));
   };
 
+  const getDifficultyColor = (difficulty: number) => {
+    const colors = ["bg-green-100 text-green-700", "bg-blue-100 text-blue-700", "bg-yellow-100 text-yellow-700", "bg-orange-100 text-orange-700", "bg-red-100 text-red-700"];
+    return colors[difficulty - 1] || "bg-gray-100 text-gray-700";
+  };
+
+  const getWorkloadColor = (workload: number) => {
+    const colors = ["bg-green-100 text-green-700", "bg-blue-100 text-blue-700", "bg-yellow-100 text-yellow-700", "bg-orange-100 text-orange-700", "bg-red-100 text-red-700"];
+    return colors[workload - 1] || "bg-gray-100 text-gray-700";
+  };
+
   const getDifficultyLabel = (difficulty: number) => {
     const labels = ["Rất dễ", "Dễ", "Trung bình", "Khó", "Rất khó"];
-    return labels[difficulty - 1] || "Không xác định";
+    return labels[difficulty - 1] || "N/A";
   };
 
   const getWorkloadLabel = (workload: number) => {
     const labels = ["Rất ít", "Ít", "Trung bình", "Nhiều", "Rất nhiều"];
-    return labels[workload - 1] || "Không xác định";
+    return labels[workload - 1] || "N/A";
   };
 
   const handleAddReview = () => {
@@ -70,172 +80,222 @@ const CourseReview = () => {
 
   return (
     <Layout>
-      <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-foreground mb-2">
-              Review Môn Học
-            </h1>
-            <p className="text-sm text-muted-foreground">
-              Chia sẻ trải nghiệm và đánh giá về các môn học trong chương trình Khoa học máy tính
-            </p>
-          </div>
+      <div className="container mx-auto px-4 py-6 max-w-5xl">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-foreground mb-2">
+            Review Môn Học
+          </h1>
+          <p className="text-muted-foreground">
+            Chia sẻ trải nghiệm và đánh giá về các môn học
+          </p>
+        </div>
 
-          {/* Search + Add Review */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Tìm kiếm theo mã môn hoặc tên môn..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-            <Button onClick={handleAddReview} className="flex items-center gap-2">
-              <Plus className="h-4 w-4" />
-              Thêm Review
-            </Button>
+        {/* Search + Add Review */}
+        <div className="flex flex-col sm:flex-row gap-4 mb-6">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Tìm kiếm theo mã môn hoặc tên môn..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10"
+            />
           </div>
+          <Button onClick={handleAddReview} className="flex items-center gap-2">
+            <Plus className="h-4 w-4" />
+            Thêm Review
+          </Button>
+        </div>
 
-          {/* Reviews */}
-          <div className="space-y-6">
-            {filteredReviews.length === 0 ? (
-              <Card>
-                <CardContent className="p-8 text-center">
-                  <BookOpen className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold">Chưa có review nào</h3>
-                  <p className="text-muted-foreground mb-4">
-                    {searchQuery ? "Không tìm thấy review phù hợp với từ khóa" : "Hãy là người đầu tiên chia sẻ review"}
-                  </p>
-                  {!searchQuery && (
-                    <Button onClick={handleAddReview}>Thêm Review Đầu Tiên</Button>
-                  )}
-                </CardContent>
-              </Card>
-            ) : (
-              filteredReviews.map((review) => (
-                <Card key={review.id} className="overflow-hidden">
-                  <CardHeader className="pb-4">
-                    <div className="flex flex-wrap items-center justify-between gap-4">
-                      {/* Thông tin môn */}
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                        <CardTitle className="text-lg">{review.courseCode} - {review.courseName}</CardTitle>
-                        <p className="text-xs text-muted-foreground">
-                          KHMT: {review.semester.KHMT} • KTMT: {review.semester.KTMT}
-                        </p>
+        {/* Reviews */}
+        <div className="space-y-4">
+          {filteredReviews.length === 0 ? (
+            <Card>
+              <CardContent className="p-8 text-center">
+                <BookOpen className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-lg font-semibold">Chưa có review nào</h3>
+                <p className="text-muted-foreground mb-4">
+                  {searchQuery ? "Không tìm thấy review phù hợp với từ khóa" : "Hãy là người đầu tiên chia sẻ review"}
+                </p>
+                {!searchQuery && (
+                  <Button onClick={handleAddReview}>Thêm Review Đầu Tiên</Button>
+                )}
+              </CardContent>
+            </Card>
+          ) : (
+            filteredReviews.map((review) => (
+              <Card key={review.id} className="overflow-hidden hover:shadow-md transition-shadow">
+                <CardHeader className="pb-3">
+                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    {/* Course Info */}
+                    <div className="flex-1">
+                      <CardTitle className="text-xl mb-1">
+                        {review.courseCode} - {review.courseName}
+                      </CardTitle>
+                      <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                        <span>KHMT: {review.semester.KHMT}</span>
+                        <span>•</span>
+                        <span>KTMT: {review.semester.KTMT}</span>
                       </div>
+                    </div>
 
-                      {/* Recommend + Rating */}
-                      <div className="flex items-center gap-4">
-                        {review.wouldRecommend && (
-                          <Badge variant="secondary" className="bg-green-100 text-green-800">
-                            Recommend
-                          </Badge>
-                        )}
+                    {/* Metrics Grid */}
+                    <div className="flex flex-wrap gap-3">
+                      {/* Rating */}
+                      <div className="flex items-center gap-1 px-2 py-1 bg-yellow-50 rounded-lg">
                         <div className="flex items-center gap-1">
                           {renderStars(review.rating)}
-                          <span className="text-sm font-medium ml-1">{review.rating}/5</span>
                         </div>
+                        <span className="text-sm font-medium">{review.rating}/5</span>
                       </div>
 
-                      {/* Difficulty + Workload */}
-                      <div className="flex items-center gap-6">
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm text-muted-foreground">Độ khó:</span>
-                          <div className="flex items-center gap-1">
-                            {renderStars(review.difficulty)}
-                            <span className="text-sm">{getDifficultyLabel(review.difficulty)}</span>
-                          </div>
+                      {/* Difficulty */}
+                      <div className="flex items-center gap-1">
+                        <Brain className="h-3 w-3 text-muted-foreground" />
+                        <Badge variant="secondary" className={`text-xs ${getDifficultyColor(review.difficulty)}`}>
+                          {getDifficultyLabel(review.difficulty)}
+                        </Badge>
+                      </div>
+
+                      {/* Workload */}
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-3 w-3 text-muted-foreground" />
+                        <Badge variant="secondary" className={`text-xs ${getWorkloadColor(review.workload)}`}>
+                          {getWorkloadLabel(review.workload)}
+                        </Badge>
+                      </div>
+
+                      {/* Recommend */}
+                      {review.wouldRecommend && (
+                        <div className="flex items-center gap-1">
+                          <ThumbsUp className="h-3 w-3 text-green-600" />
+                          <Badge className="bg-green-100 text-green-700 text-xs">
+                            Recommend
+                          </Badge>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm text-muted-foreground">Khối lượng:</span>
-                          <div className="flex items-center gap-1">
-                            {renderStars(review.workload)}
-                            <span className="text-sm">{getWorkloadLabel(review.workload)}</span>
-                          </div>
-                        </div>
-                      </div>
+                      )}
                     </div>
-                  </CardHeader>
-
-                  <CardContent className="space-y-4">
-                    {/* Review */}
-                    <div>
-                      <h4 className="font-semibold mb-2">Đánh giá:</h4>
-                      <p className="text-sm text-muted-foreground">{review.review}</p>
-                    </div>
-
-                    {/* BTL / Lab / CK */}
-                    {(review.BTL || review.Lab || review.CK_CK) && (
-                      <div className="space-y-2">
-                        {review.BTL && <p className="text-sm bg-purple-50 p-2 rounded-md"><b>BTL:</b> {review.BTL}</p>}
-                        {review.Lab && <p className="text-sm bg-orange-50 p-2 rounded-md"><b>Lab:</b> {review.Lab}</p>}
-                        {review.CK_CK && <p className="text-sm bg-pink-50 p-2 rounded-md"><b>CK / GK:</b> {review.CK_CK}</p>}
-                      </div>
-                    )}
-
-                    {/* Tips */}
-                    {review.tips && review.tips.length > 0 && (
-                      <div>
-                        <h4 className="font-semibold mb-2">Tips:</h4>
-                        <ul className="space-y-1">
-                          {review.tips.map((tip, index) => (
-                            <li key={index} className="text-sm text-muted-foreground bg-blue-50 p-2 rounded-md flex items-start gap-2">
-                              💡 {tip}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {/* Prerequisites + Followups */}
-                    {(review.prerequisites?.length || review.followups?.length) && (
-                      <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                        {review.prerequisites?.length > 0 && (
-                          <span>Môn trước đó: {review.prerequisites.join(", ")}</span>
-                        )}
-                        {review.followups?.length > 0 && (
-                          <span>Nên học sau: {review.followups.join(", ")}</span>
-                        )}
-                      </div>
-                    )}
-
-                    {/* Footer */}
-                    <div className="flex items-center justify-between pt-4 border-t">
-                      <span className="text-xs text-muted-foreground">
-                        Bởi {review.author} •{" "}
-                        {review.FB ? (
-                          <a href={review.FB} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                            Facebook
-                          </a>
-                        ) : "Không có FB"}
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))
-            )}
-          </div>
-
-          {/* Add Form Placeholder */}
-          {showAddForm && (
-            <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-              <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-                <CardHeader>
-                  <CardTitle>Thêm Review Môn Học</CardTitle>
+                  </div>
                 </CardHeader>
+
                 <CardContent className="space-y-4">
-                  <p className="text-sm text-muted-foreground">
-                    Tính năng đang phát triển. Quay lại sau nhé!
-                  </p>
-                  <Button onClick={() => setShowAddForm(false)} className="w-full">Đóng</Button>
+                  {/* Review Text */}
+                  <div className="bg-gray-50 p-3 rounded-lg">
+                    <p className="text-sm leading-relaxed">{review.review}</p>
+                  </div>
+
+                  {/* BTL / Lab / CK Grid */}
+                  {(review.BTL || review.Lab || review.CK_CK) && (
+                    <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
+                      {review.BTL && (
+                        <div className="bg-purple-50 border border-purple-200 p-3 rounded-lg">
+                          <h5 className="font-medium text-purple-800 text-xs mb-1">BTL</h5>
+                          <p className="text-xs text-purple-700">{review.BTL}</p>
+                        </div>
+                      )}
+                      {review.Lab && (
+                        <div className="bg-orange-50 border border-orange-200 p-3 rounded-lg">
+                          <h5 className="font-medium text-orange-800 text-xs mb-1">Lab</h5>
+                          <p className="text-xs text-orange-700">{review.Lab}</p>
+                        </div>
+                      )}
+                      {review.CK_CK && (
+                        <div className="bg-pink-50 border border-pink-200 p-3 rounded-lg">
+                          <h5 className="font-medium text-pink-800 text-xs mb-1">CK / GK</h5>
+                          <p className="text-xs text-pink-700">{review.CK_CK}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Tips */}
+                  {review.tips && review.tips.length > 0 && (
+                    <div className="bg-blue-50 border border-blue-200 p-3 rounded-lg">
+                      <div className="flex items-center gap-1 mb-2">
+                        <Lightbulb className="h-3 w-3 text-blue-600" />
+                        <h4 className="font-medium text-blue-800 text-sm">Tips</h4>
+                      </div>
+                      <ul className="space-y-1">
+                        {review.tips.map((tip, index) => (
+                          <li key={index} className="text-xs text-blue-700 flex items-start gap-2">
+                            <span className="text-blue-500 mt-0.5">•</span>
+                            <span>{tip}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Prerequisites + Followups */}
+                  {(review.prerequisites?.length || review.followups?.length) && (
+                    <div className="flex flex-wrap gap-4 text-xs">
+                      {review.prerequisites?.length > 0 && (
+                        <div className="flex items-center gap-1">
+                          <span className="text-muted-foreground">Môn tiên quyết:</span>
+                          <div className="flex gap-1">
+                            {review.prerequisites.map((prereq, index) => (
+                              <Badge key={index} variant="outline" className="text-xs">
+                                {prereq}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {review.followups?.length > 0 && (
+                        <div className="flex items-center gap-1">
+                          <span className="text-muted-foreground">Nên học sau:</span>
+                          <div className="flex gap-1">
+                            {review.followups.map((followup, index) => (
+                              <Badge key={index} variant="outline" className="text-xs">
+                                {followup}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Footer */}
+                  <div className="flex items-center justify-between pt-3 border-t">
+                    <span className="text-xs text-muted-foreground">
+                      Review bởi <span className="font-medium">{review.author}</span>
+                    </span>
+                    {review.FB && (
+                      <a 
+                        href={review.FB} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 transition-colors"
+                      >
+                        <ExternalLink className="h-3 w-3" />
+                        Facebook
+                      </a>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
-            </div>
+            ))
           )}
         </div>
+
+        {/* Add Form Modal */}
+        {showAddForm && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+            <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+              <CardHeader>
+                <CardTitle>Thêm Review Môn Học</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-sm text-muted-foreground">
+                  Tính năng đang phát triển. Quay lại sau nhé!
+                </p>
+                <Button onClick={() => setShowAddForm(false)} className="w-full">Đóng</Button>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </div>
     </Layout>
   );

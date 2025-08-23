@@ -300,7 +300,7 @@ const CourseReview = () => {
                       <div className="flex items-center gap-1">
                         <Brain className="h-3 w-3 text-muted-foreground" />
                         <Badge variant="secondary" className={`text-xs ${getDifficultyColor(review.difficulty)}`}>
-                          {review.difficulty}/5
+                          {getDifficultyLabel(review.difficulty)}
                         </Badge>
                       </div>
 
@@ -308,7 +308,7 @@ const CourseReview = () => {
                       <div className="flex items-center gap-1">
                         <Clock className="h-3 w-3 text-muted-foreground" />
                         <Badge variant="secondary" className={`text-xs ${getWorkloadColor(review.workload)}`}>
-                          {review.workload}/5
+                          {getWorkloadLabel(review.workload)}
                         </Badge>
                       </div>
                     </div>

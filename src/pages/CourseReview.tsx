@@ -49,14 +49,35 @@ const CourseReview = () => {
     setReviews(sampleReviews);
   }, []);
 
-  // Extract unique semester options from data
+  // Extract unique semester options from data and sort them logically
   const semesterOptions = useMemo(() => {
     const allSemesters = new Set<string>();
     reviews.forEach(review => {
       if (review.semester.KHMT) allSemesters.add(review.semester.KHMT);
       if (review.semester.KTMT) allSemesters.add(review.semester.KTMT);
     });
-    return Array.from(allSemesters).sort();
+
+    // Sort semesters logically: Year 1 before Year 2, HK1 before HK2
+    return Array.from(allSemesters).sort((a, b) => {
+      // Extract year and semester number
+      const getYearAndSemester = (str: string) => {
+        const yearMatch = str.match(/Năm (\d+)/);
+        const semesterMatch = str.match(/HK(\d+)/);
+        return {
+          year: yearMatch ? parseInt(yearMatch[1]) : 999,
+          semester: semesterMatch ? parseInt(semesterMatch[1]) : 999
+        };
+      };
+
+      const aData = getYearAndSemester(a);
+      const bData = getYearAndSemester(b);
+
+      // Sort by year first, then by semester
+      if (aData.year !== bData.year) {
+        return aData.year - bData.year;
+      }
+      return aData.semester - bData.semester;
+    });
   }, [reviews]);
 
   const filteredReviews = useMemo(() => {

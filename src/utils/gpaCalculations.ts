@@ -35,6 +35,10 @@ interface MyBKData {
   DANHSACH_MONHOC_CTDT: MonHoc[];
 }
 
+interface GradePlan {
+  [grade: string]: number;
+}
+
 const diemChuToHe4: Record<string, number> = {
   "A+": 4,
   "A": 4,
@@ -75,12 +79,6 @@ export const getTotalCredits = (monHocList: MonHoc[]) => {
     .filter(mon => mon.hieuLuc === "1" && mon.soTinChi > 0)
     .reduce((sum, mon) => sum + mon.soTinChi, 0);
 };
-
-<<<<<<< HEAD
-=======
-interface GradePlan {
-  [grade: string]: number;
-}
 
 export function gradePlanForTarget(
   currentGPA: number,
@@ -135,7 +133,6 @@ export function gradePlanForTarget(
   return null; // không thể đạt được target
 }
 
->>>>>>> refs/remotes/origin/main
 export const countGrades = (monHocList: MonHoc[]) => {
   const grades = ["A+", "A", "B+", "B", "C+", "C", "D+", "D"];
   const gradeMap: Record<string, number> = {};
@@ -157,11 +154,7 @@ export const processMyBKData = (data: MyBKData): MonHoc[] => {
   return Array.from(
     new Map(
       monHocList
-<<<<<<< HEAD
         .filter((mon: MonHoc) => mon.diemSo <= 50 && mon.soTinChi >= 0) // Allow 0 tin chi for subjects like CCGDTC
-=======
-        .filter((mon: MonHoc) => mon.diemSo <= 50 && mon.soTinChi > 0) // Allow 0 tin chi for subjects like CCGDTC
->>>>>>> refs/remotes/origin/main
         .sort((a: MonHoc, b: MonHoc) => b.diemSo - a.diemSo)
         .map((mon: MonHoc) => [mon.maMonHoc, mon])
     ).values()

@@ -38,7 +38,6 @@ interface CourseReview {
 }
 
 const CourseReview = () => {
-  const navigate = useNavigate();
   const [reviews, setReviews] = useState<CourseReview[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedMajor, setSelectedMajor] = useState<string>("all");
@@ -130,7 +129,7 @@ const CourseReview = () => {
   };
 
   const getDifficultyLabel = (difficulty: number) => {
-    const labels = ["Rất dễ", "Dễ", "Trung bình", "Khó", "Rất khó"];
+    const labels = ["Rất dễ", "Dễ", "Trung b��nh", "Khó", "Rất khó"];
     return labels[difficulty - 1] || "N/A";
   };
 

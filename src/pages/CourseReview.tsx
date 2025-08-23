@@ -367,35 +367,25 @@ const CourseReview = () => {
                   {(review.prerequisites?.length || review.followups?.length) && (
                     <div className="flex flex-wrap gap-4 text-xs">
                       {review.prerequisites?.length > 0 && (
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1">
                           <span className="text-muted-foreground">Môn tiên quyết:</span>
-                          <div className="flex flex-wrap gap-1">
+                          <div className="flex gap-1">
                             {review.prerequisites.map((prereq, index) => (
-                              <button
-                                key={index}
-                                onClick={() => goToSchedulePage(prereq)}
-                                className="px-2 py-1 bg-blue-50 text-blue-700 rounded-md hover:bg-blue-100 transition-colors text-xs font-medium"
-                                title={`Xem lịch học ${prereq}`}
-                              >
-                                {prereq} - {getCourseNameByCode(prereq)}
-                              </button>
+                              <Badge key={index} variant="outline" className="text-xs">
+                                {prereq}
+                              </Badge>
                             ))}
                           </div>
                         </div>
                       )}
                       {review.followups?.length > 0 && (
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1">
                           <span className="text-muted-foreground">Nên học sau:</span>
-                          <div className="flex flex-wrap gap-1">
+                          <div className="flex gap-1">
                             {review.followups.map((followup, index) => (
-                              <button
-                                key={index}
-                                onClick={() => goToSchedulePage(followup)}
-                                className="px-2 py-1 bg-green-50 text-green-700 rounded-md hover:bg-green-100 transition-colors text-xs font-medium"
-                                title={`Xem lịch học ${followup}`}
-                              >
-                                {followup} - {getCourseNameByCode(followup)}
-                              </button>
+                              <Badge key={index} variant="outline" className="text-xs">
+                                {followup}
+                              </Badge>
                             ))}
                           </div>
                         </div>

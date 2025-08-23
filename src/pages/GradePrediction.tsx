@@ -7,20 +7,14 @@ import { SubjectList } from "@/components/grade-prediction/SubjectList";
 import { MyBKConnection } from "@/components/grade-prediction/MyBKConnection";
 import { ManualDataInput } from "@/components/grade-prediction/ManualDataInput";
 import { KhoiKienThucStats } from "@/components/grade-prediction/KhoiKienThucStats";
-<<<<<<< HEAD
-=======
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
->>>>>>> refs/remotes/origin/main
 import {
   calculateGPA,
   getTotalCredits,
   countGrades,
   processMonHocData,
   processMyBKData,
-<<<<<<< HEAD
-=======
   gradePlanForTarget,
->>>>>>> refs/remotes/origin/main
   getTotalRequiredCredits
 } from "@/utils/gpaCalculations";
 
@@ -63,10 +57,6 @@ const GradePrediction = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/main
   const handleOpenAndFetchData = () => {
     if (!url.trim()) {
       toast({
@@ -192,10 +182,6 @@ const GradePrediction = () => {
                     totalRequiredCredits={totalRequiredCredits > 0 ? totalRequiredCredits : undefined}
                   />
 
-<<<<<<< HEAD
-                  <GradeDistribution gradeMap={gradeDistribution} />
-
-=======
                   <div className="flex flex-col lg:flex-row gap-6 mb-8">
                     {/* Biểu đồ bên trái */}
                     <div className="flex-1">
@@ -214,10 +200,10 @@ const GradePrediction = () => {
                               🎯 Giỏi (≥ 3.2):{" "}
                               {(() => {
                                 const plan = gradePlanForTarget(
-                                  gpa.gpa4,
+                                  parseFloat(gpa.gpa4),
                                   totalCredits,
                                   3.2,
-                                  totalRequiredCredits
+                                  totalRequiredCredits || 120
                                 );
                                 return plan
                                   ? Object.entries(plan)
@@ -232,10 +218,10 @@ const GradePrediction = () => {
                               🏆 Xuất sắc (≥ 3.6):{" "}
                               {(() => {
                                 const plan = gradePlanForTarget(
-                                  gpa.gpa4,
+                                  parseFloat(gpa.gpa4),
                                   totalCredits,
                                   3.6,
-                                  totalRequiredCredits
+                                  totalRequiredCredits || 120
                                 );
                                 return plan
                                   ? Object.entries(plan)
@@ -250,7 +236,7 @@ const GradePrediction = () => {
                       </Card>
                     </div>
                   </div>
->>>>>>> refs/remotes/origin/main
+
                   <SubjectList monHocList={monHocList} />
                 </>
               )}

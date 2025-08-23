@@ -258,7 +258,7 @@ const CourseReview = () => {
                 <h3 className="text-lg font-semibold">Không tìm thấy review nào</h3>
                 <p className="text-muted-foreground mb-4">
                   {searchQuery || selectedMajor !== "all" || selectedSemester !== "all" 
-                    ? "Thử thay đổi điều kiện tìm kiếm hoặc bộ lọc" 
+                    ? "Th�� thay đổi điều kiện tìm kiếm hoặc bộ lọc" 
                     : "Hãy là người đầu tiên chia sẻ review"}
                 </p>
                 {!(searchQuery || selectedMajor !== "all" || selectedSemester !== "all") && (
@@ -398,28 +398,17 @@ const CourseReview = () => {
                     <span className="text-xs text-muted-foreground">
                       Review bởi <span className="font-medium">{review.author}</span>
                     </span>
-                    <div className="flex items-center gap-3">
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => goToSchedulePage(review.courseCode)}
-                        className="h-7 px-2 text-xs flex items-center gap-1"
+                    {review.FB && (
+                      <a
+                        href={review.FB}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 transition-colors"
                       >
-                        <Calendar className="h-3 w-3" />
-                        Thời Khóa Biểu
-                      </Button>
-                      {review.FB && (
-                        <a
-                          href={review.FB}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 transition-colors"
-                        >
-                          <ExternalLink className="h-3 w-3" />
-                          Facebook
-                        </a>
-                      )}
-                    </div>
+                        <ExternalLink className="h-3 w-3" />
+                        Facebook
+                      </a>
+                    )}
                   </div>
                 </CardContent>
               </Card>

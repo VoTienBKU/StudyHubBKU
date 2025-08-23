@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,8 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Star, Search, Plus, BookOpen, Clock, Brain, ThumbsUp, ExternalLink, Lightbulb, Filter, Calendar } from "lucide-react";
-import { saveToLocalStorage, STORAGE_KEYS } from "@/utils/localStorage";
+import { Star, Search, Plus, BookOpen, Clock, Brain, ExternalLink, Lightbulb, Filter } from "lucide-react";
 import coursesReview from "@/data/course_review.json";
 
 interface CourseReview {

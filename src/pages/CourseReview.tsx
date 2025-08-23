@@ -1,10 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Star, Search, Plus, BookOpen, Clock, Brain, ThumbsUp, ExternalLink, Lightbulb } from "lucide-react";
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Star, Search, Plus, BookOpen, Clock, Brain, ThumbsUp, ExternalLink, Lightbulb, Filter } from "lucide-react";
 import coursesReview from "@/data/course_review.json";
 
 interface CourseReview {
@@ -33,6 +40,8 @@ interface CourseReview {
 const CourseReview = () => {
   const [reviews, setReviews] = useState<CourseReview[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedMajor, setSelectedMajor] = useState<string>("all");
+  const [selectedSemester, setSelectedSemester] = useState<string>("all");
   const [showAddForm, setShowAddForm] = useState(false);
 
   useEffect(() => {
@@ -40,10 +49,39 @@ const CourseReview = () => {
     setReviews(sampleReviews);
   }, []);
 
-  const filteredReviews = reviews.filter(review =>
-    review.courseCode.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    review.courseName.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Extract unique semester options from data
+  const semesterOptions = useMemo(() => {
+    const allSemesters = new Set<string>();
+    reviews.forEach(review => {
+      if (review.semester.KHMT) allSemesters.add(review.semester.KHMT);
+      if (review.semester.KTMT) allSemesters.add(review.semester.KTMT);
+    });
+    return Array.from(allSemesters).sort();
+  }, [reviews]);
+
+  const filteredReviews = useMemo(() => {
+    return reviews.filter(review => {
+      // Search filter
+      const matchesSearch = review.courseCode.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        review.courseName.toLowerCase().includes(searchQuery.toLowerCase());
+
+      // Major filter
+      let matchesMajor = true;
+      if (selectedMajor !== "all") {
+        const majorSemester = selectedMajor === "KHMT" ? review.semester.KHMT : review.semester.KTMT;
+        matchesMajor = Boolean(majorSemester);
+      }
+
+      // Semester filter
+      let matchesSemester = true;
+      if (selectedSemester !== "all") {
+        matchesSemester = review.semester.KHMT === selectedSemester || 
+                         review.semester.KTMT === selectedSemester;
+      }
+
+      return matchesSearch && matchesMajor && matchesSemester;
+    });
+  }, [reviews, searchQuery, selectedMajor, selectedSemester]);
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
@@ -78,6 +116,12 @@ const CourseReview = () => {
     setShowAddForm(true);
   };
 
+  const clearFilters = () => {
+    setSelectedMajor("all");
+    setSelectedSemester("all");
+    setSearchQuery("");
+  };
+
   return (
     <Layout>
       <div className="container mx-auto px-4 py-6 max-w-5xl">
@@ -91,21 +135,97 @@ const CourseReview = () => {
           </p>
         </div>
 
-        {/* Search + Add Review */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-6">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Tìm kiếm theo mã môn hoặc tên môn..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10"
-            />
+        {/* Search + Filters + Add Review */}
+        <div className="space-y-4 mb-6">
+          {/* Search and Add Button */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Tìm kiếm theo mã môn hoặc tên môn..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+            <Button onClick={handleAddReview} className="flex items-center gap-2">
+              <Plus className="h-4 w-4" />
+              Thêm Review
+            </Button>
           </div>
-          <Button onClick={handleAddReview} className="flex items-center gap-2">
-            <Plus className="h-4 w-4" />
-            Thêm Review
-          </Button>
+
+          {/* Filters */}
+          <div className="flex flex-col sm:flex-row gap-4 p-4 bg-gray-50 rounded-lg">
+            <div className="flex items-center gap-2">
+              <Filter className="h-4 w-4 text-muted-foreground" />
+              <span className="text-sm font-medium">Bộ lọc:</span>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-3 flex-1">
+              {/* Major Filter */}
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-muted-foreground whitespace-nowrap">Chuyên ngành:</span>
+                <Select value={selectedMajor} onValueChange={setSelectedMajor}>
+                  <SelectTrigger className="w-[140px]">
+                    <SelectValue placeholder="Tất cả" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Tất cả</SelectItem>
+                    <SelectItem value="KHMT">KHMT</SelectItem>
+                    <SelectItem value="KTMT">KTMT</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Semester Filter */}
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-muted-foreground whitespace-nowrap">Học kỳ:</span>
+                <Select value={selectedSemester} onValueChange={setSelectedSemester}>
+                  <SelectTrigger className="w-[140px]">
+                    <SelectValue placeholder="Tất cả" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Tất cả</SelectItem>
+                    {semesterOptions.map(semester => (
+                      <SelectItem key={semester} value={semester}>
+                        {semester}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Clear Filters */}
+              {(selectedMajor !== "all" || selectedSemester !== "all" || searchQuery) && (
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={clearFilters}
+                  className="whitespace-nowrap"
+                >
+                  Xóa bộ lọc
+                </Button>
+              )}
+            </div>
+          </div>
+
+          {/* Results Count */}
+          <div className="flex items-center justify-between text-sm text-muted-foreground">
+            <span>
+              Hiển thị {filteredReviews.length} trên {reviews.length} review
+            </span>
+            {(selectedMajor !== "all" || selectedSemester !== "all") && (
+              <div className="flex items-center gap-2">
+                <span>Bộ lọc hiện tại:</span>
+                {selectedMajor !== "all" && (
+                  <Badge variant="secondary">{selectedMajor}</Badge>
+                )}
+                {selectedSemester !== "all" && (
+                  <Badge variant="secondary">{selectedSemester}</Badge>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Reviews */}
@@ -114,12 +234,17 @@ const CourseReview = () => {
             <Card>
               <CardContent className="p-8 text-center">
                 <BookOpen className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                <h3 className="text-lg font-semibold">Chưa có review nào</h3>
+                <h3 className="text-lg font-semibold">Không tìm thấy review nào</h3>
                 <p className="text-muted-foreground mb-4">
-                  {searchQuery ? "Không tìm thấy review phù hợp với từ khóa" : "Hãy là người đầu tiên chia sẻ review"}
+                  {searchQuery || selectedMajor !== "all" || selectedSemester !== "all" 
+                    ? "Thử thay đổi điều kiện tìm kiếm hoặc bộ lọc" 
+                    : "Hãy là người đầu tiên chia sẻ review"}
                 </p>
-                {!searchQuery && (
+                {!(searchQuery || selectedMajor !== "all" || selectedSemester !== "all") && (
                   <Button onClick={handleAddReview}>Thêm Review Đầu Tiên</Button>
+                )}
+                {(searchQuery || selectedMajor !== "all" || selectedSemester !== "all") && (
+                  <Button variant="outline" onClick={clearFilters}>Xóa bộ lọc</Button>
                 )}
               </CardContent>
             </Card>

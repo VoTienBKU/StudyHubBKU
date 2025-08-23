@@ -21,7 +21,11 @@ export interface Course {
   course_code: string;
   course_name: string;
   list_group?: Array<{
+<<<<<<< HEAD
     group_name: string;
+=======
+    lt_group: string;
+>>>>>>> refs/remotes/origin/main
     lecturer?: string;
     bt_lecturer?: string;
     schedules?: Array<{

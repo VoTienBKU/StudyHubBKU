@@ -1,0 +1,301 @@
+[
+    {
+        "id": "1",
+        "courseCode": "CO1005",
+        "courseName": "Nhập môn điện toán",
+        "semester": {
+            "KHMT": "HK1 Năm 1",
+            "KTMT": "HK1 Năm 1"
+        },
+        "rating": 5,
+        "difficulty": 2,
+        "workload": 1,
+        "review": "Môn học mở đầu khá chill của ngành máy tính. Dễ đạt A+.",
+        "BTL": "BTL 1, 2: Đề bài dễ, có nhiều tài liệu tham khảo. BTL 3: Làm về trích dẫn tài liệu.",
+        "Lab": "Các lab đều khá dễ và thú vị, giúp có nền tảng về lập trình.",
+        "CK_CK": "CK: Đề thi nhẹ nhàng, không có bất ngờ lớn. Cần đọc kĩ đề và nắm vững kiến thức",
+        "tips": [
+            "Làm quen với vscode và trình biên dịch c++",
+            "Tăng khả năng search tài liệu và lỗi"
+        ],
+        "wouldRecommend": true,
+        "FB": "https://www.facebook.com/tien.vinh.9081323",
+        "author": "Vĩnh Tiến (KSTN - KHMT - K24)",
+        "prerequisites": [],
+        "followups": [
+            "CO1027"
+        ]
+    },
+    {
+        "id": "2",
+        "courseCode": "CO1023",
+        "courseName": "Hệ thống số",
+        "semester": {
+            "KHMT": "HK1 Năm 1",
+            "KTMT": "HK1 Năm 1"
+        },
+        "rating": 4,
+        "difficulty": 4,
+        "workload": 4,
+        "review": "Môn học giúp hiểu bao quát về phần cứng máy tính. Điểm chủ yếu B trở lên.",
+        "BTL": "Không có",
+        "Lab": "Lab 2, lab 3, lab 4 hơi khó. Các lab còn lại tương đối dễ. Phần lab test tùy nhân phẩm gặp giảng viên ra đề dễ hay khó 🙁.",
+        "CK_CK": "CK: Đề thi nhẹ nhàng, không có bất ngờ lớn. Nhiều câu hỏi nên khá mất thời gian. ",
+        "tips": [
+            "Làm nhiều bài tập",
+            "Hiểu cách hoạt động các loại mạch",
+            "Đạt điểm cao phần lab"
+        ],
+        "wouldRecommend": true,
+        "FB": "https://www.facebook.com/tien.vinh.9081323",
+        "author": "Vĩnh Tiến (KSTN - KHMT - K24)",
+        "prerequisites": [],
+        "followups": [
+            "CO1027"
+        ]
+    },
+    {
+        "id": "CO1027",
+        "courseCode": "CO1027",
+        "courseName": "Kỹ thuật lập trình",
+        "semester": {
+            "KHMT": "HK2 Năm 1",
+            "KTMT": "HK2 Năm 1"
+        },
+        "rating": 5,
+        "difficulty": 5,
+        "workload": 5,
+        "review": "Học về c++ gồm 2 lần là lập trình thủ tục và lập trình hướng đối tượng",
+        "BTL": "BTL1: sẽ về lập trình thủ tục độ khó trung bình, BTL2: sẽ về lập trình hướng đối tượng độ khó gần khó nhất trong các BTL của MT",
+        "Lab": "Lab khá nhẹ nhàn, cuối kì sẽ có một bài lab tổng kết thi ở lớp",
+        "CK_CK": "GK không có, CK hỏi về kiến thức c++ về lập trình thủ tục và lập trình hướng đối tượng và có hamrony",
+        "tips": [
+            "Tự học chứ trên trường phấn lớn dạy không kịp",
+            "Nên đi quân sự cầm theo lab mà học bài"
+        ],
+        "wouldRecommend": true,
+        "FB": "https://www.facebook.com/Shiba.Vo.Tien",
+        "author": "Võ Tiến",
+        "prerequisites": [],
+        "followups": []
+    },
+    {
+        "id": "CO2003",
+        "courseCode": "CO2003",
+        "courseName": "Cấu trúc dữ liệu và giải thuật",
+        "semester": {
+            "KHMT": "HK2 Năm 1",
+            "KTMT": "HK2 Năm 1"
+        },
+        "rating": 5,
+        "difficulty": 5,
+        "workload": 5,
+        "review": "",
+        "BTL": "",
+        "Lab": "",
+        "CK_CK": "",
+        "tips": [],
+        "wouldRecommend": true,
+        "FB": "",
+        "author": "",
+        "prerequisites": [],
+        "followups": []
+    },
+    {
+        "id": "CO2007",
+        "courseCode": "CO2007",
+        "courseName": "Kiến trúc máy tính",
+        "semester": {
+            "KHMT": "HK2 Năm 1",
+            "KTMT": "HK2 Năm 1"
+        },
+        "rating": 0,
+        "difficulty": 0,
+        "workload": 0,
+        "review": "",
+        "BTL": "",
+        "Lab": "",
+        "CK_CK": "",
+        "tips": [],
+        "wouldRecommend": true,
+        "FB": "",
+        "author": "",
+        "prerequisites": [],
+        "followups": []
+    },
+    {
+        "id": "CO2013",
+        "courseCode": "CO2013",
+        "courseName": "Hệ cơ sở dữ liệu",
+        "semester": {
+            "KHMT": "HK1 Năm 3",
+            "KTMT": "HK1 Năm 3"
+        },
+        "rating": 5,
+        "difficulty": 4,
+        "workload": 4,
+        "review": "",
+        "BTL": "",
+        "Lab": "",
+        "CK_CK": "",
+        "tips": [],
+        "wouldRecommend": true,
+        "FB": "",
+        "author": "",
+        "prerequisites": [],
+        "followups": []
+    },
+    {
+        "id": "CO2039",
+        "courseCode": "CO2039",
+        "courseName": "Lập trình nâng cao",
+        "semester": {
+            "KHMT": "HK2 Năm 2",
+            "KTMT": "HK2 Năm 2"
+        },
+        "rating": 3,
+        "difficulty": 3,
+        "workload": 3,
+        "review": "",
+        "BTL": "",
+        "Lab": "",
+        "CK_CK": "",
+        "tips": [],
+        "wouldRecommend": true,
+        "FB": "",
+        "author": "",
+        "prerequisites": [],
+        "followups": []
+    },
+    {
+        "id": "CO1007",
+        "courseCode": "CO1007",
+        "courseName": "Cấu trúc rời rạc cho khoa học máy tính",
+        "semester": {
+            "KHMT": "HK2 Năm 1",
+            "KTMT": "HK1 Năm 2"
+        },
+        "rating": 4,
+        "difficulty": 4,
+        "workload": 3,
+        "review": "",
+        "BTL": "",
+        "Lab": "",
+        "CK_CK": "",
+        "tips": [],
+        "wouldRecommend": true,
+        "FB": "",
+        "author": "",
+        "prerequisites": [],
+        "followups": []
+    },
+    {
+        "id": "CO2011",
+        "courseCode": "CO2011",
+        "courseName": "Mô hình hóa toán học",
+        "semester": {
+            "KHMT": "HK1 Năm 2",
+            "KTMT": "HK2 Năm 2"
+        },
+        "rating": 4,
+        "difficulty": 5,
+        "workload": 4,
+        "review": "",
+        "BTL": "",
+        "Lab": "",
+        "CK_CK": "",
+        "tips": [],
+        "wouldRecommend": true,
+        "FB": "",
+        "author": "",
+        "prerequisites": [],
+        "followups": []
+    },
+    {
+        "id": "CO2017",
+        "courseCode": "CO2017",
+        "courseName": "Hệ điều hành",
+        "semester": {
+            "KHMT": "HK2 Năm 2",
+            "KTMT": "HK2 Năm 2"
+        },
+        "rating": 4,
+        "difficulty": 5,
+        "workload": 4,
+        "review": "",
+        "BTL": "",
+        "Lab": "",
+        "CK_CK": "",
+        "tips": [],
+        "wouldRecommend": true,
+        "FB": "",
+        "author": "",
+        "prerequisites": [],
+        "followups": []
+    },
+    {
+        "id": "CO3001",
+        "courseCode": "CO3001",
+        "courseName": "Công nghệ phần mềm",
+        "semester": {
+            "KHMT": "HK1 Năm 3",
+            "KTMT": "HK1 Năm 3"
+        },
+        "rating": 4,
+        "difficulty": 3,
+        "workload": 3,
+        "review": "",
+        "BTL": "",
+        "Lab": "",
+        "CK_CK": "",
+        "tips": [],
+        "wouldRecommend": true,
+        "FB": "",
+        "author": "",
+        "prerequisites": [],
+        "followups": []
+    },
+    {
+        "id": "CO3005",
+        "courseCode": "CO3005",
+        "courseName": "Nguyên lý ngôn ngữ lập trình",
+        "semester": {
+            "KHMT": "HK3 Năm 2"
+        },
+        "rating": 5,
+        "difficulty": 5,
+        "workload": 5,
+        "review": "",
+        "BTL": "",
+        "Lab": "",
+        "CK_CK": "",
+        "tips": [],
+        "wouldRecommend": true,
+        "FB": "",
+        "author": "",
+        "prerequisites": [],
+        "followups": []
+    },
+    {
+        "id": "CO3093",
+        "courseCode": "CO3093",
+        "courseName": "Mạng máy tính",
+        "semester": {
+            "KHMT": "HK1 Năm 3",
+            "KTMT": "HK2 Năm 3"
+        },
+        "rating": 4,
+        "difficulty": 4,
+        "workload": 4,
+        "review": "",
+        "BTL": "",
+        "Lab": "",
+        "CK_CK": "",
+        "tips": [],
+        "wouldRecommend": true,
+        "FB": "",
+        "author": "",
+        "prerequisites": [],
+        "followups": []
+    }
+]

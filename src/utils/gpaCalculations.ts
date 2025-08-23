@@ -76,6 +76,66 @@ export const getTotalCredits = (monHocList: MonHoc[]) => {
     .reduce((sum, mon) => sum + mon.soTinChi, 0);
 };
 
+<<<<<<< HEAD
+=======
+interface GradePlan {
+  [grade: string]: number;
+}
+
+export function gradePlanForTarget(
+  currentGPA: number,
+  completedCredits: number,
+  targetGPA: number,
+  totalRequiredCredits: number
+): GradePlan | null {
+  const gradeValues: Record<string, number> = {
+    C: 2.0,
+    "C+": 2.5,
+    B: 3.0,
+    "B+": 3.5,
+    A: 4.0,
+  };
+
+  const remainingCredits = totalRequiredCredits - completedCredits;
+  if (remainingCredits <= 0) return null;
+
+  // Bắt đầu: tất cả tín chỉ còn lại là C
+  let plan: GradePlan = { A: 0, "B+": 0, B: 0, "C+": 0, C: remainingCredits };
+
+  function calcGPA(p: GradePlan) {
+    const totalScore =
+      currentGPA * completedCredits +
+      Object.entries(p).reduce(
+        (sum, [grade, count]) => sum + gradeValues[grade] * count,
+        0
+      );
+    const totalCredits = completedCredits + remainingCredits;
+    return totalScore / totalCredits;
+  }
+
+  // Nếu đã đủ target chỉ với C thì trả luôn
+  if (calcGPA(plan) >= targetGPA) return plan;
+
+  // Nâng dần từ C -> C+ -> B -> B+ -> A
+  const upgradeOrder = ["C", "C+", "B", "B+", "A"];
+  for (let i = 0; i < upgradeOrder.length - 1; i++) {
+    const from = upgradeOrder[i];
+    const to = upgradeOrder[i + 1];
+
+    while (plan[from] > 0) {
+      plan[from]--;
+      plan[to]++;
+
+      if (calcGPA(plan) >= targetGPA) {
+        return plan;
+      }
+    }
+  }
+
+  return null; // không thể đạt được target
+}
+
+>>>>>>> refs/remotes/origin/main
 export const countGrades = (monHocList: MonHoc[]) => {
   const grades = ["A+", "A", "B+", "B", "C+", "C", "D+", "D"];
   const gradeMap: Record<string, number> = {};
@@ -97,7 +157,11 @@ export const processMyBKData = (data: MyBKData): MonHoc[] => {
   return Array.from(
     new Map(
       monHocList
+<<<<<<< HEAD
         .filter((mon: MonHoc) => mon.diemSo <= 50 && mon.soTinChi >= 0) // Allow 0 tin chi for subjects like CCGDTC
+=======
+        .filter((mon: MonHoc) => mon.diemSo <= 50 && mon.soTinChi > 0) // Allow 0 tin chi for subjects like CCGDTC
+>>>>>>> refs/remotes/origin/main
         .sort((a: MonHoc, b: MonHoc) => b.diemSo - a.diemSo)
         .map((mon: MonHoc) => [mon.maMonHoc, mon])
     ).values()

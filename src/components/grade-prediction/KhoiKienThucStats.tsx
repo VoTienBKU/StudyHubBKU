@@ -26,7 +26,11 @@ export const KhoiKienThucStats = ({ khoiKienThucList }: KhoiKienThucStatsProps) 
   const totalRequiredCredits = khoiKienThucList.reduce((sum, khoi) => sum + khoi.soTinChiYeuCau, 0);
   const totalAchievedCredits = khoiKienThucList.reduce((sum, khoi) => sum + khoi.soTinChiDat, 0);
   const completedBlocks = khoiKienThucList.filter(khoi => khoi.tinhTrangHoanThanh === "1").length;
+<<<<<<< HEAD
 
+=======
+  return (<></>)
+>>>>>>> refs/remotes/origin/main
   return (
     <div className="space-y-6 mb-8">
       {/* Summary Stats */}
@@ -71,19 +75,29 @@ export const KhoiKienThucStats = ({ khoiKienThucList }: KhoiKienThucStatsProps) 
           </CardTitle>
         </CardHeader>
         <CardContent>
+<<<<<<< HEAD
           <div className="space-y-3">
+=======
+          <div className="space-y-2">
+>>>>>>> refs/remotes/origin/main
             {khoiKienThucList
               .sort((a, b) => a.soThuTu - b.soThuTu)
               .map((khoi) => {
                 const isCompleted = khoi.tinhTrangHoanThanh === "1";
                 const isMandatory = khoi.batBuoc === "1";
+<<<<<<< HEAD
                 const progressPercent = khoi.soTinChiYeuCau > 0 
                   ? Math.round((khoi.soTinChiDat / khoi.soTinChiYeuCau) * 100) 
+=======
+                const progressPercent = khoi.soTinChiYeuCau > 0
+                  ? Math.round((khoi.soTinChiDat / khoi.soTinChiYeuCau) * 100)
+>>>>>>> refs/remotes/origin/main
                   : 0;
 
                 return (
                   <div
                     key={khoi.uniqueid}
+<<<<<<< HEAD
                     className={`p-4 rounded-lg border-2 ${
                       isCompleted 
                         ? "border-education-secondary/30 bg-education-secondary/5"
@@ -150,6 +164,62 @@ export const KhoiKienThucStats = ({ khoiKienThucList }: KhoiKienThucStatsProps) 
                           className={`h-2 rounded-full transition-all duration-300 ${
                             isCompleted ? "bg-education-secondary" : "bg-orange-400"
                           }`}
+=======
+                    className={`p-3 rounded-lg border-2 flex items-center justify-between gap-4 ${isCompleted
+                      ? "border-education-secondary/30 bg-education-secondary/5"
+                      : "border-orange-200 bg-orange-50"
+                      }`}
+                  >
+                    {/* Tên + icon */}
+                    <div className="flex items-center gap-2 min-w-[200px]">
+                      {isCompleted ? (
+                        <CheckCircle className="h-5 w-5 text-education-secondary" />
+                      ) : (
+                        <XCircle className="h-5 w-5 text-orange-500" />
+                      )}
+                      <span className="font-semibold">{khoi.tenKhoiKienThuc}</span>
+                      {isMandatory && (
+                        <span className="px-2 py-0.5 text-xs rounded-full bg-red-100 text-red-700">
+                          Bắt buộc
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Thông tin */}
+                    <div className="flex flex-wrap items-center gap-6 text-sm">
+                      <div>
+                        <span className="text-muted-foreground">Tín chỉ: </span>
+                        <span className="font-medium">
+                          {khoi.soTinChiDat}/{khoi.soTinChiYeuCau}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-muted-foreground">Môn học: </span>
+                        <span className="font-medium">
+                          {khoi.soMonHocDat}/{khoi.soMonHocYeuCau || "Không yêu cầu"}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-muted-foreground">Tiến độ: </span>
+                        <span className={`font-medium ${isCompleted ? "text-education-secondary" : "text-orange-600"}`}>
+                          {progressPercent}%
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-muted-foreground">Trạng thái: </span>
+                        <span className={`font-medium ${isCompleted ? "text-education-secondary" : "text-orange-600"}`}>
+                          {isCompleted ? "Hoàn thành" : "Chưa đạt"}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Progress bar nhỏ */}
+                    <div className="w-32">
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div
+                          className={`h-2 rounded-full transition-all duration-300 ${isCompleted ? "bg-education-secondary" : "bg-orange-400"
+                            }`}
+>>>>>>> refs/remotes/origin/main
                           style={{ width: `${Math.min(progressPercent, 100)}%` }}
                         />
                       </div>

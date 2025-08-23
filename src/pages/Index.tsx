@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, TrendingUp, BookOpen, Users } from "lucide-react";
+import { FileText, Calendar, TrendingUp, BookOpen, Users, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -14,9 +14,18 @@ const Index = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Chào mừng đến với <span className="text-primary">StudyHubBKU</span>
             </h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              Ứng dụng hỗ trợ học tập toàn diện cho sinh viên.
-              Quản lý thời khóa biểu và dự đoán điểm số một cách thông minh.
+            <p className="text-sm text-muted-foreground">
+              Chúng tôi cần sự <span className="font-medium text-foreground">feedback </span>
+              và góp ý nhiều hơn để cải thiện tool.
+              Tham gia nhóm:{" "}
+              <a
+                href="https://www.facebook.com/groups/khmt.ktmt.cse.bku"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-education-primary hover:underline"
+              >
+                Thảo luận kiến thức CNTT trường BK về KHMT(CScience), KTMT(CEngineering)
+              </a>
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
@@ -31,6 +40,18 @@ const Index = () => {
                   <span>Dự đoán điểm TB</span>
                 </Link>
               </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link to="/course-review" className="flex items-center space-x-2">
+                  <MessageSquare className="h-5 w-5" />
+                  <span>Review môn học</span>
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link to="/exam-archive" className="flex items-center space-x-2">
+                  <FileText className="h-5 w-5" />
+                  <span>Lưu trữ đề thi</span>
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -41,7 +62,7 @@ const Index = () => {
             <h2 className="text-3xl font-bold text-center text-foreground mb-12">
               Tính năng chính
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <Card className="text-center">
                 <CardHeader>
                   <Calendar className="h-12 w-12 text-primary mx-auto mb-4" />
@@ -74,6 +95,18 @@ const Index = () => {
                 <CardContent>
                   <p className="text-muted-foreground">
                     Giám sát quá trình học tập và đánh giá hiệu suất học tập cá nhân.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center">
+                <CardHeader>
+                  <MessageSquare className="h-12 w-12 text-primary mx-auto mb-4" />
+                  <CardTitle>Review môn học</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Chia sẻ và đọc đánh giá về các môn học từ sinh viên khác.
                   </p>
                 </CardContent>
               </Card>

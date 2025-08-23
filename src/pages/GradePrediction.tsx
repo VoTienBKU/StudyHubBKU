@@ -7,12 +7,20 @@ import { SubjectList } from "@/components/grade-prediction/SubjectList";
 import { MyBKConnection } from "@/components/grade-prediction/MyBKConnection";
 import { ManualDataInput } from "@/components/grade-prediction/ManualDataInput";
 import { KhoiKienThucStats } from "@/components/grade-prediction/KhoiKienThucStats";
+<<<<<<< HEAD
+=======
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+>>>>>>> refs/remotes/origin/main
 import {
   calculateGPA,
   getTotalCredits,
   countGrades,
   processMonHocData,
   processMyBKData,
+<<<<<<< HEAD
+=======
+  gradePlanForTarget,
+>>>>>>> refs/remotes/origin/main
   getTotalRequiredCredits
 } from "@/utils/gpaCalculations";
 
@@ -55,6 +63,10 @@ const GradePrediction = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/main
   const handleOpenAndFetchData = () => {
     if (!url.trim()) {
       toast({
@@ -140,8 +152,18 @@ const GradePrediction = () => {
             <h1 className="text-3xl font-bold text-foreground mb-2">
               Dự đoán điểm trung bình
             </h1>
-            <p className="text-muted-foreground">
-              Nhập URL MyBK để phân tích và dự báo kết quả học tập
+            <p className="text-sm text-muted-foreground">
+              Chúng tôi cần sự <span className="font-medium text-foreground">feedback </span>
+              và góp ý nhiều hơn để cải thiện tool.
+              Tham gia nhóm:{" "}
+              <a
+                href="https://www.facebook.com/groups/khmt.ktmt.cse.bku"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-education-primary hover:underline"
+              >
+                Thảo luận kiến thức CNTT trường BK về KHMT(CScience), KTMT(CEngineering)
+              </a>
             </p>
           </div>
 
@@ -170,8 +192,65 @@ const GradePrediction = () => {
                     totalRequiredCredits={totalRequiredCredits > 0 ? totalRequiredCredits : undefined}
                   />
 
+<<<<<<< HEAD
                   <GradeDistribution gradeMap={gradeDistribution} />
 
+=======
+                  <div className="flex flex-col lg:flex-row gap-6 mb-8">
+                    {/* Biểu đồ bên trái */}
+                    <div className="flex-1">
+                      <GradeDistribution gradeMap={gradeDistribution} />
+                    </div>
+
+                    {/* Mục tiêu GPA bên phải */}
+                    <div className="w-full lg:w-1/3">
+                      <Card>
+                        <CardHeader>
+                          <CardTitle>Mục tiêu GPA</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="space-y-2 text-sm">
+                            <div>
+                              🎯 Giỏi (≥ 3.2):{" "}
+                              {(() => {
+                                const plan = gradePlanForTarget(
+                                  gpa.gpa4,
+                                  totalCredits,
+                                  3.2,
+                                  totalRequiredCredits
+                                );
+                                return plan
+                                  ? Object.entries(plan)
+                                    .filter(([_, count]) => count > 0)
+                                    .map(([grade, count]) => `${count} tín chỉ ${grade}`)
+                                    .join(", ")
+                                  : "Không thể đạt được";
+                              })()}
+                            </div>
+
+                            <div>
+                              🏆 Xuất sắc (≥ 3.6):{" "}
+                              {(() => {
+                                const plan = gradePlanForTarget(
+                                  gpa.gpa4,
+                                  totalCredits,
+                                  3.6,
+                                  totalRequiredCredits
+                                );
+                                return plan
+                                  ? Object.entries(plan)
+                                    .filter(([_, count]) => count > 0)
+                                    .map(([grade, count]) => `${count} tín chỉ ${grade}`)
+                                    .join(", ")
+                                  : "Không thể đạt được";
+                              })()}
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+>>>>>>> refs/remotes/origin/main
                   <SubjectList monHocList={monHocList} />
                 </>
               )}

@@ -1,13 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar as IconCalendar, ChevronDown, ChevronUp } from "lucide-react";
+<<<<<<< HEAD
 import { useState } from "react";
+=======
+import React, { useEffect, useRef, useState } from "react";
+>>>>>>> refs/remotes/origin/main
 
 interface Course {
   id: string;
   course_code: string;
   course_name: string;
   list_group?: Array<{
+<<<<<<< HEAD
     group_name: string;
+=======
+    lt_group: string;
+>>>>>>> refs/remotes/origin/main
     lecturer?: string;
     bt_lecturer?: string;
   }>;
@@ -49,8 +57,53 @@ export const SearchAndFilter = ({
   filterByDate
 }: SearchAndFilterProps) => {
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+<<<<<<< HEAD
   return (
     <Card className="mb-4">
+=======
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (ev: MouseEvent) => {
+      if (!containerRef.current) return;
+      if (!(ev.target instanceof Node)) return;
+      if (!containerRef.current.contains(ev.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // When searchQ changes from parent, open dropdown if there are results
+  useEffect(() => {
+    if (searchQ && searchResults && searchResults.length > 0) {
+      setIsDropdownOpen(true);
+    } else {
+      // do not force-close here if you want to keep it open for other reasons,
+      // but safe to close when no results
+      setIsDropdownOpen(false);
+    }
+  }, [searchQ, searchResults]);
+
+  const handleInputChange = (v: string) => {
+    // open dropdown on typing
+    setIsDropdownOpen(true);
+    onSearchChange(v);
+  };
+
+  const handleSelect = (c: Course) => {
+    // set input to course_code (clean) so subsequent searches work predictably
+    onSearchChange(c.course_code || `${c.course_code} — ${c.course_name}`);
+    onSelectCourse(c);
+    setIsDropdownOpen(false);
+  };
+
+  return (
+    <Card className="mb-4" ref={containerRef as any}>
+>>>>>>> refs/remotes/origin/main
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <IconCalendar className="h-5 w-5 text-primary" />
@@ -65,19 +118,34 @@ export const SearchAndFilter = ({
               placeholder="Tìm theo mã/tên môn (vd: AS2013)"
               className="w-full rounded-md border px-3 py-2 text-sm"
               value={searchQ}
+<<<<<<< HEAD
               onChange={(e) => onSearchChange(e.target.value)}
             />
 
             {searchQ && searchResults.length > 0 && (
               <div className="absolute z-10 w-full mt-1 max-h-48 overflow-auto bg-white border rounded-md shadow-lg">
+=======
+              onChange={(e) => handleInputChange(e.target.value)}
+              onFocus={() => {
+                if (searchResults && searchResults.length > 0) setIsDropdownOpen(true);
+              }}
+            />
+
+            {isDropdownOpen && searchQ && searchResults.length > 0 && (
+              <div className="absolute z-10 w-full mt-1 max-h-96 overflow-auto bg-white border rounded-md shadow-lg">
+>>>>>>> refs/remotes/origin/main
                 {searchResults.map(c => (
                   <div
                     key={c.id}
                     className="flex items-start gap-3 p-2 rounded-md hover:bg-slate-100 cursor-pointer"
+<<<<<<< HEAD
                     onClick={() => {
                       onSearchChange(`${c.course_code} — ${c.course_name}`);
                       onSelectCourse(c);
                     }}
+=======
+                    onClick={() => handleSelect(c)}
+>>>>>>> refs/remotes/origin/main
                   >
                     <div className="flex-1">
                       <div className="text-sm font-medium">{c.course_code} - {c.course_name}</div>
@@ -93,19 +161,31 @@ export const SearchAndFilter = ({
 
           <div className="flex flex-wrap gap-1 sm:gap-2">
             <button
+<<<<<<< HEAD
               className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full ${activeCampus === 'all' ? 'bg-primary text-white' : 'bg-slate-100'}`} 
+=======
+              className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full ${activeCampus === 'all' ? 'bg-primary text-white' : 'bg-slate-100'}`}
+>>>>>>> refs/remotes/origin/main
               onClick={() => onCampusChange('all')}
             >
               Tất cả cơ sở
             </button>
             <button
+<<<<<<< HEAD
               className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full ${activeCampus === '1' ? 'bg-primary text-white' : 'bg-slate-100'}`} 
+=======
+              className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full ${activeCampus === '1' ? 'bg-primary text-white' : 'bg-slate-100'}`}
+>>>>>>> refs/remotes/origin/main
               onClick={() => onCampusChange('1')}
             >
               CS1
             </button>
             <button
+<<<<<<< HEAD
               className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full ${activeCampus === '2' ? 'bg-primary text-white' : 'bg-slate-100'}`} 
+=======
+              className={`px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full ${activeCampus === '2' ? 'bg-primary text-white' : 'bg-slate-100'}`}
+>>>>>>> refs/remotes/origin/main
               onClick={() => onCampusChange('2')}
             >
               CS2
@@ -191,7 +271,19 @@ export const SearchAndFilter = ({
           </div>
 
           <div className="flex gap-2">
+<<<<<<< HEAD
             <button className="flex-1 rounded-md border px-3 py-2" onClick={onClear}>Clear</button>
+=======
+            <button
+              className="flex-1 rounded-md border px-3 py-2"
+              onClick={() => {
+                onClear();
+                setIsDropdownOpen(false);
+              }}
+            >
+              Clear
+            </button>
+>>>>>>> refs/remotes/origin/main
           </div>
         </div>
       </CardContent>

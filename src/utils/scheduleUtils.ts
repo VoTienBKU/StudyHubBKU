@@ -41,7 +41,11 @@ export const isTuanCharActive = (ch?: string) => {
 };
 
 export const makeScheduleKey = (course: any, group: any, schedule: any) =>
+<<<<<<< HEAD
   `${course.id}||${group.group_name}||${schedule.thu || ''}||${schedule.tiet || ''}||${schedule.tuan_hoc || ''}`;
+=======
+  `${course.id}||${group.lt_group}||${schedule.thu || ''}||${schedule.tiet || ''}||${schedule.tuan_hoc || ''}`;
+>>>>>>> refs/remotes/origin/main
 
 export const parseTietToRange = (tietStr?: string) => {
   if (!tietStr) return null;

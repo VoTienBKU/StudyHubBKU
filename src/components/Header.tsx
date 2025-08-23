@@ -9,10 +9,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const navItems = [
-  { path: "/schedule", label: "Thời khóa biểu", short: "TKB", icon: Calendar },
+  { path: "/schedule", label: "Thời khóa biểu BKU", short: "TKB BKU", icon: Calendar },
   { path: "/grade-prediction", label: "Dự đoán điểm TB", short: "GPA", icon: TrendingUp },
   { path: "/course-review", label: "Review môn học", short: "Review", icon: MessageSquare },
   { path: "/exam-archive", label: "Đề thi", short: "Đề thi", icon: FileText },
+  { path: "/learningschedule", label: "Thời khóa biểu của bạn", short: "Your TKB", icon: Calendar },
 ];
 
 const Header = () => {

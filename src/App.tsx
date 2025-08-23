@@ -9,6 +9,7 @@ import GradePrediction from "./pages/GradePrediction";
 import CourseReview from "./pages/CourseReview";
 import NotFound from "./pages/NotFound";
 import ExamArchive from "./pages/ExamArchive";
+import LearningSchedule from "./pages/LearningSchedule";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/grade-prediction" element={<GradePrediction />} />
           <Route path="/course-review" element={<CourseReview />} />
           <Route path="/exam-archive" element={<ExamArchive />} />
+          <Route path="/learningschedule" element={<LearningSchedule />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>

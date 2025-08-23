@@ -52,6 +52,12 @@ const Index = () => {
                   <span>Lưu trữ đề thi</span>
                 </Link>
               </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link to="/learningschedule" className="flex items-center space-x-2">
+                  <Calendar className="h-5 w-5" />
+                  <span>Thời khóa biểu của bạn</span>
+                </Link>
+              </Button>
             </div>
           </div>
         </section>

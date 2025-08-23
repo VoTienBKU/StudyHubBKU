@@ -40,6 +40,7 @@ interface CourseReview {
 }
 
 const CourseReview = () => {
+  const navigate = useNavigate();
   const [reviews, setReviews] = useState<CourseReview[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedMajor, setSelectedMajor] = useState<string>("all");

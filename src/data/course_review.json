@@ -7,11 +7,10 @@
             "KHMT": "HK1 Năm 1",
             "KTMT": "HK1 Năm 1"
         },
-        "rating": 5,
+        "rating": 3,
         "difficulty": 2,
         "workload": 1,
-        "review": "Môn học mở đầu khá chill của ngành máy tính. Dễ đạt A+.",
-        "BTL": "BTL 1, 2: Đề bài dễ, có nhiều tài liệu tham khảo. BTL 3: Làm về trích dẫn tài liệu.",
+        "review": "\n- Tổng quan về **CNTT, máy tính, Internet và lập trình**.\n\n### Nội dung chính\n1. **Công nghệ thông tin & Internet** - Khái niệm, ứng dụng, kỹ năng tìm kiếm & báo cáo thông tin.  \n2. **Máy tính & lập trình** - Phần cứng, phần mềm, ngôn ngữ lập trình, giải thuật, phát triển phần mềm.  \n3. **C++ cơ bản** - Kiểu dữ liệu, biến, hằng, phép toán, nhập/xuất dữ liệu, hàm thư viện.  \n4. **Cấu trúc lặp & mảng** - while, for, do-while, vòng lặp lồng nhau, lập trình có cấu trúc, mảng & struct.  \n5. **Hàm** - Khai báo, tham số, giá trị trả về, phạm vi biến, truyền tham chiếu.  \n6. **Internet & Web** - Tìm kiếm, duyệt web, email, Thương mại điện tử, IoT.  \n7. **Hệ thống thông tin** - Thành phần & quá trình phát triển hệ thống thông tin.  \n8. **Tương lai CNTT** - Công nghệ mới: AI, Deep Learning, ứng dụng.  \n9. **Đạo văn** - Khái niệm, lỗi thường gặp, cách tránh, thực hành qua bài tập.",
         "Lab": "Các lab đều khá dễ và thú vị, giúp có nền tảng về lập trình.",
         "CK_CK": "CK: Đề thi nhẹ nhàng, không có bất ngờ lớn. Cần đọc kĩ đề và nắm vững kiến thức",
         "tips": [
@@ -22,9 +21,7 @@
         "FB": "https://www.facebook.com/tien.vinh.9081323",
         "author": "Vĩnh Tiến (KSTN - KHMT - K24)",
         "prerequisites": [],
-        "followups": [
-            "CO1027"
-        ]
+        "followups": []
     },
     {
         "id": "2",
@@ -34,10 +31,10 @@
             "KHMT": "HK1 Năm 1",
             "KTMT": "HK1 Năm 1"
         },
-        "rating": 4,
+        "rating": 3,
         "difficulty": 4,
         "workload": 4,
-        "review": "Môn học giúp hiểu bao quát về phần cứng máy tính. Điểm chủ yếu B trở lên.",
+        "review": "\n\n- Hiểu bao quát về **phần cứng máy tính**.\n\n### Nội dung chính\n1. **Số & mã** - Hệ đếm, chuyển đổi, mã (BCD, Gray), parity.\n2. **Đại số Boole** - Biểu thức, cổng logic, định lý DeMorgan.\n3. **Mạch tổ hợp** - SOP, POS, K-map, XOR/XNOR, IC số.\n4. **Flip-Flop** - Latch, FF (SR, JK, D), clock, timing.\n5. **Mạch số học** - Cộng/trừ bù 2, nhân/chia, adder.\n6. **Bộ đếm & thanh ghi** - Counter async/sync, shift register.\n7. **MSI Circuits** - Encoder/Decoder, MUX/DEMUX, Comparator, Data bus.",
         "BTL": "Không có",
         "Lab": "Lab 2, lab 3, lab 4 hơi khó. Các lab còn lại tương đối dễ. Phần lab test tùy nhân phẩm gặp giảng viên ra đề dễ hay khó 🙁.",
         "CK_CK": "CK: Đề thi nhẹ nhàng, không có bất ngờ lớn. Nhiều câu hỏi nên khá mất thời gian. ",
@@ -50,9 +47,7 @@
         "FB": "https://www.facebook.com/tien.vinh.9081323",
         "author": "Vĩnh Tiến (KSTN - KHMT - K24)",
         "prerequisites": [],
-        "followups": [
-            "CO1027"
-        ]
+        "followups": []
     },
     {
         "id": "CO1027",
@@ -65,7 +60,7 @@
         "rating": 5,
         "difficulty": 5,
         "workload": 5,
-        "review": "Học về c++ gồm 2 lần là lập trình thủ tục và lập trình hướng đối tượng",
+        "review": "- Học về C++ gồm 2 phần: **lập trình thủ tục** và **lập trình hướng đối tượng**.\n\n### Nội dung chính\n1. **Các thành phần căn bản của C++** - Dãy, chuỗi, kiểu dữ liệu có cấu trúc (Array, String, Structured Types).\n2. **Hàm và con trỏ** - Hàm, tham số, giá trị trả về, phạm vi biến, truyền tham chiếu, đệ quy, truyền mảng, con trỏ.\n3. **Lớp (OOP cơ bản)** - Lớp, che giấu thông tin, phương thức, con trỏ trong lớp, cấp phát động (new/delete), hàm tạo/hủy, đối tượng hằng, kế thừa.\n4. **Chủ đề nâng cao** - Template, Abstract class, Virtual function, Polymorphism, linked list/game (ứng dụng OOP), Exception handling, Tracing technique, giới thiệu các ngôn ngữ khác.",
         "BTL": "BTL1: sẽ về lập trình thủ tục độ khó trung bình, BTL2: sẽ về lập trình hướng đối tượng độ khó gần khó nhất trong các BTL của MT",
         "Lab": "Lab khá nhẹ nhàn, cuối kì sẽ có một bài lab tổng kết thi ở lớp",
         "CK_CK": "GK không có, CK hỏi về kiến thức c++ về lập trình thủ tục và lập trình hướng đối tượng và có hamrony",
@@ -84,8 +79,8 @@
         "courseCode": "CO2003",
         "courseName": "Cấu trúc dữ liệu và giải thuật",
         "semester": {
-            "KHMT": "HK2 Năm 1",
-            "KTMT": "HK2 Năm 1"
+            "KHMT": "HK1 Năm 2",
+            "KTMT": "HK1 Năm 2"
         },
         "rating": 5,
         "difficulty": 5,
@@ -96,8 +91,8 @@
         "CK_CK": "",
         "tips": [],
         "wouldRecommend": true,
-        "FB": "",
-        "author": "",
+        "FB": "https://www.facebook.com/Shiba.Vo.Tien",
+        "author": "Võ Tiến",
         "prerequisites": [],
         "followups": []
     },
@@ -106,8 +101,8 @@
         "courseCode": "CO2007",
         "courseName": "Kiến trúc máy tính",
         "semester": {
-            "KHMT": "HK2 Năm 1",
-            "KTMT": "HK2 Năm 1"
+            "KHMT": "HK1 Năm 2",
+            "KTMT": "HK1 Năm 2"
         },
         "rating": 0,
         "difficulty": 0,
@@ -177,15 +172,17 @@
         },
         "rating": 4,
         "difficulty": 4,
-        "workload": 3,
-        "review": "",
-        "BTL": "",
+        "workload": 4,
+        "review": "- Môn học nền tảng về **logic, tập hợp, đồ thị, cây và thuật toán rời rạc**, giúp xây nền tảng cho Khoa học máy tính.\n\n### Nội dung chính\n1. **Giới thiệu** - Hướng nghiên cứu, phương pháp học, phần mềm hỗ trợ.\n2. **Logic & Chứng minh** - Số học số nguyên, logic mệnh đề & vị từ, lượng từ, chứng minh phản chứng, quy nạp, ứng dụng quy nạp.\n3. **Lý thuyết tập hợp** - Tập hợp & phép toán, ánh xạ, đếm được, quan hệ & thứ tự, tổ hợp - chỉnh hợp, các nguyên lý đếm (cộng, nhân, bao gồm, loại trừ), xác suất rời rạc cơ bản.\n4. **Quan hệ** - Định nghĩa, cách biểu diễn, tính bao đóng & phân loại.\n5. **Lý thuyết đồ thị** - Đồ thị cơ bản (vô hướng, có hướng, có trọng số), biểu diễn đồ thị, đẳng cấu, bài toán đối sánh, tìm đường đi ngắn nhất.\n6. **Cây & thuật toán** - Tính chất cây, cây nhị phân, các phép duyệt, cây khung nhỏ nhất (MST).\n7. **Đường đi & Chu trình** - Chu trình Hamilton, Euler, thuật toán đường đi ngắn nhất, ứng dụng trong bài toán dòng chảy.",
+        "BTL": "Bài tập lớn khá nhọc nhằn và phức tạo đồi hỏi tối ưu thuật toán",
         "Lab": "",
-        "CK_CK": "",
-        "tips": [],
+        "CK_CK": "GK CK khá khó đồi hỏi tư duy toán học nhiều",
+        "tips": [
+            "Làm nhiều để nâng cao tư duy toán học"
+        ],
         "wouldRecommend": true,
-        "FB": "",
-        "author": "",
+        "FB": "https://www.facebook.com/Shiba.Vo.Tien",
+        "author": "Võ Tiến",
         "prerequisites": [],
         "followups": []
     },

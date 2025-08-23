@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Star, Search, Plus, BookOpen, Clock, Brain, ExternalLink, Lightbulb, Filter } from "lucide-react";
 import coursesReview from "@/data/course_review.json";
+import ReactMarkdown from "react-markdown";
 
 interface CourseReview {
   id: string;
@@ -96,8 +97,8 @@ const CourseReview = () => {
       // Semester filter
       let matchesSemester = true;
       if (selectedSemester !== "all") {
-        matchesSemester = review.semester.KHMT === selectedSemester || 
-                         review.semester.KTMT === selectedSemester;
+        matchesSemester = review.semester.KHMT === selectedSemester ||
+          review.semester.KTMT === selectedSemester;
       }
 
       return matchesSearch && matchesMajor && matchesSemester;
@@ -181,7 +182,7 @@ const CourseReview = () => {
               <Filter className="h-4 w-4 text-muted-foreground" />
               <span className="text-sm font-medium">Bộ lọc:</span>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-3 flex-1">
               {/* Major Filter */}
               <div className="flex items-center gap-2">
@@ -218,9 +219,9 @@ const CourseReview = () => {
 
               {/* Clear Filters */}
               {(selectedMajor !== "all" || selectedSemester !== "all" || searchQuery) && (
-                <Button 
-                  variant="outline" 
-                  size="sm" 
+                <Button
+                  variant="outline"
+                  size="sm"
                   onClick={clearFilters}
                   className="whitespace-nowrap"
                 >
@@ -257,8 +258,8 @@ const CourseReview = () => {
                 <BookOpen className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
                 <h3 className="text-lg font-semibold">Không tìm thấy review nào</h3>
                 <p className="text-muted-foreground mb-4">
-                  {searchQuery || selectedMajor !== "all" || selectedSemester !== "all" 
-                    ? "Th�� thay đổi điều kiện tìm kiếm hoặc bộ lọc" 
+                  {searchQuery || selectedMajor !== "all" || selectedSemester !== "all"
+                    ? "Th�� thay đổi điều kiện tìm kiếm hoặc bộ lọc"
                     : "Hãy là người đầu tiên chia sẻ review"}
                 </p>
                 {!(searchQuery || selectedMajor !== "all" || selectedSemester !== "all") && (
@@ -318,9 +319,10 @@ const CourseReview = () => {
                 <CardContent className="space-y-4">
                   {/* Review Text */}
                   <div className="bg-gray-50 p-3 rounded-lg">
-                    <p className="text-sm leading-relaxed">{review.review}</p>
+                    <ReactMarkdown>
+                      {review.review}
+                    </ReactMarkdown>
                   </div>
-
                   {/* BTL / Lab / CK Grid */}
                   {(review.BTL || review.Lab || review.CK_CK) && (
                     <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
@@ -363,35 +365,6 @@ const CourseReview = () => {
                     </div>
                   )}
 
-                  {/* Prerequisites + Followups */}
-                  {(review.prerequisites?.length || review.followups?.length) && (
-                    <div className="flex flex-wrap gap-4 text-xs">
-                      {review.prerequisites?.length > 0 && (
-                        <div className="flex items-center gap-1">
-                          <span className="text-muted-foreground">Môn tiên quyết:</span>
-                          <div className="flex gap-1">
-                            {review.prerequisites.map((prereq, index) => (
-                              <Badge key={index} variant="outline" className="text-xs">
-                                {prereq}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                      {review.followups?.length > 0 && (
-                        <div className="flex items-center gap-1">
-                          <span className="text-muted-foreground">Nên học sau:</span>
-                          <div className="flex gap-1">
-                            {review.followups.map((followup, index) => (
-                              <Badge key={index} variant="outline" className="text-xs">
-                                {followup}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
 
                   {/* Footer */}
                   <div className="flex items-center justify-between pt-3 border-t">

@@ -3,7 +3,6 @@ import Layout from "@/components/Layout";
 import { SearchAndFilter } from "@/components/schedule/SearchAndFilter";
 import { ScheduleResults } from "@/components/schedule/ScheduleResults";
 import { PersonalScheduleManager } from "@/components/schedule/PersonalScheduleManager";
-import { CourseExtractor } from "@/components/schedule/CourseExtractor";
 import { useScheduleState } from "@/hooks/useScheduleState";
 import coursesData from "@/data/course_sched.json";
 import { useCourseSearch } from "@/hooks/useCourseSearch";
@@ -277,12 +276,6 @@ const Schedule = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-4">
-            <CourseExtractor
-              combinedItems={combinedItems}
-              selectedCourse={selectedCourse}
-              searchResults={searchedCourses}
-            />
-            
             <SearchAndFilter
               searchQ={searchQ}
               onSearchChange={setSearchQ}
@@ -299,6 +292,7 @@ const Schedule = () => {
               onDateSelect={handleDateSelect}
               onClearDate={handleClearDate}
               filterByDate={filterByDate}
+              personalSchedule={personalSchedule}
             />
             
             <PersonalScheduleManager

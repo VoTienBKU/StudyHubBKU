@@ -70,7 +70,7 @@ interface PersonalScheduleManagerProps {
 }
 
 export const PersonalScheduleManager: React.FC<PersonalScheduleManagerProps> = ({
-  personalSchedule,
+  personalSchedule = [], // Provide default empty array
   onUpdateSchedule
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -80,13 +80,15 @@ export const PersonalScheduleManager: React.FC<PersonalScheduleManagerProps> = (
     if (!inputData.trim()) return;
     
     const newEntries = parsePersonalScheduleData(inputData);
-    const updatedSchedule = [...personalSchedule, ...newEntries];
+    const safeSchedule = Array.isArray(personalSchedule) ? personalSchedule : [];
+    const updatedSchedule = [...safeSchedule, ...newEntries];
     onUpdateSchedule(updatedSchedule);
     setInputData("");
   };
 
   const handleRemoveEntry = (index: number) => {
-    const updatedSchedule = personalSchedule.filter((_, i) => i !== index);
+    const safeSchedule = Array.isArray(personalSchedule) ? personalSchedule : [];
+    const updatedSchedule = safeSchedule.filter((_, i) => i !== index);
     onUpdateSchedule(updatedSchedule);
   };
 
@@ -94,7 +96,7 @@ export const PersonalScheduleManager: React.FC<PersonalScheduleManagerProps> = (
     onUpdateSchedule([]);
   };
 
-  const groupedByDay = personalSchedule.reduce((acc, entry, index) => {
+  const groupedByDay = (Array.isArray(personalSchedule) ? personalSchedule : []).reduce((acc, entry, index) => {
     const day = entry.day === '--' ? 'Không xác định' : `Thứ ${entry.day}`;
     if (!acc[day]) acc[day] = [];
     acc[day].push({ ...entry, originalIndex: index });
@@ -107,7 +109,7 @@ export const PersonalScheduleManager: React.FC<PersonalScheduleManagerProps> = (
         <CollapsibleTrigger asChild>
           <CardHeader className="cursor-pointer hover:bg-muted/50 transition-colors">
             <CardTitle className="text-lg flex items-center justify-between">
-              <span>Thời khóa biểu cá nhân ({personalSchedule.length} môn)</span>
+              <span>Thời khóa biểu cá nhân ({Array.isArray(personalSchedule) ? personalSchedule.length : 0} môn)</span>
               {isOpen ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
             </CardTitle>
           </CardHeader>
@@ -129,7 +131,7 @@ export const PersonalScheduleManager: React.FC<PersonalScheduleManagerProps> = (
                   <Plus className="h-4 w-4 mr-2" />
                   Thêm môn
                 </Button>
-                {personalSchedule.length > 0 && (
+                {Array.isArray(personalSchedule) && personalSchedule.length > 0 && (
                   <Button variant="destructive" onClick={handleClearAll}>
                     <Trash2 className="h-4 w-4 mr-2" />
                     Xóa tất cả
@@ -183,7 +185,7 @@ export const PersonalScheduleManager: React.FC<PersonalScheduleManagerProps> = (
               </div>
             )}
 
-            {personalSchedule.length === 0 && (
+            {(!Array.isArray(personalSchedule) || personalSchedule.length === 0) && (
               <div className="text-center py-8 text-muted-foreground">
                 <p>Chưa có môn học nào trong thời khóa biểu cá nhân</p>
                 <p className="text-sm mt-1">Thêm môn học bằng cách dán dữ liệu ở trên</p>

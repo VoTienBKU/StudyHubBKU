@@ -201,7 +201,7 @@ const GradePrediction = () => {
                               🎯 Giỏi (≥ 3.2):{" "}
                               {(() => {
                                 const plan = gradePlanForTarget(
-                                  gpa.gpa4,
+                                  parseFloat(String(gpa.gpa4)),
                                   totalCredits,
                                   3.2,
                                   totalRequiredCredits
@@ -219,7 +219,7 @@ const GradePrediction = () => {
                               🏆 Xuất sắc (≥ 3.6):{" "}
                               {(() => {
                                 const plan = gradePlanForTarget(
-                                  gpa.gpa4,
+                                  parseFloat(String(gpa.gpa4)),
                                   totalCredits,
                                   3.6,
                                   totalRequiredCredits

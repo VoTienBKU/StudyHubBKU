@@ -2,8 +2,24 @@
 export const STORAGE_KEYS = {
   SCHEDULE_FILTERS: 'schedule_filters',
   SCHEDULE_SELECTED_COURSE: 'schedule_selected_course',
-  SCHEDULE_VIEW_STATE: 'schedule_view_state'
+  SCHEDULE_VIEW_STATE: 'schedule_view_state',
+  PERSONAL_SCHEDULE: 'personal_schedule'
 } as const;
+
+export interface PersonalScheduleEntry {
+  semester: string;
+  courseCode: string;
+  courseName: string;
+  credits: number;
+  practicalCredits: number;
+  group: string;
+  day: string;
+  timePeriod: string;
+  timeRange: string;
+  room: string;
+  campus: string;
+  weeks: string;
+}
 
 // Schedule filter interface
 export interface ScheduleFilters {
@@ -97,6 +113,15 @@ export const clearScheduleData = (): void => {
   removeFromLocalStorage(STORAGE_KEYS.SCHEDULE_FILTERS);
   removeFromLocalStorage(STORAGE_KEYS.SCHEDULE_SELECTED_COURSE);
   removeFromLocalStorage(STORAGE_KEYS.SCHEDULE_VIEW_STATE);
+};
+
+// Personal schedule localStorage functions
+export const savePersonalSchedule = (schedule: PersonalScheduleEntry[]): void => {
+  saveToLocalStorage(STORAGE_KEYS.PERSONAL_SCHEDULE, schedule);
+};
+
+export const loadPersonalSchedule = (): PersonalScheduleEntry[] => {
+  return loadFromLocalStorage<PersonalScheduleEntry[]>(STORAGE_KEYS.PERSONAL_SCHEDULE, []);
 };
 
 // Helper to convert Date to/from ISO string for localStorage

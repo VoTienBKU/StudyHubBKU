@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar as IconCalendar, ChevronDown, ChevronUp } from "lucide-react";
+import { Calendar as IconCalendar, ChevronDown, ChevronUp, List, BookOpen } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
+import type { PersonalScheduleEntry } from "@/utils/localStorage";
 
 interface Course {
   id: string;
@@ -29,6 +30,7 @@ interface SearchAndFilterProps {
   onDateSelect: (date: Date) => void;
   onClearDate: () => void;
   filterByDate: boolean;
+  personalSchedule: PersonalScheduleEntry[];
 }
 
 export const SearchAndFilter = ({
@@ -46,10 +48,12 @@ export const SearchAndFilter = ({
   selectedDate,
   onDateSelect,
   onClearDate,
-  filterByDate
+  filterByDate,
+  personalSchedule
 }: SearchAndFilterProps) => {
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isPersonalListOpen, setIsPersonalListOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   // Close dropdown when clicking outside
@@ -89,6 +93,20 @@ export const SearchAndFilter = ({
     setIsDropdownOpen(false);
   };
 
+  const handlePersonalCourseClick = (entry: PersonalScheduleEntry) => {
+    onSearchChange(entry.courseCode);
+    setIsPersonalListOpen(false);
+  };
+
+  // Get unique courses from personal schedule
+  const uniquePersonalCourses = personalSchedule.reduce((acc, entry) => {
+    const key = entry.courseCode;
+    if (!acc.find(item => item.courseCode === key)) {
+      acc.push(entry);
+    }
+    return acc;
+  }, [] as PersonalScheduleEntry[]);
+
   return (
     <Card className="mb-4" ref={containerRef as any}>
       <CardHeader>
@@ -99,6 +117,7 @@ export const SearchAndFilter = ({
       </CardHeader>
       <CardContent>
         <div className="space-y-3">
+
           <div className="relative w-full">
             <input
               type="text"

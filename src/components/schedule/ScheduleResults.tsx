@@ -73,6 +73,9 @@ const ScheduleCard = ({ item }: { item: ScheduleItem }) => (
           <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-500 text-slate-100">
             Giảng viên: {cleanText(item.group.lecturer) || "Chưa phân công"}
           </span>
+          <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-500 text-slate-100">
+            NHÓM - TỔ: {cleanText(item.group.lt_group) || "Chưa phân công"}
+          </span>
         </div>
       </div>
       <div className="text-right text-xs text-muted-foreground">

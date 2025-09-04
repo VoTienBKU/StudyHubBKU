@@ -1,7 +1,8 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { SearchAndFilter } from "@/components/schedule/SearchAndFilter";
 import { ScheduleResults } from "@/components/schedule/ScheduleResults";
+import { PersonalScheduleManager } from "@/components/schedule/PersonalScheduleManager";
 import { useScheduleState } from "@/hooks/useScheduleState";
 import coursesData from "@/data/course_sched.json";
 import { useCourseSearch } from "@/hooks/useCourseSearch";
@@ -13,7 +14,8 @@ import {
   getDaysArrayOfMonth,
   WEEKDAY_LABELS
 } from "@/utils/scheduleUtils";
-import type { Course } from "@/utils/localStorage";
+import type { Course, PersonalScheduleEntry } from "@/utils/localStorage";
+import { loadPersonalSchedule, savePersonalSchedule } from "@/utils/localStorage";
 
 interface Group {
   lt_group: string;
@@ -38,6 +40,21 @@ interface ScheduleItem {
 
 const Schedule = () => {
   const COURSES = useMemo(() => (coursesData as Course[]) || [], []);
+
+  // Personal schedule state
+  const [personalSchedule, setPersonalSchedule] = useState<PersonalScheduleEntry[]>([]);
+
+  // Load personal schedule on mount
+  useEffect(() => {
+    const savedSchedule = loadPersonalSchedule();
+    setPersonalSchedule(savedSchedule);
+  }, []);
+
+  // Handle personal schedule updates
+  const handleUpdatePersonalSchedule = (schedule: PersonalScheduleEntry[]) => {
+    setPersonalSchedule(schedule);
+    savePersonalSchedule(schedule);
+  };
 
   // Use the custom hook for state management
   const {
@@ -241,17 +258,25 @@ const Schedule = () => {
       <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
         <div className="text-center mb-6">
           <h1 className="text-3xl font-bold text-foreground mb-1">Thời khóa biểu HCMUT</h1>
-          <p className="text-sm text-muted-foreground">
-            Chúng tôi cần sự <span className="font-medium text-foreground">feedback </span>
-            và góp ý nhiều hơn để cải thiện tool.
-            Tham gia nhóm:{" "}
+          <p className="text-base text-muted-foreground">
+            Chúng tôi rất cần sự{" "}
+            <a
+              href="https://www.facebook.com/share/p/17DSm6YWXT/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-foreground hover:underline"
+            >
+              feedback & góp ý (bình luận vào bài viết này)
+            </a>{" "}
+            để cải thiện tool. <br />
+            Tham gia nhóm{" "}
             <a
               href="https://www.facebook.com/groups/khmt.ktmt.cse.bku"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-education-primary hover:underline"
+              className="text-education-primary hover:underline font-medium"
             >
-              Thảo luận kiến thức CNTT trường BK về KHMT(CScience), KTMT(CEngineering)
+              Thảo luận Kiến thức CNTT của BK (KHMT, KTMT)
             </a>
           </p>
 
@@ -275,6 +300,12 @@ const Schedule = () => {
               onDateSelect={handleDateSelect}
               onClearDate={handleClearDate}
               filterByDate={filterByDate}
+              personalSchedule={personalSchedule}
+            />
+
+            <PersonalScheduleManager
+              personalSchedule={personalSchedule}
+              onUpdateSchedule={handleUpdatePersonalSchedule}
             />
           </div>
 

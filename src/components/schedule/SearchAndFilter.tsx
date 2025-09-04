@@ -117,40 +117,7 @@ export const SearchAndFilter = ({
       </CardHeader>
       <CardContent>
         <div className="space-y-3">
-          {/* Personal schedule quick access */}
-          {uniquePersonalCourses.length > 0 && (
-            <div className="mb-3">
-              <button
-                className="flex items-center justify-between w-full p-2 text-sm font-semibold rounded-md border hover:bg-muted/50"
-                onClick={() => setIsPersonalListOpen(!isPersonalListOpen)}
-              >
-                <div className="flex items-center gap-2">
-                  <List className="h-4 w-4" />
-                  <span>Môn học của tôi ({uniquePersonalCourses.length})</span>
-                </div>
-                {isPersonalListOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-              </button>
 
-              {isPersonalListOpen && (
-                <div className="mt-2 max-h-48 overflow-y-auto border rounded-md bg-background">
-                  {uniquePersonalCourses.map((entry, index) => (
-                    <div
-                      key={`${entry.courseCode}-${index}`}
-                      className="flex items-center gap-2 p-2 hover:bg-muted/50 cursor-pointer border-b last:border-b-0"
-                      onClick={() => handlePersonalCourseClick(entry)}
-                    >
-                      <BookOpen className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                      <div className="flex-1 min-w-0">
-                        <div className="text-sm font-medium truncate">{entry.courseCode}</div>
-                        <div className="text-xs text-muted-foreground truncate">{entry.courseName}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-          
           <div className="relative w-full">
             <input
               type="text"

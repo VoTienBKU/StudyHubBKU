@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Trash2, Plus, ChevronDown, ChevronRight } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import coursesData from "@/data/course_sched.json";
 
 export interface PersonalScheduleEntry {
   semester: string;
@@ -96,12 +97,29 @@ export const PersonalScheduleManager: React.FC<PersonalScheduleManagerProps> = (
     onUpdateSchedule([]);
   };
 
+  // Get lecturer information from course data
+  const getLecturerInfo = (courseCode: string, group: string) => {
+    const courses = coursesData as any[];
+    const course = courses.find(c => c.course_code === courseCode);
+    if (!course) return null;
+
+    const groupData = course.list_group?.find((g: any) => g.lt_group === group);
+
+
+    const lecturerInfo = {
+      lecturer: groupData.lecturer || '',
+      bt_lecturer: groupData.bt_lecturer || ''
+    };
+    return lecturerInfo;
+  };
+
   const groupedByDay = (Array.isArray(personalSchedule) ? personalSchedule : []).reduce((acc, entry, index) => {
     const day = entry.day === '--' ? 'Không xác định' : `Thứ ${entry.day}`;
     if (!acc[day]) acc[day] = [];
-    acc[day].push({ ...entry, originalIndex: index });
+    const lecturerInfo = getLecturerInfo(entry.courseCode, entry.group);
+    acc[day].push({ ...entry, originalIndex: index, lecturerInfo });
     return acc;
-  }, {} as Record<string, (PersonalScheduleEntry & { originalIndex: number })[]>);
+  }, {} as Record<string, (PersonalScheduleEntry & { originalIndex: number; lecturerInfo: any })[]>);
 
   return (
     <Card className="mt-4">
@@ -165,6 +183,13 @@ export const PersonalScheduleManager: React.FC<PersonalScheduleManagerProps> = (
                               )}
                               {entry.room !== '------' && entry.room !== '--' && (
                                 <p>📍 Phòng {entry.room}</p>
+                              )}
+                              {entry.lecturerInfo && (
+                                <>
+                                  {entry.lecturerInfo.lecturer && entry.lecturerInfo.lecturer !== 'Chưa phân công' && (
+                                    <p>👨‍🏫 LT: {entry.lecturerInfo.lecturer}</p>
+                                  )}
+                                </>
                               )}
                               <p>📅 Tuần: {entry.weeks}</p>
                             </div>

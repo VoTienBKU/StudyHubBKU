@@ -40,7 +40,7 @@ interface ScheduleItem {
 
 const Schedule = () => {
   const COURSES = useMemo(() => (coursesData as Course[]) || [], []);
-  
+
   // Personal schedule state
   const [personalSchedule, setPersonalSchedule] = useState<PersonalScheduleEntry[]>([]);
 
@@ -258,17 +258,25 @@ const Schedule = () => {
       <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
         <div className="text-center mb-6">
           <h1 className="text-3xl font-bold text-foreground mb-1">Thời khóa biểu HCMUT</h1>
-          <p className="text-sm text-muted-foreground">
-            Chúng tôi cần sự <span className="font-medium text-foreground">feedback </span>
-            và góp ý nhiều hơn để cải thiện tool.
-            Tham gia nhóm:{" "}
+          <p className="text-base text-muted-foreground">
+            Chúng tôi rất cần sự{" "}
+            <a
+              href="https://www.facebook.com/share/p/17DSm6YWXT/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-foreground hover:underline"
+            >
+              feedback & góp ý (bình luận vào bài viết này)
+            </a>{" "}
+            để cải thiện tool. <br />
+            Tham gia nhóm{" "}
             <a
               href="https://www.facebook.com/groups/khmt.ktmt.cse.bku"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-education-primary hover:underline"
+              className="text-education-primary hover:underline font-medium"
             >
-              Thảo luận kiến thức CNTT trường BK về KHMT(CScience), KTMT(CEngineering)
+              Thảo luận Kiến thức CNTT của BK (KHMT, KTMT)
             </a>
           </p>
 
@@ -294,7 +302,7 @@ const Schedule = () => {
               filterByDate={filterByDate}
               personalSchedule={personalSchedule}
             />
-            
+
             <PersonalScheduleManager
               personalSchedule={personalSchedule}
               onUpdateSchedule={handleUpdatePersonalSchedule}

@@ -1,7 +1,8 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { SearchAndFilter } from "@/components/schedule/SearchAndFilter";
 import { ScheduleResults } from "@/components/schedule/ScheduleResults";
+import { PersonalScheduleManager } from "@/components/schedule/PersonalScheduleManager";
 import { useScheduleState } from "@/hooks/useScheduleState";
 import coursesData from "@/data/course_sched.json";
 import { useCourseSearch } from "@/hooks/useCourseSearch";
@@ -13,7 +14,8 @@ import {
   getDaysArrayOfMonth,
   WEEKDAY_LABELS
 } from "@/utils/scheduleUtils";
-import type { Course } from "@/utils/localStorage";
+import type { Course, PersonalScheduleEntry } from "@/utils/localStorage";
+import { loadPersonalSchedule, savePersonalSchedule } from "@/utils/localStorage";
 
 interface Group {
   lt_group: string;
@@ -38,6 +40,21 @@ interface ScheduleItem {
 
 const Schedule = () => {
   const COURSES = useMemo(() => (coursesData as Course[]) || [], []);
+  
+  // Personal schedule state
+  const [personalSchedule, setPersonalSchedule] = useState<PersonalScheduleEntry[]>([]);
+
+  // Load personal schedule on mount
+  useEffect(() => {
+    const savedSchedule = loadPersonalSchedule();
+    setPersonalSchedule(savedSchedule);
+  }, []);
+
+  // Handle personal schedule updates
+  const handleUpdatePersonalSchedule = (schedule: PersonalScheduleEntry[]) => {
+    setPersonalSchedule(schedule);
+    savePersonalSchedule(schedule);
+  };
 
   // Use the custom hook for state management
   const {
@@ -275,6 +292,12 @@ const Schedule = () => {
               onDateSelect={handleDateSelect}
               onClearDate={handleClearDate}
               filterByDate={filterByDate}
+              personalSchedule={personalSchedule}
+            />
+            
+            <PersonalScheduleManager
+              personalSchedule={personalSchedule}
+              onUpdateSchedule={handleUpdatePersonalSchedule}
             />
           </div>
 

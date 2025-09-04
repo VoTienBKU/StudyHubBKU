@@ -49,7 +49,7 @@ export function useCourseSearch(
       setIndexReady(true);
       return null;
     }
-    const options: Fuse.IFuseOptions<any> = {
+    const options = {
       keys: [
         { name: "course_code_norm", weight: 3 },
         { name: "course_name_norm", weight: 2 },

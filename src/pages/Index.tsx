@@ -12,7 +12,7 @@ const Index = () => {
         <section className="container mx-auto px-4 py-16 text-center">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Chào mừng đến với <span className="text-primary">StudyHubBKU</span>
+              Chào mừng đến với <span className="text-primary">StudyHubBKUU</span>
             </h1>
             <p className="text-sm text-muted-foreground">
               Chúng tôi cần sự <span className="font-medium text-foreground">feedback </span>

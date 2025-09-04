@@ -56,40 +56,51 @@ const parseTietToRange = (tietStr?: string) => {
   return `${String(h1).padStart(2, '0')}:${m1} - ${String(h2).padStart(2, '0')}:${m2}`;
 };
 
-const ScheduleCard = ({ item }: { item: ScheduleItem }) => (
-  <div className="p-2 sm:p-3 rounded-md border bg-slate-800/20">
-    <div className="flex items-start justify-between">
-      <div>
-        <div className="text-sm font-semibold">
-          {item.course.course_code} — {item.course.course_name}
+const ScheduleCard = ({ item }: { item: ScheduleItem }) => {
+  return (
+    <div className="p-2 sm:p-3 rounded-md border bg-slate-800/20">
+      <div className="flex items-start justify-between">
+        <div>
+          <div className="text-sm font-semibold">
+            {item.course.course_code} — {item.course.course_name}
+          </div>
+                    <div className="flex flex-wrap gap-2 mt-1">
+            <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-500 text-slate-100">
+              NHÓM - TỔ: {cleanText(item.group.lt_group) || 'Chưa phân công'}
+            </span>
+            <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-500 text-slate-100">
+              Giảng viên: {cleanText(item.group.lecturer) || 'Chưa phân công'}
+            </span>
+            {(!item.schedule.thu && !item.schedule.tiet && !item.schedule.phong) ? (
+              <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-yellow-500/20 text-yellow-200">
+                Chưa có thông tin lịch học
+              </span>
+            ) : (
+              <>
+                <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-700 text-slate-100">
+                  Phòng: {cleanText(item.schedule.phong) || 'Chưa có dữ liệu'}
+                </span>
+                <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-700 text-slate-100">
+                  Thời gian: {parseTietToRange(item.schedule.tiet) || 'Chưa có dữ liệu'}
+                </span>
+              </>
+            )}
+          </div>
         </div>
-        <div className="flex flex-wrap gap-2 mt-1">
-          <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-700 text-slate-100">
-            Phòng: {cleanText(item.schedule.phong) || '-'}
-          </span>
-          <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-700 text-slate-100">
-            Thời gian: {parseTietToRange(item.schedule.tiet) || '-'}
-          </span>
-          <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-500 text-slate-100">
-            Giảng viên: {cleanText(item.group.lecturer) || "Chưa phân công"}
-          </span>
-          <span className="px-1.5 sm:px-2 py-0.5 text-xs rounded-full bg-slate-500 text-slate-100">
-            NHÓM - TỔ: {cleanText(item.group.lt_group) || "Chưa phân công"}
-          </span>
+        <div className="text-right text-xs text-muted-foreground">
+          CS: {item.schedule?.cs || 'Chưa có dữ liệu'}<br />
+          Nhóm: {item.group.lt_group || 'Chưa phân công'}
         </div>
       </div>
-      <div className="text-right text-xs text-muted-foreground">
-        CS: {item.schedule.cs || '-'}<br />
-        Nhóm: {item.group.lt_group}
+      <div className="mt-2 text-sm text-muted-foreground space-y-1">
+        <div>
+          Tiết: {cleanText(item.schedule?.tiet) || 'Chưa có dữ liệu'} • 
+          Tuần: {cleanText(item.schedule?.tuan_hoc) || 'Chưa có dữ liệu'}
+        </div>
       </div>
     </div>
-    <div className="mt-2 text-sm text-muted-foreground space-y-1">
-      <div>
-        Tiết: {cleanText(item.schedule.tiet) || '-'} • Tuần: {cleanText(item.schedule.tuan_hoc) || '-'}
-      </div>
-    </div>
-  </div>
-);
+  );
+};
 
 export const ScheduleResults = ({
   items,
@@ -122,9 +133,10 @@ export const ScheduleResults = ({
           <div className="text-muted-foreground">Không có kết quả theo lựa chọn hiện tại.</div>
         ) : (
           <div className="space-y-3">
-            {selectedCourse && !filterByDate && groupedForSelectedCourse ? (
+            {!filterByDate && selectedCourse && groupedForSelectedCourse && Object.entries(groupedForSelectedCourse).some(([_, items]) => items.length > 0) ? (
+              // Hiển thị kết quả được nhóm theo thứ cho môn học được chọn
               <div className="space-y-4">
-                {weekdays.map((label) => {
+                {['Chưa có lịch', ...weekdays, 'Không rõ'].map((label) => {
                   const list = groupedForSelectedCourse[label] || [];
                   if (list.length === 0) return null;
                   return (
@@ -139,9 +151,10 @@ export const ScheduleResults = ({
                   );
                 })}
               </div>
-            ) : (!filterByDate && groupedByWeekday ? (
+            ) : !filterByDate && groupedByWeekday && Object.entries(groupedByWeekday).some(([_, items]) => items.length > 0) ? (
+              // Hiển thị kết quả được nhóm theo thứ cho tất cả môn học
               <div className="space-y-4">
-                {weekdays.map((label) => {
+                {['Chưa có lịch', ...weekdays, 'Không rõ'].map((label) => {
                   const list = groupedByWeekday[label] || [];
                   if (list.length === 0) return null;
                   return (
@@ -157,10 +170,13 @@ export const ScheduleResults = ({
                 })}
               </div>
             ) : (
-              items.map((item, i) => (
-                <ScheduleCard key={i} item={item} />
-              ))
-            ))}
+              // Hiển thị tất cả kết quả không được nhóm
+              <div className="space-y-2">
+                {items.map((item, i) => (
+                  <ScheduleCard key={i} item={item} />
+                ))}
+              </div>
+            )}
           </div>
         )}
       </CardContent>

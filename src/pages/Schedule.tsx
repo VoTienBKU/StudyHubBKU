@@ -38,6 +38,14 @@ interface ScheduleItem {
   schedule: Schedule;
 }
 
+const EMPTY_SCHEDULE: Schedule = {
+  thu: null,
+  tiet: null,
+  phong: "chưa có dữ liệu",
+  cs: null,
+  tuan_hoc: null
+};
+
 const Schedule = () => {
   const COURSES = useMemo(() => (coursesData as Course[]) || [], []);
 
@@ -109,21 +117,38 @@ const Schedule = () => {
     const items: ScheduleItem[] = [];
 
     const pushIfMatch = (course: Course, group: Group, schedule: Schedule) => {
-      if (activeCampus !== "all" && String(schedule.cs) !== String(activeCampus)) return;
+      // Chỉ kiểm tra campus nếu schedule có cơ sở được chỉ định
+      if (schedule.cs && activeCampus !== "all" && String(schedule.cs) !== String(activeCampus)) return;
       items.push({ course, group, schedule });
     };
 
     if (selectedCourse) {
       for (const g of selectedCourse.list_group || []) {
         if (!lecturerMatches(g)) continue;
-        for (const s of g.schedules || []) {
+        
+        // Xử lý nhóm không có lịch
+        if (!g.schedules || g.schedules.length === 0) {
+          pushIfMatch(selectedCourse, g, EMPTY_SCHEDULE);
+          continue;
+        }
+
+        // Xử lý nhóm có lịch
+        let hasMatchingSchedule = false;
+        for (const s of g.schedules) {
           if (filterByDate && selectedDate) {
             if (isScheduleOnDate(selectedCourse, g, s, selectedDate, scheduleOccurrencesCache)) {
               pushIfMatch(selectedCourse, g, s);
+              hasMatchingSchedule = true;
             }
           } else {
             pushIfMatch(selectedCourse, g, s);
+            hasMatchingSchedule = true;
           }
+        }
+        
+        // Nếu có filter date nhưng không tìm thấy lịch phù hợp, hiển thị với EMPTY_SCHEDULE
+        if (filterByDate && selectedDate && !hasMatchingSchedule) {
+          pushIfMatch(selectedCourse, g, EMPTY_SCHEDULE);
         }
       }
       return items;
@@ -151,20 +176,38 @@ const Schedule = () => {
 
   // Group items by weekday (for selected course)
   const groupedForSelectedCourse = useMemo(() => {
-    if (!selectedCourse) return null;
+    if (!selectedCourse) return {};
     const map: Record<string, ScheduleItem[]> = {};
     WEEKDAY_LABELS.forEach((label) => (map[label] = []));
     map["Không rõ"] = [];
+    map["Chưa có lịch"] = []; // Thêm nhóm cho các trường hợp không có lịch
 
     for (const g of selectedCourse.list_group || []) {
+      // Kiểm tra giảng viên trước
       if (!lecturerMatches(g)) continue;
-      for (const s of g.schedules || []) {
+
+      // Nếu không có lịch hoặc lịch rỗng, thêm vào nhóm "Chưa có lịch"
+      if (!g.schedules || g.schedules.length === 0) {
+        map["Chưa có lịch"].push({
+          course: selectedCourse,
+          group: g,
+          schedule: EMPTY_SCHEDULE
+        });
+        continue;
+      }
+
+      // Xử lý các trường hợp có lịch
+      for (const s of g.schedules) {
         if (activeCampus !== "all" && String(s.cs) !== String(activeCampus)) continue;
         if (filterByDate && selectedDate && !isScheduleOnDate(selectedCourse, g, s, selectedDate, scheduleOccurrencesCache)) continue;
 
         const idx = parseWeekdayToIndex(s.thu);
         const label = idx === null ? "Không rõ" : WEEKDAY_LABELS[idx];
-        map[label].push({ course: selectedCourse, group: g, schedule: s });
+        map[label].push({
+          course: selectedCourse,
+          group: g,
+          schedule: s
+        });
       }
     }
     return map;

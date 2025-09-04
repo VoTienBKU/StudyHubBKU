@@ -3472,6 +3472,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "DAQ1",
+        "dk_siso": "chưa biết",
+        "language": "",
+        "lt_group": "DAQ1",
+        "lecturer": "TẠ ĐĂNG KHOA",
+        "bt_group": "",
+        "bt_lecturer": "",
+        "lt_siso": "",
+        "schedules": []
       }
     ]
   },
@@ -4238,7 +4249,7 @@
         "dk_siso": "10/60",
         "language": "V",
         "lt_group": "CC01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "Nguyễn Thị Quỳnh Ngọc",
         "bt_group": "",
         "bt_lecturer": "",
         "lt_siso": "60",
@@ -6806,7 +6817,7 @@
         "dk_siso": "1/20",
         "language": "V",
         "lt_group": "P01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "PHẠM THANH TRÀ",
         "bt_group": "",
         "bt_lecturer": "",
         "lt_siso": "20",
@@ -8046,7 +8057,7 @@
         "dk_siso": "3/20",
         "language": "V",
         "lt_group": "CC01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "LÊ THỊ BẢO THƯ",
         "bt_group": "",
         "bt_lecturer": "",
         "lt_siso": "20",
@@ -10681,6 +10692,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "DT01",
+        "dk_siso": "chưa biết",
+        "language": "",
+        "lt_group": "DT01",
+        "lecturer": "LÊ ĐÌNH THUẬN",
+        "bt_group": "",
+        "bt_lecturer": "",
+        "lt_siso": "",
+        "schedules": []
       }
     ]
   },
@@ -11645,6 +11667,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "DT01",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "DT01",
+        "lecturer": "VƯƠNG BÁ THỊNH",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -12477,6 +12510,17 @@
             "tuan_hoc": "12345678-01234----------------"
           }
         ]
+      },
+      {
+        "group_name": "CH02",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "CH02",
+        "lecturer": "PHAN TRỌNG NHÂN",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -17781,6 +17825,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "L02",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "L02",
+        "lecturer": "PHẠM SƠN TÙNG",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -18217,6 +18272,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "DAQ1",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "DAQ1",
+        "lecturer": "PHẠM SƠN TÙNG",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -18935,7 +19001,7 @@
         "dk_siso": "6/120",
         "language": "V",
         "lt_group": "CH03",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "BÙI PHƯƠNG TRINH",
         "bt_group": "",
         "bt_lecturer": "",
         "lt_siso": "120",
@@ -19123,7 +19189,7 @@
         "dk_siso": "55/108",
         "language": "V",
         "lt_group": "CH01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "CHÂU NGỌC ĐỖ QUYÊN",
         "bt_group": "",
         "bt_lecturer": "",
         "lt_siso": "108",
@@ -22447,7 +22513,7 @@
         "dk_siso": "18/70",
         "language": "V",
         "lt_group": "CH01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "HUỲNH THỊ MINH CHÂU",
         "bt_group": "",
         "bt_lecturer": "",
         "lt_siso": "70",
@@ -24701,6 +24767,17 @@
             "tuan_hoc": "12345-------------------------"
           }
         ]
+      },
+      {
+        "group_name": "DT01",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "DT01",
+        "lecturer": "Trần Nguyễn Anh Thư",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -24728,6 +24805,17 @@
             "tuan_hoc": "12345-------------------------"
           }
         ]
+      },
+      {
+        "group_name": "DT01",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "DT01",
+        "lecturer": "Trần Nguyễn Anh Thư",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -24755,6 +24843,17 @@
             "tuan_hoc": "12345-------------------------"
           }
         ]
+      },
+      {
+        "group_name": "DT01",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "DT01",
+        "lecturer": "Trần Nguyễn Anh Thư",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -32802,6 +32901,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "DT01",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "DT01",
+        "lecturer": "NGUYỄN ĐÌNH HUY",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -40031,6 +40141,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "DT01",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "DT01",
+        "lecturer": "Phạm Thị Lê Na",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -40809,6 +40930,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "DAQ1",
+        "dk_siso": "chưa biết",
+        "language": "",
+        "lt_group": "DAQ1",
+        "lecturer": "NGUYỄN HOÀNG DŨNG",
+        "bt_group": "",
+        "bt_lecturer": "",
+        "lt_siso": "",
+        "schedules": []
       }
     ]
   },
@@ -41394,6 +41526,28 @@
             "tuan_hoc": "12345678-01234----------------"
           }
         ]
+      },
+      {
+        "group_name": "L06",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "L06",
+        "lecturer": "CÙ THỊ HỒNG YẾN",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
+      },
+      {
+        "group_name": "L05",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "L05",
+        "lecturer": "HUỲNH TẤN PHÁT",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -43931,6 +44085,28 @@
             "tuan_hoc": "-2345678-01234567-------------"
           }
         ]
+      },
+      {
+        "group_name": "CC03",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "CC03",
+        "lecturer": "LÊ XUÂN BÁCH",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
+      },
+      {
+        "group_name": "CC04",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "CC04",
+        "lecturer": "LÊ XUÂN BÁCH",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -44053,6 +44229,28 @@
             "tuan_hoc": "-2345678-01234567-------------"
           }
         ]
+      },
+      {
+        "group_name": "CC03",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "CC03",
+        "lecturer": "TRẦN NGỌC THỊNH",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
+      },
+      {
+        "group_name": "CC04",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "CC04",
+        "lecturer": "TRẦN NGỌC THỊNH",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -46200,6 +46398,28 @@
             "tuan_hoc": "-2345678-01234567-------------"
           }
         ]
+      },
+      {
+        "group_name": "CC04",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "CC04",
+        "lecturer": "PHAN QUỐC DŨNG",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
+      },
+      {
+        "group_name": "CC03",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "CC03",
+        "lecturer": "ĐỖ HỒNG TUẤN",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -46685,6 +46905,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "DT01",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "DT01",
+        "lecturer": "LÊ MINH CƯỜNG",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -47989,6 +48220,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "DT01",
+        "dk_siso": "chưa biết",
+        "language": "",
+        "lt_group": "DT01",
+        "lecturer": "TRỊNH XUÂN DŨNG",
+        "bt_group": "",
+        "bt_lecturer": "",
+        "lt_siso": "",
+        "schedules": []
       }
     ]
   },
@@ -48054,6 +48296,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "DT01",
+        "dk_siso": "chưa biết",
+        "language": "",
+        "lt_group": "DT01",
+        "lecturer": "Nguyễn Trung Hiếu",
+        "bt_group": "",
+        "bt_lecturer": "",
+        "lt_siso": "",
+        "schedules": []
       }
     ]
   },
@@ -48883,6 +49136,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "P01",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "P01",
+        "lecturer": "ĐẶNG TUẤN KHANH",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -49552,7 +49816,7 @@
         "dk_siso": "30/30",
         "language": "V",
         "lt_group": "TT01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "PHẠM VIỆT CƯỜNG",
         "bt_group": "TT01",
         "lt_siso": "60",
         "schedules": [
@@ -50553,7 +50817,7 @@
         "dk_siso": "5/60",
         "language": "V",
         "lt_group": "CC01",
-        "lecturer": "",
+        "lecturer": "Trần Trung Dũng",
         "bt_group": "CC01",
         "lt_siso": "60",
         "schedules": [
@@ -51207,7 +51471,7 @@
         "dk_siso": "0/35",
         "language": "V",
         "lt_group": "CC01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "NGUYỄN HOÀNG THIÊN KHÔI",
         "bt_group": "CC01",
         "lt_siso": "35",
         "schedules": [
@@ -51226,7 +51490,7 @@
         "dk_siso": "0/35",
         "language": "V",
         "lt_group": "L01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "LƯƠNG THỊ QUỲNH ANH",
         "bt_group": "L01",
         "lt_siso": "70",
         "schedules": [
@@ -51245,7 +51509,7 @@
         "dk_siso": "0/35",
         "language": "V",
         "lt_group": "L02",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "LƯƠNG THỊ QUỲNH ANH",
         "bt_group": "L02",
         "lt_siso": "70",
         "schedules": [
@@ -51264,7 +51528,7 @@
         "dk_siso": "3/35",
         "language": "V",
         "lt_group": "L03",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "LƯƠNG THỊ QUỲNH ANH",
         "bt_group": "L03",
         "lt_siso": "70",
         "schedules": [
@@ -51283,7 +51547,7 @@
         "dk_siso": "1/35",
         "language": "V",
         "lt_group": "P01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "Bùi Tấn Tân'",
         "bt_group": "P01",
         "lt_siso": "35",
         "schedules": [
@@ -51913,7 +52177,7 @@
         "dk_siso": "26/60",
         "language": "V",
         "lt_group": "L01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "HUỲNH CÔNG KHANH",
         "bt_group": "L01",
         "lt_siso": "60",
         "schedules": [
@@ -58013,6 +58277,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "DTQ1",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "DTQ1",
+        "lecturer": "TRẦN TIẾN ANH",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },
@@ -58342,7 +58617,7 @@
         "dk_siso": "1/20",
         "language": "V",
         "lt_group": "L01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "TRẦN NGUYỄN THIỆN TÂM",
         "bt_group": "",
         "bt_lecturer": "",
         "lt_siso": "20",
@@ -58424,7 +58699,7 @@
         "dk_siso": "0/20",
         "language": "V",
         "lt_group": "L01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "ĐÀO HỒNG HẢI",
         "bt_group": "",
         "bt_lecturer": "",
         "lt_siso": "20",
@@ -58983,7 +59258,7 @@
         "dk_siso": "9/25",
         "language": "V",
         "lt_group": "CC02",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "PHẠM HOÀNG HUY PHƯỚC LỢI",
         "bt_group": "CC02",
         "lt_siso": "25",
         "schedules": [
@@ -59002,7 +59277,7 @@
         "dk_siso": "8/35",
         "language": "V",
         "lt_group": "L01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "BÙI NGỌC PHA",
         "bt_group": "L01",
         "lt_siso": "35",
         "schedules": [
@@ -59029,7 +59304,7 @@
         "dk_siso": "7/20",
         "language": "V",
         "lt_group": "L01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "NGUYỄN XUÂN KHÁ",
         "bt_group": "L01",
         "lt_siso": "20",
         "schedules": [
@@ -59137,7 +59412,7 @@
         "dk_siso": "1/20",
         "language": "V",
         "lt_group": "L01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "NGÔ TẤN PHONG",
         "bt_group": "L01",
         "lt_siso": "20",
         "schedules": [
@@ -59191,7 +59466,7 @@
         "dk_siso": "6/20",
         "language": "V",
         "lt_group": "L01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "HOÀNG TRỌNG QUANG",
         "bt_group": "L01",
         "lt_siso": "20",
         "schedules": [
@@ -59218,7 +59493,7 @@
         "dk_siso": "11/20",
         "language": "V",
         "lt_group": "L01",
-        "lecturer": "\"Chưa/Đang phân công\"",
+        "lecturer": "NGUYỄN XUÂN KHÁ",
         "bt_group": "L01",
         "lt_siso": "20",
         "schedules": [
@@ -59231,6 +59506,17 @@
             "tuan_hoc": "12345678-0123456--------------"
           }
         ]
+      },
+      {
+        "group_name": "DAQ1",
+        "dk_siso": "chưa biết",
+        "language": null,
+        "lt_group": "DAQ1",
+        "lecturer": "PHẠM SƠN TÙNG",
+        "bt_group": null,
+        "bt_lecturer": null,
+        "lt_siso": null,
+        "schedules": []
       }
     ]
   },

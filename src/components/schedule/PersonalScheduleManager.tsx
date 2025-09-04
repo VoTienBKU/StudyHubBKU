@@ -104,7 +104,7 @@ export const PersonalScheduleManager: React.FC<PersonalScheduleManagerProps> = (
     if (!course) return null;
 
     const groupData = course.list_group?.find((g: any) => g.lt_group === group);
-
+    if (!groupData) return null;
 
     const lecturerInfo = {
       lecturer: groupData.lecturer || '',

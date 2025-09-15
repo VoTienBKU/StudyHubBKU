@@ -3,6 +3,8 @@ import Layout from "@/components/Layout";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 import { 
   Pagination, 
   PaginationContent, 
@@ -12,7 +14,7 @@ import {
   PaginationPrevious,
   PaginationEllipsis
 } from "@/components/ui/pagination";
-import { Search, GraduationCap, User, Building } from "lucide-react";
+import { Search, GraduationCap, User, Building, Filter, X } from "lucide-react";
 import finalYearProjectsData from "@/data/final_year_projects.json";
 
 interface Project {
@@ -25,20 +27,37 @@ const ITEMS_PER_PAGE = 6;
 
 const FinalYearProjects = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedDepartment, setSelectedDepartment] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState(1);
 
   const projects: Project[] = finalYearProjectsData;
 
+  // Get unique departments for filter
+  const departments = useMemo(() => {
+    const uniqueDepts = Array.from(new Set(projects.map(p => p["Bộ môn"]))).sort();
+    return uniqueDepts;
+  }, [projects]);
+
   const filteredProjects = useMemo(() => {
-    if (!searchQuery.trim()) return projects;
-    
-    const query = searchQuery.toLowerCase();
-    return projects.filter(project => 
-      project["Bộ môn"].toLowerCase().includes(query) ||
-      project["Tên đồ án (Tiếng Việt)"].toLowerCase().includes(query) ||
-      project["CBHD 1 (Họ và tên)"].toLowerCase().includes(query)
-    );
-  }, [projects, searchQuery]);
+    let filtered = projects;
+
+    // Filter by department
+    if (selectedDepartment !== "all") {
+      filtered = filtered.filter(project => project["Bộ môn"] === selectedDepartment);
+    }
+
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter(project => 
+        project["Bộ môn"].toLowerCase().includes(query) ||
+        project["Tên đồ án (Tiếng Việt)"].toLowerCase().includes(query) ||
+        project["CBHD 1 (Họ và tên)"].toLowerCase().includes(query)
+      );
+    }
+
+    return filtered;
+  }, [projects, searchQuery, selectedDepartment]);
 
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -48,6 +67,17 @@ const FinalYearProjects = () => {
   const handleSearchChange = (value: string) => {
     setSearchQuery(value);
     setCurrentPage(1); // Reset to first page when searching
+  };
+
+  const handleDepartmentChange = (value: string) => {
+    setSelectedDepartment(value);
+    setCurrentPage(1); // Reset to first page when filtering
+  };
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setSelectedDepartment("all");
+    setCurrentPage(1);
   };
 
   const renderPaginationItems = () => {
@@ -160,15 +190,45 @@ const FinalYearProjects = () => {
           </p>
         </div>
 
-        <div className="mb-6">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-            <Input
-              placeholder="Tìm kiếm theo bộ môn, tên đồ án hoặc CBHD..."
-              value={searchQuery}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              className="pl-10"
-            />
+        <div className="space-y-4 mb-6">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input
+                placeholder="Tìm kiếm theo bộ môn, tên đồ án hoặc CBHD..."
+                value={searchQuery}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+            
+            <div className="flex gap-2">
+              <Select value={selectedDepartment} onValueChange={handleDepartmentChange}>
+                <SelectTrigger className="w-[200px]">
+                  <Filter className="h-4 w-4 mr-2" />
+                  <SelectValue placeholder="Chọn bộ môn" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Tất cả bộ môn</SelectItem>
+                  {departments.map((dept) => (
+                    <SelectItem key={dept} value={dept}>
+                      {dept}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              
+              {(searchQuery || selectedDepartment !== "all") && (
+                <Button 
+                  variant="outline" 
+                  size="icon"
+                  onClick={clearFilters}
+                  className="shrink-0"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              )}
+            </div>
           </div>
         </div>
 

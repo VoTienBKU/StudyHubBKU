@@ -10,6 +10,7 @@ import GradePrediction from "./pages/GradePrediction";
 import CourseReview from "./pages/CourseReview";
 import NotFound from "./pages/NotFound";
 import ExamArchive from "./pages/ExamArchive";
+import FinalYearProjects from "./pages/FinalYearProjects";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const AppContent = () => {
       <Route path="/schedule" element={<Schedule />} />
       <Route path="/grade-prediction" element={<GradePrediction />} />
       <Route path="/course-review" element={<CourseReview />} />
+      <Route path="/final-year-projects" element={<FinalYearProjects />} />
       <Route path="/exam-archive" element={<ExamArchive />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

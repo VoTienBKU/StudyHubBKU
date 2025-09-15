@@ -1,0 +1,52 @@
+[
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống quản lý đồ án Khoa Khoa học và Kỹ thuật Máy tính tích hợp AI hỗ trợ định hướng đề tài và hỏi đáp",
+        "CBHD 1 (Họ và tên)": "Trần Ngọc Bảo Duy"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu xây dựng các giải pháp ước lượng thời gian đến đích và tìm đường hiệu quả",
+        "CBHD 1 (Họ và tên)": "Trần Minh Quang"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng mô hình vật lý hỗ trợ dạy và học môn Vật lý 12",
+        "CBHD 1 (Họ và tên)": "Trần Giang Sơn"
+    },
+    {
+        "Bộ môn": "Mạng máy tính và Truyền thông dữ liệu",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển hệ thống IoT thông minh cho quản lý năng lượng tòa nhà",
+        "CBHD 1 (Họ và tên)": "Nguyễn Văn Minh"
+    },
+    {
+        "Bộ môn": "Kỹ thuật phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng machine learning trong dự đoán và phân tích hành vi người dùng trên mạng xã hội",
+        "CBHD 1 (Họ và tên)": "Lê Thị Hương"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển chatbot thông minh sử dụng Natural Language Processing cho tư vấn học tập",
+        "CBHD 1 (Họ và tên)": "Phạm Minh Tuấn"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống quản lý thư viện số tích hợp AI để gợi ý sách và tài liệu",
+        "CBHD 1 (Họ và tên)": "Đỗ Văn Nam"
+    },
+    {
+        "Bộ môn": "An toàn thông tin",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và triển khai giải pháp bảo mật cho hệ thống blockchain",
+        "CBHD 1 (Họ và tên)": "Vũ Thị Lan"
+    },
+    {
+        "Bộ môn": "Mạng máy tính và Truyền thông dữ liệu",
+        "Tên đồ án (Tiếng Việt)": "Thiết kế và cài đặt mạng SDN cho trung tâm dữ liệu quy mô lớn",
+        "CBHD 1 (Họ và tên)": "Hoàng Văn Đức"
+    },
+    {
+        "Bộ môn": "Kỹ thuật phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng DevOps và containerization trong phát triển phần mềm hiện đại",
+        "CBHD 1 (Họ và tên)": "Nguyễn Thị Mai"
+    }
+]

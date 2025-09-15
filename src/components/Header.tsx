@@ -12,6 +12,7 @@ const navItems = [
   { path: "/schedule", label: "Thời khóa biểu", short: "TKB", icon: Calendar },
   { path: "/course-review", label: "Review môn học", short: "Review", icon: MessageSquare },
   { path: "/grade-prediction", label: "Dự đoán điểm TB", short: "GPA", icon: TrendingUp },
+  { path: "/final-year-projects", label: "Đồ án năm 4", short: "Đồ án", icon: GraduationCap },
   // { path: "/exam-archive", label: "Đề thi", short: "Đề thi", icon: FileText },
 ];
 

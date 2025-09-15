@@ -51,11 +51,11 @@ const FinalYearProjects = () => {
     }, {} as Record<string, number>);
 
     const colors = [
-      "hsl(var(--chart-1))",
-      "hsl(var(--chart-2))", 
-      "hsl(var(--chart-3))",
-      "hsl(var(--chart-4))",
-      "hsl(var(--chart-5))"
+      "hsl(221 83% 53%)",
+      "hsl(212 95% 68%)", 
+      "hsl(216 92% 60%)",
+      "hsl(210 98% 78%)",
+      "hsl(212 97% 87%)"
     ];
 
     return Object.entries(stats).map(([dept, count], index) => ({
@@ -220,12 +220,12 @@ const FinalYearProjects = () => {
                   Thống kê
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-md">
+              <DialogContent className="sm:max-w-lg max-w-[90vw]">
                 <DialogHeader>
                   <DialogTitle>Thống kê đồ án theo bộ môn</DialogTitle>
                 </DialogHeader>
-                <div className="space-y-4">
-                  <div className="h-64">
+                <div className="space-y-4 p-2">
+                  <div className="h-72 w-full">
                     <ChartContainer
                       config={{
                         projects: {

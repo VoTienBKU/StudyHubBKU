@@ -14,7 +14,10 @@ import {
   PaginationPrevious,
   PaginationEllipsis
 } from "@/components/ui/pagination";
-import { Search, GraduationCap, User, Building, Filter, X } from "lucide-react";
+import { Search, GraduationCap, User, Building, Filter, X, BarChart3 } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import finalYearProjectsData from "@/data/final_year_projects.json";
 
 interface Project {
@@ -29,6 +32,7 @@ const FinalYearProjects = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const [showStats, setShowStats] = useState(false);
 
   const projects: Project[] = finalYearProjectsData;
 
@@ -36,6 +40,29 @@ const FinalYearProjects = () => {
   const departments = useMemo(() => {
     const uniqueDepts = Array.from(new Set(projects.map(p => p["Bộ môn"]))).sort();
     return uniqueDepts;
+  }, [projects]);
+
+  // Calculate statistics for pie chart
+  const departmentStats = useMemo(() => {
+    const stats = projects.reduce((acc, project) => {
+      const dept = project["Bộ môn"];
+      acc[dept] = (acc[dept] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    const colors = [
+      "hsl(var(--chart-1))",
+      "hsl(var(--chart-2))", 
+      "hsl(var(--chart-3))",
+      "hsl(var(--chart-4))",
+      "hsl(var(--chart-5))"
+    ];
+
+    return Object.entries(stats).map(([dept, count], index) => ({
+      name: dept,
+      value: count,
+      fill: colors[index % colors.length]
+    }));
   }, [projects]);
 
   const filteredProjects = useMemo(() => {
@@ -181,9 +208,71 @@ const FinalYearProjects = () => {
     <Layout>
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <GraduationCap className="h-8 w-8 text-primary" />
-            <h1 className="text-3xl font-bold text-foreground">Đồ án năm 4</h1>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <GraduationCap className="h-8 w-8 text-primary" />
+              <h1 className="text-3xl font-bold text-foreground">Đồ án năm 4</h1>
+            </div>
+            <Dialog open={showStats} onOpenChange={setShowStats}>
+              <DialogTrigger asChild>
+                <Button variant="outline" className="gap-2">
+                  <BarChart3 className="h-4 w-4" />
+                  Thống kê
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Thống kê đồ án theo bộ môn</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-4">
+                  <div className="h-64">
+                    <ChartContainer
+                      config={{
+                        projects: {
+                          label: "Đồ án",
+                        },
+                      }}
+                      className="h-full w-full"
+                    >
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={departmentStats}
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={40}
+                            outerRadius={80}
+                            paddingAngle={2}
+                            dataKey="value"
+                          >
+                            {departmentStats.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={entry.fill} />
+                            ))}
+                          </Pie>
+                          <ChartTooltip
+                            content={<ChartTooltipContent />}
+                          />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                  <div className="space-y-2">
+                    {departmentStats.map((stat, index) => (
+                      <div key={index} className="flex items-center justify-between text-sm">
+                        <div className="flex items-center gap-2">
+                          <div 
+                            className="w-3 h-3 rounded-full" 
+                            style={{ backgroundColor: stat.fill }}
+                          />
+                          <span>{stat.name}</span>
+                        </div>
+                        <span className="font-medium">{stat.value} đồ án</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
           <p className="text-muted-foreground">
             Danh sách các đồ án tốt nghiệp năm 4 - Khoa Khoa học và Kỹ thuật Máy tính

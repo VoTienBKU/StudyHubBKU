@@ -15,38 +15,1193 @@
         "CBHD 1 (Họ và tên)": "Trần Giang Sơn"
     },
     {
-        "Bộ môn": "Mạng máy tính và Truyền thông dữ liệu",
-        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển hệ thống IoT thông minh cho quản lý năng lượng tòa nhà",
-        "CBHD 1 (Họ và tên)": "Nguyễn Văn Minh"
-    },
-    {
-        "Bộ môn": "Kỹ thuật phần mềm",
-        "Tên đồ án (Tiếng Việt)": "Ứng dụng machine learning trong dự đoán và phân tích hành vi người dùng trên mạng xã hội",
-        "CBHD 1 (Họ và tên)": "Lê Thị Hương"
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Viết chương trình hỗ trợ dạy và học môn Hóa học lớp 10",
+        "CBHD 1 (Họ và tên)": "Trần Giang Sơn"
     },
     {
         "Bộ môn": "Khoa học Máy tính",
-        "Tên đồ án (Tiếng Việt)": "Phát triển chatbot thông minh sử dụng Natural Language Processing cho tư vấn học tập",
-        "CBHD 1 (Họ và tên)": "Phạm Minh Tuấn"
+        "Tên đồ án (Tiếng Việt)": "Viết chương trình hỗ trợ dạy và học môn Vật lí lớp 11",
+        "CBHD 1 (Họ và tên)": "Trần Giang Sơn"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Viết chương trình hỗ trợ dạy và học môn Hóa học lớp 11",
+        "CBHD 1 (Họ và tên)": "Trần Giang Sơn"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển Chatbot và nền tảng phân tích kết quả hỏi đáp của Trường Đại học Bách khoa – ĐHQG-HCM",
+        "CBHD 1 (Họ và tên)": "Trần Ngọc Bảo Duy"
     },
     {
         "Bộ môn": "Hệ thống thông tin",
-        "Tên đồ án (Tiếng Việt)": "Hệ thống quản lý thư viện số tích hợp AI để gợi ý sách và tài liệu",
-        "CBHD 1 (Họ và tên)": "Đỗ Văn Nam"
+        "Tên đồ án (Tiếng Việt)": "Bảo vệ mô hình tổng hợp trong Học Liên Kết Phi Tập Trung",
+        "CBHD 1 (Họ và tên)": "Nguyễn Thị Ái Thảo"
     },
     {
-        "Bộ môn": "An toàn thông tin",
-        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và triển khai giải pháp bảo mật cho hệ thống blockchain",
-        "CBHD 1 (Họ và tên)": "Vũ Thị Lan"
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống quản lý các hoạt động Đoàn - Hội và hỏi đáp hoạt động ngoại khóa Trường Đại học Bách khoa",
+        "CBHD 1 (Họ và tên)": "Trần Ngọc Bảo Duy"
     },
     {
-        "Bộ môn": "Mạng máy tính và Truyền thông dữ liệu",
-        "Tên đồ án (Tiếng Việt)": "Thiết kế và cài đặt mạng SDN cho trung tâm dữ liệu quy mô lớn",
-        "CBHD 1 (Họ và tên)": "Hoàng Văn Đức"
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "SINH ẢNH CẢM XÚC TỪ KHUÔN MẶT",
+        "CBHD 1 (Họ và tên)": "Võ Thanh Hùng"
     },
     {
-        "Bộ môn": "Kỹ thuật phần mềm",
-        "Tên đồ án (Tiếng Việt)": "Ứng dụng DevOps và containerization trong phát triển phần mềm hiện đại",
-        "CBHD 1 (Họ và tên)": "Nguyễn Thị Mai"
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng mã hoá đồng hình nhằm bảo vệ tính riêng tư trong mô hình Học Liên Kết Phi Tập Trung",
+        "CBHD 1 (Họ và tên)": "Nguyễn Thị Ái Thảo"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển một hệ thống quản lý học tập (Learning Management Systems – LMS) hỗ trợ AI",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển một hệ thống quản lý học tập (Learning Management Systems – LMS) hỗ trợ theo dõi và phân tích quá trình học tập",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Thiết kế và hiện thực giải pháp xác thực khuôn mặt an toàn sử dụng trên nhiều nền tảng thương mại điện tử",
+        "CBHD 1 (Họ và tên)": "Nguyễn Thị Ái Thảo"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nhận dạng vùng công thức toán học trong ảnh tài liệu",
+        "CBHD 1 (Họ và tên)": "Mai Xuân Toàn"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Thiết kế bộ tăng tốc AI tích hợp trong vi xử lý RISC-V",
+        "CBHD 1 (Họ và tên)": "Phạm Quốc Cường"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển giải pháp định tuyến giao thông trong phạm vi lớn sử dụng các kỹ thuật học tăng cường",
+        "CBHD 1 (Họ và tên)": "Trần Minh Quang"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Mô hình kho dữ liệu (data warehouse) về giao thông phục vụ công tác thống kê, dự báo, hỗ trợ ra quyết định",
+        "CBHD 1 (Họ và tên)": "Trần Minh Quang"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phân tích mối liên hệ về tình trạng giao thông tại các nút giao thông quan trọng ở TP.HCM",
+        "CBHD 1 (Họ và tên)": "Trần Minh Quang"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Giải pháp phân tích tình trạng giao thông dựa trên các kỹ thuật gom cụm dữ liệu",
+        "CBHD 1 (Họ và tên)": "Trần Minh Quang"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng hướng dẫn giao thông công cộng thông minh",
+        "CBHD 1 (Họ và tên)": "Trần Minh Quang"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống ví điện tử quản lý chi tiêu và phát hiện gian lận dựa trên Blockchain",
+        "CBHD 1 (Họ và tên)": "Trần Minh Quang"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Tối ưu hóa hệ thống đèn giao thông sử dụng Reinforcement Learning và Multi-Agent System",
+        "CBHD 1 (Họ và tên)": "Trần Minh Quang"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng hệ thống chống giả mạo dược phẩm dựa trên Blockchain và Trí tuệ nhân tạo kết hợp kiểm chứng hình ảnh và truy xuất nguồn gốc",
+        "CBHD 1 (Họ và tên)": "Trần Minh Quang"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phân tích và ứng dụng dữ liệu lớn trong giải quyết ùn tắc giao thông",
+        "CBHD 1 (Họ và tên)": "Trần Minh Quang"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Nền tảng du lịch tự túc trực tuyến hỗ trợ tìm kiếm và đặt dịch vụ",
+        "CBHD 1 (Họ và tên)": "Mai Đức Trung"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Nền tảng trực tuyến hỗ trợ tìm kiếm và kết nối việc làm",
+        "CBHD 1 (Họ và tên)": "Mai Đức Trung"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Phát triển phần mềm quản lý cửa hàng bánh ngọt",
+        "CBHD 1 (Họ và tên)": "Mai Đức Trung"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống quản lý và truy xuất nguồn gốc thuốc ứng dụng công nghệ blockchain",
+        "CBHD 1 (Họ và tên)": "Nguyễn Hữu Hiếu"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng ứng dụng hỗ trợ theo dõi sức khỏe cá nhân và gia đình",
+        "CBHD 1 (Họ và tên)": "Lê Thị Bảo Thu"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng hệ thống đánh giá tín nhiệm khách vay sử dụng học máy trên nền tảng web cho doanh nghiệp tài chính vừa và nhỏ",
+        "CBHD 1 (Họ và tên)": "Lê Thị Bảo Thu"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển giải pháp bảo vệ tính riêng tư trong học máy sử dụng mô hình học liên kết phi tập trung kết hợp công nghệ blockchain",
+        "CBHD 1 (Họ và tên)": "Lê Thị Bảo Thu"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng mô hình học liên kết trong phát hiện gian lận giao dịch ngân hàng với cơ chế bảo vệ tính riêng tư người dùng",
+        "CBHD 1 (Họ và tên)": "Lê Thị Bảo Thu"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phương pháp thiết kế phần cứng mã hoá trên FPGA",
+        "CBHD 1 (Họ và tên)": "Phạm Kiều Nhật Anh"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nền tảng quản lý trao đổi Email và mở rộng đa kênh ứng dụng AI",
+        "CBHD 1 (Họ và tên)": "Võ Thanh Hùng"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng AI trong quy trình Onboarding và Offboarding nhân sự",
+        "CBHD 1 (Họ và tên)": "Võ Thanh Hùng"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng giải pháp quản lý kho thông minh dựa trên AI",
+        "CBHD 1 (Họ và tên)": "Trương Thị Thái Minh"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống quản lý các trạm xăng thông minh tận dụng nền tảng RPA",
+        "CBHD 1 (Họ và tên)": "Trương Thị Thái Minh"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng phần mềm mô phỏng bắn 3D với tính năng đánh giá độ chính xác từng phát bắn",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Thiết kế hệ thống chấm điểm tự động cho bài bắn 3D dựa trên thị giác máy tính",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và ứng dụng camera ảnh nhiệt trong xác định và theo dõi mục tiêu",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu phát hiện và định vị drone dựa trên âm thanh",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng IoT trong giám sát và điều phối vận chuyển đạn dược",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Thiết kế và chế tạo ống nhòm quân sự tích hợp laser rangefinder để đo khoảng cách chính xác",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển ống nhòm quân sự tích hợp camera hồng ngoại cho quan sát ban đêm",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Xác định tọa độ mục tiêu bằng ống nhòm tích hợp cảm biến đa hướng",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng thuật toán tính toán tọa độ mục tiêu từ dữ liệu GPS, góc ngắm và khoảng cách",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng trí tuệ nhân tạo để tự động nhận dạng mục tiêu trong ảnh ống nhòm",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển giao diện HUD (Head-Up Display) hiển thị khoảng cách và tọa độ ngay trong kính ống nhòm",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phân tích dữ liệu SCADA lịch sử bằng Python để dự báo sự cố",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng giải pháp ảo hóa và container hóa trong triển khai SCADA hiện đại",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Thiết kế và phát triển drone trinh sát sử dụng vi điều khiển ESP32",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng mô hình mạng thời gian thực dựa trên Time Sensitive Networking (TSN) cho SCADA",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu các kỹ thuật mã hóa bảo mật dữ liệu trong truyền thông SCADA",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát hiện và mô phỏng các kiểu tấn công mạng điển hình trong hệ thống SCADA",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng hệ thống giám sát bất thường trong mạng SCADA dựa trên học máy",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng trí tuệ nhân tạo trong phát hiện hành vi bất thường của tín hiệu SCADA",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phân tích dữ liệu SCADA thời gian thực bằng AI để đưa ra cảnh báo sớm",
+        "CBHD 1 (Họ và tên)": "Võ Tuấn Bình"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng hệ thống hỗ trợ thiết kế Cơ sở dữ liệu",
+        "CBHD 1 (Họ và tên)": "Trương Quỳnh Chi"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng hệ thống thương mại điện tử hỗ trợ phân phối và tiêu thụ sản phẩm nông sản ở nông thôn.",
+        "CBHD 1 (Họ và tên)": "Trương Quỳnh Chi"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng hệ thống quản lý cho dịch vụ chăm sóc sắc đẹp và kinh doanh mỹ phẩm.",
+        "CBHD 1 (Họ và tên)": "Trương Quỳnh Chi"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng ứng dụng di động hỗ trợ tìm kiếm và quản lý bãi đậu xe.",
+        "CBHD 1 (Họ và tên)": "Trương Quỳnh Chi"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và đánh giá hệ mô phỏng lượng tử tích hợp kỹ thuật cắt mạch lượng tử",
+        "CBHD 1 (Họ và tên)": "Diệp Thanh Đăng"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển giải pháp sinh tài liệu kỹ thuật từ mã chương trình ứng dụng mô hình ngôn ngữ lớn",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển giải pháp phân tích & trực quan hoá dữ liệu giám sát người sử dụng và ứng dụng trên hệ thống tính toán hiệu năng cao",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển giải pháp phân tích dữ liệu dòng GPS của xe buýt",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển giải pháp xử lý và truy vấn dữ liệu dòng cho công ty viễn thông dùng Bloom Filter",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển cổng thông tin cho hệ thống tính toán hiệu năng cao cho hệ thống máy tính cụm",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển giải pháp hiệu chỉnh dữ liệu các cảm biến GPS",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển giải pháp hiệu chỉnh dữ liệu các cảm biến IoT",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Kết hợp đồ thị tri thức và mô hình học sâu dựa trên đồ thị ứng dụng trong hệ thống gợi ý",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "KG-DCR: phương pháp tiếp cận đồ thị tri thức cho bài toán khuyến nghị đàm thoại đa dạng",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển một khung kiến trúc truyền dẫn và phân tích dữ liệu cho hệ thống xe thông minh",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển các công cụ AI hỗ trợ học tập cho sinh viên",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển ứng dụng dựa trên kiến trúc AutoSAR Adaptive",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển giải pháp điều khiển nhà thông minh dựa trên các thiết bị hỗ trợ Tasmota firmware",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng kỹ thuật siêu học tập vào khôi phục và siêu phân giải ảnh trên đa miền dữ liệu",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng giải pháp giám sát trong nông nghiệp dựa trên kiến trúc IoT gateway trên CoreIOT",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng véc-tơ đa chức năng giúp tăng cường hiệu quả trong việc học biểu diễn đặc trưng trong nhận dạng gương mặt",
+        "CBHD 1 (Họ và tên)": "Thoại Nam"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và Phát triển Mô hình Dự đoán Tài nguyên Thích ứng cho Công việc trên các Hệ thống Tính toán Hiệu năng cao",
+        "CBHD 1 (Họ và tên)": "Hoàng Lê Hải Thanh"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và Phát triển Giải pháp Quản lý Tài liệu Học thuật cho Nhóm Nghiên cứu",
+        "CBHD 1 (Họ và tên)": "Hoàng Lê Hải Thanh"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và Phát triển Ứng dụng Quản lý Hàng hoá cho một Cửa hàng Quần áo",
+        "CBHD 1 (Họ và tên)": "Hoàng Lê Hải Thanh"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và Phát triển Ứng dụng Hỗ trợ Học viên cho một Trung tâm Anh văn",
+        "CBHD 1 (Họ và tên)": "Hoàng Lê Hải Thanh"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và Phát triển Ứng dụng Hỗ trợ Học tập cho Sinh viên Trường Đại học Bách Khoa",
+        "CBHD 1 (Họ và tên)": "Hoàng Lê Hải Thanh"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và Phát triển Giải pháp Hỗ trợ Quản lý Thu chi Thông minh",
+        "CBHD 1 (Họ và tên)": "Hoàng Lê Hải Thanh"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và Phát triển Web Portal giúp Quản lý và Giám sát Chương trình Mô phỏng Lập lịch cho các Hệ thống Tính toán Hiệu năng cao",
+        "CBHD 1 (Họ và tên)": "Hoàng Lê Hải Thanh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng nền tảng văn phòng ảo thông minh kết hợp trí tuệ nhân tạo nhằm hỗ trợ cộng tác từ xa",
+        "CBHD 1 (Họ và tên)": "Trần Minh Quang"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Nền tảng quản lý nhân sự và vận hành cho doanh nghiệp vừa và nhỏ",
+        "CBHD 1 (Họ và tên)": "Mai Đức Trung"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống giảng dạy lập trình trực tuyến theo thời gian thực có tương tác và hỗ trợ AI",
+        "CBHD 1 (Họ và tên)": "Trần Ngọc Bảo Duy"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nền tảng học lập trình thích ứng: Phân tích kết quả và gợi ý bài tập tiếp theo dựa trên năng lực",
+        "CBHD 1 (Họ và tên)": "Trần Ngọc Bảo Duy"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nền tảng thông minh hỗ trợ bài tập lớn các môn học lập trình và đánh giá theo chuẩn đầu ra",
+        "CBHD 1 (Họ và tên)": "Trần Ngọc Bảo Duy"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Khai thác mô hình ngôn ngữ lớn đa phương thức cho hệ thống gợi ý",
+        "CBHD 1 (Họ và tên)": "Lê Thành Sách"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống đa phương thức định vị đoạn video theo thời gian dựa trên mô tả văn bản",
+        "CBHD 1 (Họ và tên)": "Lê Thành Sách"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển kỹ thuật suy luận không gian 3D đa phương thức từ ảnh RGB, bản đồ độ sâu và ngôn ngữ tự nhiên",
+        "CBHD 1 (Họ và tên)": "Lê Thành Sách"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu về ước lượng độ sâu từ ảnh đơn",
+        "CBHD 1 (Họ và tên)": "Lê Thành Sách"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển giải pháp liên kết học phi tập trung cải thiện hiệu năng và bảo mật",
+        "CBHD 1 (Họ và tên)": "Phan Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu cải thiện hiệu suất mô hình học liên kết phi tập trung",
+        "CBHD 1 (Họ và tên)": "Phan Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu giải pháp bảo mật và tính riêng tư trong hệ thống học liên kết phi tập trung",
+        "CBHD 1 (Họ và tên)": "Phan Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Cải tiến mô hình học liên kết trong hệ thống y tế",
+        "CBHD 1 (Họ và tên)": "Phan Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng mô hình ngôn ngữ lớn hỗ trợ chẩn đoán đau thắt lưng",
+        "CBHD 1 (Họ và tên)": "Phan Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Khám phá lớp mới trong các hệ thống phát hiện lỗi ngoại quan",
+        "CBHD 1 (Họ và tên)": "Lê Hồng Trang"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Dự báo ngắn hạn lượng mưa dựa vào hình ảnh ra-đa",
+        "CBHD 1 (Họ và tên)": "Lê Hồng Trang"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển nền tảng thu thập và tích hợp dữ liệu cơ thể từ các thiết bị đeo cho việc phân tích thông tin sức khoẻ cá nhân",
+        "CBHD 1 (Họ và tên)": "Lê Hồng Trang"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng website mua bán và thanh lý vật dụng cũ trực tuyến",
+        "CBHD 1 (Họ và tên)": "Trần Thị Quế Nguyệt"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển ứng dụng trên thiết bị di động hướng dẫn nấu ăn và pha chế nước uống",
+        "CBHD 1 (Họ và tên)": "Trần Thị Quế Nguyệt"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng trang web học trực tuyến cá nhân hoá người dùng",
+        "CBHD 1 (Họ và tên)": "Trần Thị Quế Nguyệt"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng website học toán tư duy cho học sinh tiểu học",
+        "CBHD 1 (Họ và tên)": "Trần Thị Quế Nguyệt"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng nền tảng cộng đồng trực tuyến cho người dùng sáng tác truyện",
+        "CBHD 1 (Họ và tên)": "Trần Thị Quế Nguyệt"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng giải pháp đề xuất lộ trình học tập cá nhân hoá và ứng dụng trong một hệ thống học trực tuyến",
+        "CBHD 1 (Họ và tên)": "Trần Thị Quế Nguyệt"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng hệ thống hỗ trợ Khoa quản lý và triển khai môn học",
+        "CBHD 1 (Họ và tên)": "Trần Thị Quế Nguyệt"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng hệ thống quản lý sản xuất cho doanh nghiệp nhỏ",
+        "CBHD 1 (Họ và tên)": "Trần Thị Quế Nguyệt"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển game thẻ bài chiến thuật “Mystic Arenas”",
+        "CBHD 1 (Họ và tên)": "Vương Bá Thịnh"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển game “Crown of Shadow”",
+        "CBHD 1 (Họ và tên)": "Vương Bá Thịnh"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Game thẻ bài đối kháng ứng dụng trí tuệ nhân tạo",
+        "CBHD 1 (Họ và tên)": "Vương Bá Thịnh"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển game online \"WarCup\"",
+        "CBHD 1 (Họ và tên)": "Vương Bá Thịnh"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển bạn đồng hành AI hỗ trợ học ngôn ngữ thông qua phương pháp “đắm chìm”",
+        "CBHD 1 (Họ và tên)": "Vương Bá Thịnh"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống game online nhập vai hành động nhiều người chơi “Fortress of the Fallen”",
+        "CBHD 1 (Họ và tên)": "Vương Bá Thịnh"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển game “Afterimage”",
+        "CBHD 1 (Họ và tên)": "Vương Bá Thịnh"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "TEXT-TO-SQL NHẬN THỨC SUY LUẬN: TÍCH HỢP CHATBOT CÓ KHẢ NĂNG MỞ RỘNG VỚI CHI PHÍ HIỆU QUẢ",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Medical Guardian: Hệ thống AI Đa phương thức cho Phát hiện Quảng cáo Y tế Vi phạm Pháp luật.",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Trợ lý ảo hỗ trợ sinh viên di chuyển trong khuôn viên Trường Đại học Bách Khoa Thành Phố Hồ Chí Minh bằng công nghệ AR",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và xây dựng hệ thống Trợ lý cá nhân thông minh hỗ trợ tối ưu lịch, nhắc nhở sức khỏe và ghi chú bằng giọng nói.",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu phương pháp phân tích, nhận diện bất thường ảnh chụp y tế theo hướng one-shot trong môi trường huấn luyện khan hiếm dữ liệu",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống Hỏi–Đáp Tài liệu sử dụng RAG (Retrieval-Augmented Generation)",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu về mạng nơ-ron đồ thị và học tăng cường cho trả lời câu hỏi đa bước trên đồ thị tri thức",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phân đoạn và phân tích cấu trúc 3D của mạch máu và phế quản từ ảnh y tế",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Nền tảng học trực tuyến ứng dụng AI với lộ trình cá nhân hóa và trợ giảng ảo.",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống đa tác nhân dựa trên AI cho thu thập và phân tích yêu cầu phần mềm",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Mô hình ngôn ngữ Masked Diffusion cho Tiếng Việt: Ứng dụng trong Tóm tắt Văn bản",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu phương pháp tinh chỉnh mô hình ngôn ngữ lớn cho hội thoại đa lượt trong tư vấn B2B.",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Nền tảng trực tuyến cho Luyện tập Thuật toán và Thi lập trình dành cho Sinh viên CNTT Việt Nam",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Trang web Tóm tắt Video và Tạo Câu hỏi Trắc nghiệm bằng AI",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng hệ thống hỗ trợ lập lịch và phân công công việc cho nhóm nhỏ",
+        "CBHD 1 (Họ và tên)": "Lê Thị Bảo Thu"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "DocuAI: Quản lý Tài liệu Thông minh dựa trên OCR",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "AgenticVTON: Một Hệ thống Chủ động cho Kiểm soát Chất lượng Thử Đồ Ảo",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống Hỏi – Đáp Đa phương thức bằng Tiếng Việt Tập trung vào Các Bài toán Định lượng Tính toán và Giải thích được",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Thiết kế SoC RISC-V tích hợp EdgeAI cho ứng dụng IoT",
+        "CBHD 1 (Họ và tên)": "Huỳnh Phúc Nghị"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống Quản lý và Hỗ trợ Hoạt động Xã hội cho Sinh viên với Trợ lý Ảo Tích hợp AI",
+        "CBHD 1 (Họ và tên)": "Quản Thành Thơ"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Thiết kế FPGA SoC trong phân loại tín hiệu ECG phục vụ chẩn đoán tim mạch",
+        "CBHD 1 (Họ và tên)": "Huỳnh Phúc Nghị"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Thiết kế và hiện thực một gateway IoT dạng mô-đun có khả năng cấu hình",
+        "CBHD 1 (Họ và tên)": "Huỳnh Phúc Nghị"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nhận dạng biển số xe thời gian thực dựa trên CNN và SoC RISC-V",
+        "CBHD 1 (Họ và tên)": "Trần Ngọc Thịnh"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển nền tảng nhúng đa chức năng dựa trên Yocto Project cho các ứng dụng tự động hóa trong công nghiệp",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Bộ tăng tốc giải mã suy đoán cho Edge LLMs",
+        "CBHD 1 (Họ và tên)": "Huỳnh Phúc Nghị"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống tưới tiêu thông minh dựa trên Smart Irrigation Tempate trên CoreIoT",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống IoT tích hợp AI\/ML và Yocto Linux cho việc phát hiện và giám sát sâu bệnh trên cây trồng qua hình ảnh trên nền tảng CoreIoT",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và Phát triển giải pháp Smart Car Access đa công nghệ (NFC, BLE, UWB) trên nền tảng devkit và mô phỏng ECU",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Suy luận LLM ngữ cảnh dài với bộ đệm KV do FPGA quản lý",
+        "CBHD 1 (Họ và tên)": "Huỳnh Phúc Nghị"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Module điều khiển điều hòa không khí trên xe hơi dựa trên kiến trúc AUTOSAR",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Ứng Dụng Giải Pháp Truy Cập Xe Thông Minh Tích Hợp UWB, NFC và BLE cho Đại Lý Cho Thuê Xe",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Cân thông minh đánh giá sức khỏe và hướng dẫn tập luyện ứng dụng Vật lý trị liệu Đông y",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống IoT tích hợp AI và Yocto Linux cho giám sát môi trường và an toàn phòng Lab dựa trên nền tảng CoreIoT",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển màn hình HMI mini ứng dụng trong công nghiệp, điều khiển và giám sát thiết bị qua giao thức Modbus, tích hợp IoT và Edge AI",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Thiết Kế Bộ Gia Tốc Phần Cứng AI với Hệ Thống Máy Tính RISC-V Sử Dụng Giao Diện Gemmini Cho Các Ứng Dụng IoT Biên với Các Mô Hình tinyML",
+        "CBHD 1 (Họ và tên)": "Trần Ngọc Thịnh"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Tăng cường độ bền đối nghịch bằng tổng quát hóa miền",
+        "CBHD 1 (Họ và tên)": "Nguyễn An Khương"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển và Đánh giá Hệ thống Không Xâm lấn, dựa trên Trí tuệ Nhân tạo để Xác định Giới tính trong Trứng gà",
+        "CBHD 1 (Họ và tên)": "Nguyễn An Khương"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Tác tử AI cho patch-diff nhị phân: định vị lỗ hổng khai thác được trên phần mềm mã nguồn đóng",
+        "CBHD 1 (Họ và tên)": "Nguyễn An Khương"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và xây dựng Tác tử AI Tự hành để Đánh giá Mức độ Trưởng thành Bảo mật trên Nền tảng AWS",
+        "CBHD 1 (Họ và tên)": "Nguyễn An Khương"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "MRUNC: Một môi trường thực thi container tối giản được phát triển bằng ngôn ngữ Go nhằm nghiên cứu các nguyên tắc cách ly trong Linux và tối ưu hóa hiệu năng",
+        "CBHD 1 (Họ và tên)": "Nguyễn An Khương"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển Hợp đồng Thông minh Riêng tư (Private Smart Contract) cho Bỏ phiếu Kín sử dụng Chứng minh không tiết lộ tri thức",
+        "CBHD 1 (Họ và tên)": "Nguyễn An Khương"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống ghi chỉ số đồng hồ nước thông minh dựa trên NB-IoT và AI OCR",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống Kiểm kê Tồn kho Tự động dựa trên Thị giác Máy tính: Thuật toán Ước lượng Số lượng Thùng hàng trên Pallet từ Dữ liệu Video",
+        "CBHD 1 (Họ và tên)": "Nguyễn An Khương"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống Hiểu & Khai phá nội dung đa phương thức cho Bài giảng tại Trường ĐH Bách khoa (ĐHQG-HCM)",
+        "CBHD 1 (Họ và tên)": "Nguyễn An Khương"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và ứng dụng AI và LLM vào dự báo giá chứng khoán dựa trên dữ liệu trên Internet",
+        "CBHD 1 (Họ và tên)": "Nguyễn Quang Hùng"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Sử dụng năng lượng linh hoạt dựa trên AI và giám sát môi trường cho hệ thống nhà thông minh",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển mô-đun giám sát áp suất lốp (TPMS) dựa trên kiến trúc AUTOSAR và mô phỏng ECU",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển phần mềm Driving Automation dựa trên kiến trúc Adaptive AUTOSAR",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống quản lý chìa khóa kỹ thuật số cho ô tô sử dụng NFC và ứng dụng di động",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Tìm kiếm người và đối tượng từ văn bản mô tả với kỹ thuật học đa phương thức",
+        "CBHD 1 (Họ và tên)": "Lê Thành Sách"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng di động tìm kiếm trạm sạc xe máy điện và website quản lý cho chủ trạm và quản trị hệ thống",
+        "CBHD 1 (Họ và tên)": "Lê Đình Thuận"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": ": Nền tảng ERP tích hợp Workflow Engine cho thiết kế và thực thi quy trình sản xuất trong doanh nghiệp.",
+        "CBHD 1 (Họ và tên)": "Lê Đình Thuận"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống quản lý đồ án tốt nghiệp tại trường ĐHBK",
+        "CBHD 1 (Họ và tên)": "Lê Đình Thuận"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Nền tảng phân tích mạng xã hội",
+        "CBHD 1 (Họ và tên)": "Lê Đình Thuận"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Phát triển công cụ ngăn chặn lộ thông tin riêng tư khi sử dụng chatbot",
+        "CBHD 1 (Họ và tên)": "Lê Đình Thuận"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống quản lý đặt sân, tổ chức giải đấu bóng đá tích hợp AI để ghép cặp và tìm đối thủ",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống Quản lý Sự Kiện & Đặt Vé Online",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống quản lý nhà hàng",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng lập kế hoạch và tổ chức hành trình du lịch thông minh",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng quản lý chi tiêu nhóm thông minh đa người dùng",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Nền tảng Ứng dụng Di động Kết nối Đầu bếp tại gia và Thực khách địa phương.",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Nền tảng ôn luyện IELTS ứng dụng AI",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng ứng dụng di động quản lý tài chính cá nhân tích hợp Trợ lý AI.",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển trang web quản lý sân Pickleball",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống đặt bàn, gọi món cho nhà hàng",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Nền tảng quản lý dự án tối ưu cho nhóm lập trình viên - Hiperdev",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống chia sẻ xe máy điện ngang hàng (P2P) trong cộng đồng dân cư",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "HỆ THỐNG QUẢN LÝ TRƯỜNG HỌC THÔNG MINH",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống gợi ý hành trình du lịch dựa trên AI và đánh giá cộng đồng",
+        "CBHD 1 (Họ và tên)": "Võ Thị Ngọc Châu"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Tripjoy: nền tảng lập kế hoạch và điều phối hành trình nhóm dựa trên AI",
+        "CBHD 1 (Họ và tên)": "Võ Thị Ngọc Châu"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống hỗ trợ chẩn đoán bệnh cho bệnh nhân lúc nhập viện",
+        "CBHD 1 (Họ và tên)": "Võ Thị Ngọc Châu"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống quản lý bệnh viện thông minh dựa trên AI",
+        "CBHD 1 (Họ và tên)": "Võ Thị Ngọc Châu"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống quản lý đánh giá dựa trên chuẩn đầu ra",
+        "CBHD 1 (Họ và tên)": "Võ Thị Ngọc Châu"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển cổng dịch vụ công dành cho viên chức, người lao động trường Đại học.",
+        "CBHD 1 (Họ và tên)": "Nguyễn Thanh Tùng"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống quản lý đào tạo của trường Đại học.",
+        "CBHD 1 (Họ và tên)": "Nguyễn Thanh Tùng"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng cổng thông tin điện tử đa chức năng cho trường Đại học.",
+        "CBHD 1 (Họ và tên)": "Nguyễn Thanh Tùng"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển ứng dụng di động phục vụ nhân sự trường Đại học.",
+        "CBHD 1 (Họ và tên)": "Nguyễn Thanh Tùng"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển ứng dụng di động học tập trực tuyến.",
+        "CBHD 1 (Họ và tên)": "Nguyễn Thanh Tùng"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển Hệ thống Giám sát, Dự báo và Điều khiển Tự động trong Nông nghiệp dựa trên công nghệ IOT",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống thủy canh thông minh dựa trên kiến trúc IoT Gateway tích hợp CoreIoT và năng lượng tái tạo",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống giám sát an toàn công nghiệp trên nền Yocto Linux với Camera và Edge AI nhận diện trang bị bảo hộ",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống máy lọc không khí thông minh tích hợp AI và IoT",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và triển khai mô hình Smart Car Access dựa trên chuẩn Car Connectivity Consortium (CCC) Digital Key 3.0",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển robot trợ lý ảo ứng dụng trí tuệ nhân tạo hỗ trợ chăm sóc và giám sát người cao tuổi tại nhà",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống quản lý dự án và nguồn lực",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng quản lý công việc và lập kế hoạch cá nhân thông minh",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống trực tuyến hỗ trợ tìm kiếm và gợi ý việc làm",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống quản lý cho thuê máy lạnh dựa trên mã nguồn mở Tasmota và nền tảng CoreIOT",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng hệ thống bán hàng cho doanh nghiệp hỗ trợ chống hàng giả\/hàng nhái bằng mã QR",
+        "CBHD 1 (Họ và tên)": "Trần Trương Tuấn Phát"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Ứng dụng trò chơi nâng cao nhận diện và phòng tránh lừa đảo",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Công nghệ phần mềm",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống đặt vé sự kiện trực tuyến",
+        "CBHD 1 (Họ và tên)": "Trần Trương Tuấn Phát"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Mô hình Thị giác - Ngôn ngữ cho bài toán Nhận diện biểu thức toán học viết tay",
+        "CBHD 1 (Họ và tên)": "Nguyễn Đức Dũng"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển hệ thống lập kế hoạch chuyển động cho xe tự hành từ ảnh đa hướng sử dụng mô hình học sâu",
+        "CBHD 1 (Họ và tên)": "Nguyễn Đức Dũng"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Mô hình Teacher-Student trong bài toán Motion Planning cho Xe tự hành",
+        "CBHD 1 (Họ và tên)": "Nguyễn Đức Dũng"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát hiện đối tượng 3D từ ảnh đơn cho hệ thống xe tự hành",
+        "CBHD 1 (Họ và tên)": "Nguyễn Đức Dũng"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Thiết kế mạch nguồn cung cấp điện liên tục đơn giản kết hợp với IoT",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Thiết kế và xây dựng mô hình microgrid sử dụng năng lượng mặt trời chi phí thấp kết hợp IoT",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "AI Agent Hỗ trợ Khách hàng cho lĩnh vực Du lịch",
+        "CBHD 1 (Họ và tên)": "Võ Thanh Hùng"
+    },
+    {
+        "Bộ môn": "Khoa học Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống Phát hiện Deepfake Giọng nói Tối ưu cho Thiết bị Di động",
+        "CBHD 1 (Họ và tên)": "Võ Thanh Hùng"
+    },
+    {
+        "Bộ môn": "Hệ thống thông tin",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống quản lý bệnh viện tích hợp AI phân loại yêu cầu bệnh nhân",
+        "CBHD 1 (Họ và tên)": "Trương Tuấn Anh"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống gợi ý sản phẩm theo khuôn mặt và hành vi tại điểm bán",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hiện thực Semantic Gaussian Splatting cho Robot tự hành.",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống quản lý và điều khiển thiết bị điện cho homestay dựa trên IoT và RFID",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Hệ thống và Mạng máy tính",
+        "Tên đồ án (Tiếng Việt)": "Xây dựng hệ thống thương mại điện tử tích hợp pipeline phân tích dữ liệu thông minh",
+        "CBHD 1 (Họ và tên)": "Lê Thanh Vân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển hệ thống tự hành thông minh cho robot bốn chân Jueying Lite3 dựa trên Visual SLAM",
+        "CBHD 1 (Họ và tên)": "Phạm Hoàng Anh"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và hiện thực các chức năng tự hành và tránh vật cản trên Robot Dog DOGZILLA",
+        "CBHD 1 (Họ và tên)": "Phạm Hoàng Anh"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển một hệ thống định vị thời gian thực sử dụng công nghệ băng thông siêu rộng",
+        "CBHD 1 (Họ và tên)": "Phạm Hoàng Anh"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển một giải pháp định vị trong nhà sử dụng công nghệ băng thông siêu rộng",
+        "CBHD 1 (Họ và tên)": "Phạm Hoàng Anh"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Thay đổi gương mặt trong thời gian thực trong các livestream với công nghệ học sâu",
+        "CBHD 1 (Họ và tên)": "Nguyễn Đức Dũng"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Drone an ninh căn cứ quân sự: UAV tự động bay tuần tra quanh doanh trại, tích hợp hệ thống cảnh báo xâm nhập",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống gửi xe không dừng cho nội bộ cơ quan",
+        "CBHD 1 (Họ và tên)": "Nguyễn Cao Trí"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Thiết kế và hiện thực một Ethernet Gateway với Quản lý Khóa An toàn Chống Lượng tử trong Module AUTOSAR SecOC",
+        "CBHD 1 (Họ và tên)": "Phạm Hoàng Anh"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hiện thực code Adrucopter trên Raspberry Pi board",
+        "CBHD 1 (Họ và tên)": "Nguyễn Cao Trí"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống nhận diện vật thể sử dụng YOLOv8 trên FPGA, ứng dụng nhận diện mặt người",
+        "CBHD 1 (Họ và tên)": "Phạm Quốc Cường"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hiện thực giấu tin với mức độ chống phát hiện và tái tạo cao trên FPGA",
+        "CBHD 1 (Họ và tên)": "Phạm Quốc Cường"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Tăng tốc Generative Adversarial Networks để sinh ảnh trên FPGA",
+        "CBHD 1 (Họ và tên)": "Phạm Quốc Cường"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hiện thực hệ thống mã hoá ảnh đối xứng dựa trên hỗ loạn với FPGA",
+        "CBHD 1 (Họ và tên)": "Phạm Quốc Cường"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "ghiên cứu và Phát triển Hệ thống Định danh dựa trên AI",
+        "CBHD 1 (Họ và tên)": "Lê Trọng Nhân"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Nghiên cứu và phát triển lõi điều khiển cảm biến trên FPGA",
+        "CBHD 1 (Họ và tên)": "Phạm Quốc Cường"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hệ thống ký số hậu lượng tử trên FPGA dùng giải thuật Dilithium",
+        "CBHD 1 (Họ và tên)": "Phạm Quốc Cường"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Tăng tốc phần cứng cho thuật toán Hamming Quasi-Cyclic ứng dụng trong mã hóa hậu lượng tử",
+        "CBHD 1 (Họ và tên)": "Phạm Quốc Cường"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Phát triển platform Edge-AI trên nền tảng FPGA sử dụng RISC-V",
+        "CBHD 1 (Họ và tên)": "Phạm Quốc Cường"
+    },
+    {
+        "Bộ môn": "Kỹ thuật Máy tính",
+        "Tên đồ án (Tiếng Việt)": "Hiện thực ứng dụng AI áp dụng giải thuật nhân xấp xỉ trên nền tảng FPGA.",
+        "CBHD 1 (Họ và tên)": "Phạm Quốc Cường"
     }
 ]

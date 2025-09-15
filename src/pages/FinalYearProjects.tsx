@@ -5,12 +5,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { 
-  Pagination, 
-  PaginationContent, 
-  PaginationItem, 
-  PaginationLink, 
-  PaginationNext, 
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
   PaginationPrevious,
   PaginationEllipsis
 } from "@/components/ui/pagination";
@@ -49,7 +49,7 @@ const FinalYearProjects = () => {
     // Filter by search query
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      filtered = filtered.filter(project => 
+      filtered = filtered.filter(project =>
         project["Bộ môn"].toLowerCase().includes(query) ||
         project["Tên đồ án (Tiếng Việt)"].toLowerCase().includes(query) ||
         project["CBHD 1 (Họ và tên)"].toLowerCase().includes(query)
@@ -83,7 +83,7 @@ const FinalYearProjects = () => {
   const renderPaginationItems = () => {
     const items = [];
     const maxVisiblePages = 5;
-    
+
     if (totalPages <= maxVisiblePages) {
       for (let i = 1; i <= totalPages; i++) {
         items.push(
@@ -130,7 +130,7 @@ const FinalYearProjects = () => {
       // Show pages around current page
       const start = Math.max(2, currentPage - 1);
       const end = Math.min(totalPages - 1, currentPage + 1);
-      
+
       for (let i = start; i <= end; i++) {
         items.push(
           <PaginationItem key={i}>
@@ -201,7 +201,7 @@ const FinalYearProjects = () => {
                 className="pl-10"
               />
             </div>
-            
+
             <div className="flex gap-2">
               <Select value={selectedDepartment} onValueChange={handleDepartmentChange}>
                 <SelectTrigger className="w-[200px]">
@@ -217,10 +217,10 @@ const FinalYearProjects = () => {
                   ))}
                 </SelectContent>
               </Select>
-              
+
               {(searchQuery || selectedDepartment !== "all") && (
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="icon"
                   onClick={clearFilters}
                   className="shrink-0"
@@ -276,9 +276,9 @@ const FinalYearProjects = () => {
                     className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
                   />
                 </PaginationItem>
-                
+
                 {renderPaginationItems()}
-                
+
                 <PaginationItem>
                   <PaginationNext
                     href="#"
